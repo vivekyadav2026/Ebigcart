@@ -20,7 +20,7 @@
             <p class="text-xs text-gray-400">Last updated: July 8, 2026</p>
             
             <p>
-                At <strong>Mahadev Tractor</strong>, we understand that you may sometimes need to cancel an order. We have a simple cancellation process designed to be as fair and convenient as possible.
+                At <strong>Maha Shringar</strong>, we understand that you may sometimes need to cancel an order. We have a simple cancellation process designed to be as fair and convenient as possible.
             </p>
 
             <h2 class="text-xl font-serif font-bold text-gray-900 mt-8 mb-4">1. Cancellation Timeline</h2>
@@ -65,7 +65,7 @@
                 For immediate help with order cancellation, please reach out to us:
             </p>
             <ul class="list-disc pl-6 space-y-2 mt-2">
-                <li><strong>Brand Name:</strong> {{ \App\Models\Setting::get('site_name', 'Mahadev Tractor') }}</li>
+                <li><strong>Brand Name:</strong> {{ \App\Models\Setting::get('site_name', 'Maha Shringar') }}</li>
                 <li><strong>Email:</strong> {{ \App\Models\Setting::get('site_email', 'Papperlemon1@gmail.com') }}</li>
                 <li><strong>Address:</strong> {{ \App\Models\Setting::get('site_address', '12800 Northborough Dr, Houston, TX 77067') }}</li>
             </ul>

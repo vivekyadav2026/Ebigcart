@@ -1,9 +1,9 @@
 @extends('layouts.frontend')
 
 @section('title', 'Contact Us')
-@section('meta_title', 'Contact Us | Mahadev Tractor - Support & Help')
-@section('meta_description', 'Contact the Mahadev Tractor team. Get in touch with us for questions regarding orders, product details, shipping or returns.')
-@section('meta_keywords', 'contact Mahadev Tractor, support, customer service phone, store email address, location')
+@section('meta_title', 'Contact Us | Maha Shringar - Support & Help')
+@section('meta_description', 'Contact the Maha Shringar team. Get in touch with us for questions regarding orders, product details, shipping or returns.')
+@section('meta_keywords', 'contact Maha Shringar, support, customer service phone, store email address, location')
 
 @section('content')
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">

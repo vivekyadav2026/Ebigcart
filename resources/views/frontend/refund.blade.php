@@ -20,7 +20,7 @@
             <p class="text-xs text-gray-400">Last updated: July 8, 2026</p>
             
             <p>
-                At <strong>Mahadev Tractor</strong>, customer satisfaction is our top priority. Since our products are fresh groceries, beverages, and organic daily essentials, we take great care in ensuring the highest quality. Please read our policy on returns and refunds below.
+                At <strong>Maha Shringar</strong>, customer satisfaction is our top priority. Since our products are fresh groceries, beverages, and organic daily essentials, we take great care in ensuring the highest quality. Please read our policy on returns and refunds below.
             </p>
 
             <h2 class="text-xl font-serif font-bold text-gray-900 mt-8 mb-4">1. Eligibility for Returns & Exchanges</h2>
@@ -74,7 +74,7 @@
                 For any questions or support regarding refunds, returns, or exchanges, please contact us:
             </p>
             <ul class="list-disc pl-6 space-y-2 mt-2">
-                <li><strong>Brand Name:</strong> {{ \App\Models\Setting::get('site_name', 'Mahadev Tractor') }}</li>
+                <li><strong>Brand Name:</strong> {{ \App\Models\Setting::get('site_name', 'Maha Shringar') }}</li>
                 <li><strong>Email:</strong> {{ \App\Models\Setting::get('site_email', 'Papperlemon1@gmail.com') }}</li>
                 <li><strong>Address:</strong> {{ \App\Models\Setting::get('site_address', '12800 Northborough Dr, Houston, TX 77067') }}</li>
             </ul>

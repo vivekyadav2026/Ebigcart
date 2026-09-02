@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Download Mahadev Tractor App</title>
-<meta name="description" content="Download the Mahadev Tractor Web App for the best shopping experience on your phone.">
+<title>Download Maha Shringar App</title>
+<meta name="description" content="Download the Maha Shringar Web App for the best shopping experience on your phone.">
 <meta name="robots" content="index, follow">
 
 <!-- PWA Meta Tags -->
@@ -31,8 +31,8 @@
 
 <main class="container py-5 mt-4 mb-5">
     <div class="app-card">
-        <img src="{{ asset('images/icons/icon-512x512.png') }}" alt="Mahadev Tractor App" class="app-icon-large">
-        <h1 class="fw-bold" style="font-family: 'Outfit', sans-serif; color: var(--pl-primary-dark); font-size: 2rem;">Mahadev Tractor App</h1>
+        <img src="{{ asset('images/icons/icon-512x512.png') }}" alt="Maha Shringar App" class="app-icon-large">
+        <h1 class="fw-bold" style="font-family: 'Outfit', sans-serif; color: var(--pl-primary-dark); font-size: 2rem;">Maha Shringar App</h1>
         <p class="text-muted">Fast, easy, and offline-ready</p>
         
         <div class="feature-list">
