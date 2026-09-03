@@ -257,173 +257,181 @@ document.addEventListener("DOMContentLoaded", function() {
         
     <ul>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/sky-blue-butterfly-laddu-gopal-summer-dress.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="sky blue butterfly laddu gopal summer dress" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111917/sky-blue-butterfly-laddu-gopal-summer-dress-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16524" data-product_sku="MSD-457" aria-label="Select options for œLaddu Gopal Summer Poshak in Sky Blue" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Laddu Gopal Summer Poshak in Sky Blue                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-16524" data-product-id="16524"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>99.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>299.00</bdi></span><span class="screen-reader-text">Price range: â‚¹99.00 through â‚¹299.00</span></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/sky-blue-butterfly-laddu-gopal-summer-dress.webp" alt="Laddu Gopal Summer Poshak in Sky Blue" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Sky Blue</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>728.00</bdi></span>
+                <span class="rs-card-price-old">₹1671.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/red-purple-laddu-gopal-dress-front-view.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="red purple laddu gopal dress front view" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24214811/red-purple-laddu-gopal-dress-front-view-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16461" data-product_sku="MSD-447" aria-label="Select options for œLaddu Gopal Designer Poshak Set with Mukut Patka in Red" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Laddu Gopal Designer Poshak Set with Mukut Patka in Red                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-16461" data-product-id="16461"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>279.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>479.00</bdi></span><span class="screen-reader-text">Price range: â‚¹279.00 through â‚¹479.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/red-purple-laddu-gopal-dress-front-view.webp" alt="Laddu Gopal Designer Poshak Set with Mukut Patka in Red" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Designer Poshak Set with Mukut Patka in Red</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>890.00</bdi></span>
+                <span class="rs-card-price-old">₹1889.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/sky-blue-laddu-gopal-summer-dress-1.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="sky blue laddu gopal summer dress" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01113937/sky-blue-laddu-gopal-summer-dress-1-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16446" data-product_sku="MSD-445" aria-label="Select options for œLaddu Gopal Summer Poshak in Sky Blue Cotton" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Laddu Gopal Summer Poshak in Sky Blue Cotton                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-16446" data-product-id="16446"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>99.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>249.00</bdi></span><span class="screen-reader-text">Price range: â‚¹99.00 through â‚¹249.00</span></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/sky-blue-laddu-gopal-summer-dress-1.webp" alt="Laddu Gopal Summer Poshak in Sky Blue Cotton" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Sky Blue Cotton</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>282.00</bdi></span>
+                <span class="rs-card-price-old">₹1454.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/multicolor-cotton-laddu-gopal-poshak.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="multicolor cotton laddu gopal poshak" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01105441/multicolor-cotton-laddu-gopal-poshak-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16416" data-product_sku="MSD-441" aria-label="Select options for œLaddu Gopal Summer Dress in Multicolour" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Laddu Gopal Summer Dress in Multicolour                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-16416" data-product-id="16416"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>99.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>249.00</bdi></span><span class="screen-reader-text">Price range: â‚¹99.00 through â‚¹249.00</span></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/multicolor-cotton-laddu-gopal-poshak.webp" alt="Laddu Gopal Summer Dress in Multicolour" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Dress in Multicolour</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>235.00</bdi></span>
+                <span class="rs-card-price-old">₹1019.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/laddu-gopal-summer-cotton-dress-pink-front.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="laddu gopal summer cotton dress pink front" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/18130145/laddu-gopal-summer-cotton-dress-pink-front-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="15983" data-product_sku="MSD-434" aria-label="Select options for œLaddu Gopal Summer Poshak in Pink with Pagri" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Laddu Gopal Summer Poshak in Pink with Pagri                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-15983" data-product-id="15983"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>109.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>249.00</bdi></span><span class="screen-reader-text">Price range: â‚¹109.00 through â‚¹249.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/laddu-gopal-summer-cotton-dress-pink-front.webp" alt="Laddu Gopal Summer Poshak in Pink with Pagri" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Pink with Pagri</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>455.00</bdi></span>
+                <span class="rs-card-price-old">₹1729.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/Yellow-Floral-Cotton-Laddu-Gopal-Dress-“-Designer-Summer-Poshak.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Yellow Floral Cotton Laddu Gopal Dress “ Designer Summer Poshak" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/06142242/Yellow-Floral-Cotton-Laddu-Gopal-Dress-%E2%80%93-Designer-Summer-Poshak-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="15900" data-product_sku="MSD-423" aria-label="Select options for œBright Yellow Floral Laddu Gopal Summer Dress &amp; Mukut Combo | Size 0,1,2,4,5" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Bright Yellow Floral Laddu Gopal Summer Dress &amp; Mukut Combo | Size 0,1,2,4,5                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-15900" data-product-id="15900"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>109.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>249.00</bdi></span><span class="screen-reader-text">Price range: â‚¹109.00 through â‚¹249.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/Yellow-Floral-Cotton-Laddu-Gopal-Dress-“-Designer-Summer-Poshak.webp" alt="Bright Yellow Floral Laddu Gopal Summer Dress &amp;amp; Mukut Combo | Size 0,1,2,4,5" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Bright Yellow Floral Laddu Gopal Summer Dress &amp;amp; Mukut Combo | Size 0,1,2,4,5</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>461.00</bdi></span>
+                <span class="rs-card-price-old">₹1215.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/Premium-Flower-Multicolor-Laddu-Gopal-Dress.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Premium Flower Multicolor Laddu Gopal Dress" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06142459/Premium-Flower-Multicolor-Laddu-Gopal-Dress-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="15529" data-product_sku="MSD-395" aria-label="Select options for œLaddu Gopal Sunflower Summer Cotton Poshak | Size - 0 to 5" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Laddu Gopal Sunflower Summer Cotton Poshak | Size “ 0 to 5                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-15529" data-product-id="15529"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>111.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>279.00</bdi></span><span class="screen-reader-text">Price range: â‚¹111.00 through â‚¹279.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/Premium-Flower-Multicolor-Laddu-Gopal-Dress.webp" alt="Laddu Gopal Sunflower Summer Cotton Poshak | Size “ 0 to 5" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Sunflower Summer Cotton Poshak | Size “ 0 to 5</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>634.00</bdi></span>
+                <span class="rs-card-price-old">₹1377.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
                     <li>
-                <div class="product-img">
-                    <a href="/shop">
-                        <img width="1000" height="1000" src="/mahashringar_assets/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-“-Multicolor-Cotton-Poshak.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Traditional Bandhani Laddu Gopal Dress with Matching Safa “ Multicolor Cotton Poshak" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/02/06143200/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-%E2%80%93-Multicolor-Cotton-Poshak-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">                    </a>
-                    <div class="cart-button">
-                        <div class="cart-button-inner">
-                            <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="15460" data-product_sku="MSD-393" aria-label="Select options for œKanha ji Bandhani Print Cotton Dress with Patka | Size -2,4,5" rel="nofollow">Buy Now</a>                        </div>
-                    </div>
-                </div>
-
-                <div class="product-content">
-                    <div class="rating-star">
-                                            </div>
-
-                    <a href="/shop">
-                        Kanha ji Bandhani Print Cotton Dress with Patka | Size -2,4,5                    </a>
-
-                    <div class="price">
-                        <span class="wcpbc-price wcpbc-price-15460" data-product-id="15460"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>229.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>299.00</bdi></span><span class="screen-reader-text">Price range: â‚¹229.00 through â‚¹299.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>                    </div>
-                </div>
-            </li>
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="/shop">
+                <img src="/mahashringar_assets/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-“-Multicolor-Cotton-Poshak.webp" alt="Kanha ji Bandhani Print Cotton Dress with Patka | Size -2,4,5" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Kanha ji Bandhani Print Cotton Dress with Patka | Size -2,4,5</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>960.00</bdi></span>
+                <span class="rs-card-price-old">₹1566.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</li>
             </ul>
     
     <div class="view-more-wrapper">
@@ -447,173 +455,181 @@ document.addEventListener("DOMContentLoaded", function() {
         
 <ul>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/laddu-gopal-blue-stone-designer-earrings.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="laddu gopal blue stone designer earrings" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/06/17125805/laddu-gopal-blue-stone-designer-earrings-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16719" data-product_sku="MSD-479" aria-label="Select options for œMahashringar Laddu Gopal Bangles with Blue Stone &amp; Diamond Design For Size 0-5" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/laddu-gopal-blue-stone-designer-earrings.webp" alt="Mahashringar Laddu Gopal Bangles with Blue Stone &amp;amp; Diamond Design For Size 0-5" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Mahashringar Laddu Gopal Bangles with Blue Stone &amp;amp; Diamond Design For Size 0-5</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>734.00</bdi></span>
+                <span class="rs-card-price-old">₹1173.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Mahashringar Laddu Gopal Bangles with Blue Stone &amp; Diamond Design For Size 0-5            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-16719" data-product-id="16719"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>89.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>229.00</bdi></span><span class="screen-reader-text">Price range: â‚¹89.00 through â‚¹229.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/pink-laddu-gopal-summer-dress-front.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="pink laddu gopal summer dress front" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01102820/pink-laddu-gopal-summer-dress-front-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16597" data-product_sku="MSD-464" aria-label="Select options for œPink Laddu Gopal Summer Dress Set" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/pink-laddu-gopal-summer-dress-front.webp" alt="Pink Laddu Gopal Summer Dress Set" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Pink Laddu Gopal Summer Dress Set</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>306.00</bdi></span>
+                <span class="rs-card-price-old">₹1631.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Pink Laddu Gopal Summer Dress Set            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-16597" data-product-id="16597"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>149.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>249.00</bdi></span><span class="screen-reader-text">Price range: â‚¹149.00 through â‚¹249.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="laddu gopal designer dress heavy blue front view size 2 4 5" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24213556/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16532" data-product_sku="MSD-458" aria-label="Select options for œLaddu Gopal Designer Dress Set in Blue" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5.webp" alt="Laddu Gopal Designer Dress Set in Blue" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Designer Dress Set in Blue</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>723.00</bdi></span>
+                <span class="rs-card-price-old">₹1325.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Laddu Gopal Designer Dress Set in Blue            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-16532" data-product-id="16532"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>639.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>879.00</bdi></span><span class="screen-reader-text">Price range: â‚¹639.00 through â‚¹879.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/royal-blue-butterfly-laddu-gopal-summer-dress.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="royal blue butterfly laddu gopal summer dress" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/01111848/royal-blue-butterfly-laddu-gopal-summer-dress-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16496" data-product_sku="MSD-453" aria-label="Select options for œLaddu Gopal Summer Poshak in Blue" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/royal-blue-butterfly-laddu-gopal-summer-dress.webp" alt="Laddu Gopal Summer Poshak in Blue" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Blue</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>521.00</bdi></span>
+                <span class="rs-card-price-old">₹1131.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Laddu Gopal Summer Poshak in Blue            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-16496" data-product-id="16496"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>99.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>299.00</bdi></span><span class="screen-reader-text">Price range: â‚¹99.00 through â‚¹299.00</span></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/yellow-pink-laddu-gopal-dress-front.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="yellow pink laddu gopal dress front" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/24215056/yellow-pink-laddu-gopal-dress-front-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16454" data-product_sku="MSD-446" aria-label="Select options for œLaddu Gopal Designer Poshak Set with Mukut Patka Yellow" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/yellow-pink-laddu-gopal-dress-front.webp" alt="Laddu Gopal Designer Poshak Set with Mukut Patka Yellow" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Laddu Gopal Designer Poshak Set with Mukut Patka Yellow</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>384.00</bdi></span>
+                <span class="rs-card-price-old">₹1566.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Laddu Gopal Designer Poshak Set with Mukut Patka Yellow            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-16454" data-product-id="16454"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>289.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>479.00</bdi></span><span class="screen-reader-text">Price range: â‚¹289.00 through â‚¹479.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/red-velvet-laddu-gopal-dress-front.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="red velvet laddu gopal dress front" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/03/24220056/red-velvet-laddu-gopal-dress-front-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="16072" data-product_sku="MSD-437" aria-label="Select options for œRed Velvet Laddu Gopal Dress with Heavy Gold Embroidery &amp; Mukut Set | Size - 2,4,5,6" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/red-velvet-laddu-gopal-dress-front.webp" alt="Red Velvet Laddu Gopal Dress with Heavy Gold Embroidery &amp;amp; Mukut Set | Size “ 2,4,5,6" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Red Velvet Laddu Gopal Dress with Heavy Gold Embroidery &amp;amp; Mukut Set | Size “ 2,4,5,6</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>301.00</bdi></span>
+                <span class="rs-card-price-old">₹1172.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Red Velvet Laddu Gopal Dress with Heavy Gold Embroidery &amp; Mukut Set | Size “ 2,4,5,6            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-16072" data-product-id="16072"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>229.00</bdi></span> <span aria-hidden="true">“</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>679.00</bdi></span><span class="screen-reader-text">Price range: â‚¹229.00 through â‚¹679.00</span> <small class="woocommerce-price-suffix">Ex. GST</small></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Mahashringar Radhe Krishna Bansuri for Laddu Gopal Kanha Ji Thakur Ji Radhe Naam Flute (Size 0 1)" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/21170836/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="/shop" data-quantity="1" class="button product_type_variable add_to_cart_button" data-product_id="15146" data-product_sku="MSD-381" aria-label="Select options for œMahashringar Radhe Bansuri for Laddu Gopal | Krishna Idol Flute | Size- 0,1" rel="nofollow">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1.webp" alt="Mahashringar Radhe Bansuri for Laddu Gopal | Krishna Idol Flute | Size- 0,1" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Mahashringar Radhe Bansuri for Laddu Gopal | Krishna Idol Flute | Size- 0,1</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>677.00</bdi></span>
+                <span class="rs-card-price-old">₹1672.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Mahashringar Radhe Bansuri for Laddu Gopal | Krishna Idol Flute | Size- 0,1            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-15146" data-product-id="15146"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>79.00</bdi></span></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
     <li>
-        <div class="product-img">
+    <div class="rs-product-card">
+        <div class="rs-card-img-box">
+            <span class="rs-card-badge">60% OFF</span>
+            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
             <a href="/shop">
-                <img width="1000" height="1000" src="/mahashringar_assets/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Laddu Gopal Earrings Floral Designer Stone Stud Earrings for Kanha Ji" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji.webp 1000w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji-768x768.webp 768w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/11/13153417/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:1000px;" fetchpriority="high" loading="eager">            </a>
-            <div class="cart-button">
-                <div class="cart-button-inner">
-                    <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="15098" data-product_sku="MSD-377" aria-label="Add to basket: œMahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5" rel="nofollow" data-success_message="œMahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5 has been added to your basket" role="button">Buy Now</a>                </div>
+                <img src="/mahashringar_assets/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji.webp" alt="Mahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5" loading="lazy">
+            </a>
+        </div>
+        <div class="rs-card-body">
+            <a href="/shop" class="rs-card-title">Mahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5</a>
+            <div class="rs-card-price">
+                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>504.00</bdi></span>
+                <span class="rs-card-price-old">₹1001.00</span>
+            </div>
+            <div class="rs-card-actions">
+                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
+                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
             </div>
         </div>
-
-        <div class="product-content">
-            <div class="rating-star">
-                            </div>
-
-            <a href="/shop">
-                Mahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5            </a>
-
-            <div class="price">
-                <span class="wcpbc-price wcpbc-price-15098" data-product-id="15098"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">â‚¹</span>55.00</bdi></span> <small class="woocommerce-price-suffix">Ex. GST</small></span>            </div>
-        </div>
-    </li>
+    </div>
+</li>
 </ul>
 
     </div>

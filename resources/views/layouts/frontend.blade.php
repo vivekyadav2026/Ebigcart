@@ -6,9 +6,7 @@
     <title>Maha Shringar - Buy Best Laddu Gopal Dresses, Accessories and Ornaments</title>
     <meta name="description" content="Explore beautiful Laddu Gopal dresses and accessories to adorn your divine idol with elegance and charm. Shop the best selection today!">
     
-    <!-- Vite CSS/JS (Tailwind, app.js) -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <!-- Vite removed as per user request -->
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
@@ -131,15 +129,16 @@
             transform: scale(1.1) !important;
         }
         .rs-card-body {
-            padding: 12px 5px 5px 5px !important;
+            padding: 15px 10px 10px 10px !important;
             display: flex !important;
             flex-direction: column !important;
             flex-grow: 1 !important;
+            text-align: center !important;
         }
         .rs-card-title {
             font-size: 0.95rem !important;
-            font-weight: 500 !important;
-            color: #333333 !important;
+            font-weight: 600 !important;
+            color: #1e293b !important;
             text-decoration: none !important;
             margin-bottom: 8px !important;
             line-height: 1.3 !important;
@@ -150,62 +149,64 @@
             flex-grow: 1 !important;
         }
         .rs-card-title:hover {
-            color: #b71c1c !important;
+            color: #d35400 !important;
         }
         .rs-card-price {
-            font-size: 1.1rem !important;
-            font-weight: 700 !important;
-            color: #e65100 !important;
-            margin-bottom: 12px !important;
+            font-size: 1.2rem !important;
+            font-weight: 800 !important;
+            color: #d35400 !important;
+            margin-bottom: 15px !important;
             display: flex !important;
             align-items: center !important;
+            justify-content: center !important;
             gap: 6px !important;
         }
         .rs-card-price-old {
             font-size: 0.85rem !important;
-            font-weight: 400 !important;
-            color: #999999 !important;
+            font-weight: 500 !important;
+            color: #94a3b8 !important;
             text-decoration: line-through !important;
         }
         .rs-card-actions {
             display: flex !important;
-            gap: 8px !important;
+            gap: 10px !important;
             margin-top: auto !important;
+            padding: 0 5px !important;
         }
         .rs-btn-buynow {
             flex-grow: 1 !important;
-            background: #ffffff !important;
-            color: #b71c1c !important;
-            border: 1.5px solid #b71c1c !important;
+            background: #f1f5f9 !important;
+            color: #d35400 !important;
+            border: none !important;
             font-weight: 700 !important;
-            font-size: 0.85rem !important;
-            text-transform: uppercase !important;
-            padding: 8px 10px !important;
-            border-radius: 6px !important;
+            font-size: 0.9rem !important;
+            padding: 10px 10px !important;
+            border-radius: 8px !important;
             text-align: center !important;
             text-decoration: none !important;
             transition: all 0.2s ease !important;
         }
         .rs-btn-buynow:hover {
-            background: #b71c1c !important;
-            color: #ffffff !important;
+            background: #e2e8f0 !important;
+            color: #c0392b !important;
         }
         .rs-btn-carticon {
             flex-shrink: 0 !important;
-            width: 38px !important;
-            height: 38px !important;
-            background: #e65100 !important;
+            width: 42px !important;
+            height: 42px !important;
+            background: #ea8644 !important;
             color: #ffffff !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            border-radius: 6px !important;
+            border-radius: 8px !important;
             text-decoration: none !important;
             font-size: 1.2rem !important;
+            border: none !important;
             transition: background 0.2s ease !important;
         }
         .rs-btn-carticon:hover {
-            background: #cc4800 !important;
+            background: #d35400 !important;
             color: #ffffff !important;
         }
     </style>
