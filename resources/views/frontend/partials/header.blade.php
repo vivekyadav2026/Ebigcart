@@ -73,6 +73,7 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
       }
     }
     @media (max-width: 1100px) {
+      .rs-desktop-account { display: none !important; }
       .rs-nav-bar { display: none; }
       .rs-search-box { display: none; }
       .rs-mobile-toggle { display: flex; }
@@ -135,6 +136,18 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
         <span class="rs-badge cart-count-badge">0</span><i class="bi bi-bag rs-action-icon"></i>
         <span>BAG</span>
       </a>
+
+      @auth
+        <a href="/dashboard" class="rs-action-link rs-desktop-account" title="My Account">
+          <i class="bi bi-person-circle rs-action-icon"></i>
+          <span>ACCOUNT</span>
+        </a>
+      @else
+        <a href="/login" class="rs-action-link rs-desktop-account" title="Login / Register">
+          <i class="bi bi-person rs-action-icon"></i>
+          <span>LOGIN</span>
+        </a>
+      @endauth
     </div>
   </div>
 
@@ -169,8 +182,38 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     </ul>
   </div>
 
-  <!-- Mobile Drawer (Dynamic Categories) -->
+  <!-- Mobile Drawer (Dynamic Categories & User Profile Header) -->
   <div class="rs-mobile-drawer" id="rsMobileDrawer">
+    @auth
+      <div style="background: #fdf2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 38px; height: 38px; background: #b71c1c; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 0.85rem; font-weight: 800; color: #1e293b;">{{ Auth::user()->name }}</h4>
+            <span style="font-size: 0.72rem; color: #64748b;">{{ Auth::user()->email }}</span>
+          </div>
+        </div>
+        <a href="/dashboard" style="background: #b71c1c; color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">DASHBOARD</a>
+      </div>
+    @else
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; background: #e2e8f0; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+            <i class="bi bi-person"></i>
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 0.85rem; font-weight: 800; color: #1e293b;">Welcome Guest!</h4>
+            <span style="font-size: 0.72rem; color: #64748b;">Log in for orders & checkout</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <a href="/login" style="background: #b71c1c; color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">LOGIN</a>
+          <a href="/register" style="border: 1px solid #b71c1c; color: #b71c1c; text-decoration: none; padding: 5px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">REGISTER</a>
+        </div>
+      </div>
+    @endauth
     <div class="mb-3">
       <form action="/shop" method="GET" style="display: flex; gap: 8px;">
         <input type="text" name="search" value="{{ request('search') }}" style="flex: 1; background: #f8f9fa; border: 1px solid #ccc; color: #222; padding: 8px 12px; border-radius: 20px; font-size: 0.85rem;" placeholder="Search products...">
