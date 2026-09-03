@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
 @section('header_title', 'Global Settings')
 
@@ -19,7 +19,7 @@
             <!-- Site Name -->
             <div class="space-y-1.5">
                 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Shop Name</label>
-                <input type="text" name="site_name" value="{{ $settings['site_name'] ?? 'Mahadev Tractor' }}" placeholder="Mahadev Tractor"
+                <input type="text" name="site_name" value="{{ $settings['site_name'] ?? 'Ebigcart' }}" placeholder="Ebigcart"
                        class="w-full border border-slate-200 focus:ring-1 focus:ring-[#C49A6C] focus:border-[#C49A6C] rounded-xl text-sm px-4 py-2.5 bg-white">
             </div>
 

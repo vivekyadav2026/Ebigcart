@@ -20,7 +20,7 @@
             <p class="text-xs text-gray-400">Last updated: July 8, 2026</p>
             
             <p>
-                Welcome to <strong>Maha Shringar</strong>. We are committed to delivering our fresh, high-quality groceries, beverages, and daily essentials safely and efficiently right to your doorstep.
+                Welcome to <strong>Ebigcart</strong>. We are committed to delivering our fresh, high-quality groceries, beverages, and daily essentials safely and efficiently right to your doorstep.
             </p>
 
             <h2 class="text-xl font-serif font-bold text-gray-900 mt-8 mb-4">1. Shipping Coverage & Locations</h2>
@@ -68,7 +68,7 @@
                 If you have any questions or queries regarding the shipping of your products, please reach out to us:
             </p>
             <ul class="list-disc pl-6 space-y-2 mt-2">
-                <li><strong>Brand Name:</strong> {{ \App\Models\Setting::get('site_name', 'Maha Shringar') }}</li>
+                <li><strong>Brand Name:</strong> {{ \App\Models\Setting::get('site_name', 'Ebigcart') }}</li>
                 <li><strong>Email:</strong> {{ \App\Models\Setting::get('site_email', 'Papperlemon1@gmail.com') }}</li>
                 <li><strong>Address:</strong> {{ \App\Models\Setting::get('site_address', '12800 Northborough Dr, Houston, TX 77067') }}</li>
             </ul>

@@ -3,13 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
@@ -19,19 +16,18 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(["email" => "test@example.com"], [
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('password'),
         ]);
 
         // Seed admin user
-        User::firstOrCreate(["email" => "test@example.com"], [
+        User::firstOrCreate(["email" => "admin@admin.com"], [
             'name' => 'Admin User',
             'email' => 'admin@admin.com',
             'is_admin' => true,
+            'password' => bcrypt('password'),
         ]);
 
-        // Seed products, categories, and banners
-        $this->call(TractorSeeder::class);
+        // Seed products, categories, and banners using MahaShringar data
+        $this->call(MahaShringarSeeder::class);
     }
 }
-
-
-

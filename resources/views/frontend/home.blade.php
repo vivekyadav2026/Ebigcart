@@ -8,7 +8,7 @@
 <div class="sale-banner" style="position: relative; overflow: hidden; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
     <div class="owl-carousel hero-slider owl-theme">
         <a href="/shop" style="display: block; width: 100%;">
-            <img src="/mahashringar_assets/new_hero_banner_v2.jpg" alt="Maha Shringar Special Festival Collection" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
+            <img src="/mahashringar_assets/new_hero_banner_v2.jpg" alt="Ebigcart Special Festival Collection" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
         </a>
         <a href="/shop?cat=ornaments" style="display: block; width: 100%;">
             <img src="/mahashringar_assets/hero_slider_2.jpg" alt="Premium Mukut and Ornaments" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
@@ -255,184 +255,38 @@ document.addEventListener("DOMContentLoaded", function() {
         <h2 class="site-title">Festival Collection</h2>
         <p class="mini-discription">Latest dresses for your Laddu Gopal! Give them a new and attractive look.</p>
         
-    <ul>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/sky-blue-butterfly-laddu-gopal-summer-dress.webp" alt="Laddu Gopal Summer Poshak in Sky Blue" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Sky Blue</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>728.00</bdi></span>
-                <span class="rs-card-price-old">₹1671.00</span>
+    <ul class="products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0;">
+    @foreach($bestSellers as $product)
+        <li style="list-style:none;">
+            <div class="rs-product-card">
+                <div class="rs-card-img-box">
+                    @if($product->discount_price)
+                        <span class="rs-card-badge">SALE</span>
+                    @endif
+                    <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+                    <a href="{{ route('product.show', $product->slug) }}">
+                        <img src="{{ asset($product->primary_image_url) }}" alt="{{ $product->name }}" loading="lazy">
+                    </a>
+                </div>
+                <div class="rs-card-body">
+                    <a href="{{ route('product.show', $product->slug) }}" class="rs-card-title">{{ $product->name }}</a>
+                    <div class="rs-card-price">
+                        @if($product->discount_price)
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->discount_price }}</bdi></span>
+                            <span class="rs-card-price-old">₹{{ $product->price }}</span>
+                        @else
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->price }}</bdi></span>
+                        @endif
+                    </div>
+                    <div class="rs-card-actions">
+                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-buynow">Buy Now</a>
+                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/red-purple-laddu-gopal-dress-front-view.webp" alt="Laddu Gopal Designer Poshak Set with Mukut Patka in Red" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Designer Poshak Set with Mukut Patka in Red</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>890.00</bdi></span>
-                <span class="rs-card-price-old">₹1889.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/sky-blue-laddu-gopal-summer-dress-1.webp" alt="Laddu Gopal Summer Poshak in Sky Blue Cotton" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Sky Blue Cotton</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>282.00</bdi></span>
-                <span class="rs-card-price-old">₹1454.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/multicolor-cotton-laddu-gopal-poshak.webp" alt="Laddu Gopal Summer Dress in Multicolour" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Dress in Multicolour</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>235.00</bdi></span>
-                <span class="rs-card-price-old">₹1019.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/laddu-gopal-summer-cotton-dress-pink-front.webp" alt="Laddu Gopal Summer Poshak in Pink with Pagri" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Pink with Pagri</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>455.00</bdi></span>
-                <span class="rs-card-price-old">₹1729.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/Yellow-Floral-Cotton-Laddu-Gopal-Dress-“-Designer-Summer-Poshak.webp" alt="Bright Yellow Floral Laddu Gopal Summer Dress &amp;amp; Mukut Combo | Size 0,1,2,4,5" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Bright Yellow Floral Laddu Gopal Summer Dress &amp;amp; Mukut Combo | Size 0,1,2,4,5</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>461.00</bdi></span>
-                <span class="rs-card-price-old">₹1215.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/Premium-Flower-Multicolor-Laddu-Gopal-Dress.webp" alt="Laddu Gopal Sunflower Summer Cotton Poshak | Size “ 0 to 5" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Sunflower Summer Cotton Poshak | Size “ 0 to 5</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>634.00</bdi></span>
-                <span class="rs-card-price-old">₹1377.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-                    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/Traditional-Bandhani-Laddu-Gopal-Dress-with-Matching-Safa-“-Multicolor-Cotton-Poshak.webp" alt="Kanha ji Bandhani Print Cotton Dress with Patka | Size -2,4,5" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Kanha ji Bandhani Print Cotton Dress with Patka | Size -2,4,5</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>960.00</bdi></span>
-                <span class="rs-card-price-old">₹1566.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-            </ul>
+        </li>
+    @endforeach
+</ul>
     
     <div class="view-more-wrapper">
         <a href="#" class="view-more-btn">
@@ -453,183 +307,37 @@ document.addEventListener("DOMContentLoaded", function() {
         <h2 class="site-title">Featured Collection</h2>
         <p class="mini-discription">Featured collection dresses for your Laddu Gopal! Give them a new and attractive look.</p>
         
-<ul>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/laddu-gopal-blue-stone-designer-earrings.webp" alt="Mahashringar Laddu Gopal Bangles with Blue Stone &amp;amp; Diamond Design For Size 0-5" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Mahashringar Laddu Gopal Bangles with Blue Stone &amp;amp; Diamond Design For Size 0-5</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>734.00</bdi></span>
-                <span class="rs-card-price-old">₹1173.00</span>
+<ul class="products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0;">
+    @foreach($featuredProducts as $product)
+        <li style="list-style:none;">
+            <div class="rs-product-card">
+                <div class="rs-card-img-box">
+                    @if($product->discount_price)
+                        <span class="rs-card-badge">SALE</span>
+                    @endif
+                    <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+                    <a href="{{ route('product.show', $product->slug) }}">
+                        <img src="{{ asset($product->primary_image_url) }}" alt="{{ $product->name }}" loading="lazy">
+                    </a>
+                </div>
+                <div class="rs-card-body">
+                    <a href="{{ route('product.show', $product->slug) }}" class="rs-card-title">{{ $product->name }}</a>
+                    <div class="rs-card-price">
+                        @if($product->discount_price)
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->discount_price }}</bdi></span>
+                            <span class="rs-card-price-old">₹{{ $product->price }}</span>
+                        @else
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->price }}</bdi></span>
+                        @endif
+                    </div>
+                    <div class="rs-card-actions">
+                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-buynow">Buy Now</a>
+                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/pink-laddu-gopal-summer-dress-front.webp" alt="Pink Laddu Gopal Summer Dress Set" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Pink Laddu Gopal Summer Dress Set</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>306.00</bdi></span>
-                <span class="rs-card-price-old">₹1631.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/laddu-gopal-designer-dress-heavy-blue-front-view-size-2-4-5.webp" alt="Laddu Gopal Designer Dress Set in Blue" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Designer Dress Set in Blue</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>723.00</bdi></span>
-                <span class="rs-card-price-old">₹1325.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/royal-blue-butterfly-laddu-gopal-summer-dress.webp" alt="Laddu Gopal Summer Poshak in Blue" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Summer Poshak in Blue</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>521.00</bdi></span>
-                <span class="rs-card-price-old">₹1131.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/yellow-pink-laddu-gopal-dress-front.webp" alt="Laddu Gopal Designer Poshak Set with Mukut Patka Yellow" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Laddu Gopal Designer Poshak Set with Mukut Patka Yellow</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>384.00</bdi></span>
-                <span class="rs-card-price-old">₹1566.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/red-velvet-laddu-gopal-dress-front.webp" alt="Red Velvet Laddu Gopal Dress with Heavy Gold Embroidery &amp;amp; Mukut Set | Size “ 2,4,5,6" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Red Velvet Laddu Gopal Dress with Heavy Gold Embroidery &amp;amp; Mukut Set | Size “ 2,4,5,6</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>301.00</bdi></span>
-                <span class="rs-card-price-old">₹1172.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/Mahashringar-Radhe-Krishna-Bansuri-for-Laddu-Gopal-Kanha-Ji-Thakur-Ji-Radhe-Naam-Flute-Size-0-1.webp" alt="Mahashringar Radhe Bansuri for Laddu Gopal | Krishna Idol Flute | Size- 0,1" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Mahashringar Radhe Bansuri for Laddu Gopal | Krishna Idol Flute | Size- 0,1</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>677.00</bdi></span>
-                <span class="rs-card-price-old">₹1672.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
-    <li>
-    <div class="rs-product-card">
-        <div class="rs-card-img-box">
-            <span class="rs-card-badge">60% OFF</span>
-            <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
-            <a href="/shop">
-                <img src="/mahashringar_assets/Laddu-Gopal-Earrings-Floral-Designer-Stone-Stud-Earrings-for-Kanha-Ji.webp" alt="Mahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5" loading="lazy">
-            </a>
-        </div>
-        <div class="rs-card-body">
-            <a href="/shop" class="rs-card-title">Mahashringar Laddu Gopal ji Earrings | Stone Work Earring for Kanha Ji| Size-4,5</a>
-            <div class="rs-card-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>504.00</bdi></span>
-                <span class="rs-card-price-old">₹1001.00</span>
-            </div>
-            <div class="rs-card-actions">
-                <a href="/shop" class="rs-btn-buynow">Buy Now</a>
-                <a href="/shop" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
-            </div>
-        </div>
-    </div>
-</li>
+        </li>
+    @endforeach
 </ul>
 
     </div>
@@ -640,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="shop-banner">
     <div class="container">
       <video autoplay="" muted="" loop="" playsinline="" controls="">
-        <source src="#/wp-content/themes/mahashringar/assets/images/home-video.mp4" type="video/mp4">
+        <source src="#/wp-content/themes/Ebigcart/assets/images/home-video.mp4" type="video/mp4">
          Your browser does not support the video tag.
     </video>
     </div>
@@ -696,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
       <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
-        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to MahaShingar!"
+        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
       </p>
       <div class="user">
         <span class="user-initial">A</span>
@@ -744,7 +452,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </div></div><div class="owl-item active" style="width: 308.668px;"><div class="item card">
       <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
-        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to MahaShingar!"
+        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
       </p>
       <div class="user">
         <span class="user-initial">A</span>
@@ -792,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
       <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
-        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to MahaShingar!"
+        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
       </p>
       <div class="user">
         <span class="user-initial">A</span>
@@ -811,52 +519,52 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="reel-grid owl-carousel owl-carousel-video-testimonials owl-loaded owl-drag">
             
       <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1250px, 0px, 0px); transition: all; width: 5003px;"><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-6.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-6.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-7.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-7.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-8.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-8.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-1.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-1.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-2.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-2.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-3.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-3.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-4.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-4.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-6.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-6.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-7.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-7.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-8.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-8.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-1.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-1.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-2.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-2.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-3.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-3.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-4.mp4" playsinline="" loop=""></video>
+              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-4.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>
             </div></div></div></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
     </div>

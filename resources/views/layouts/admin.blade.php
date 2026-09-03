@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Admin Dashboard - {{ config('app.name', 'Mahadev Tractor') }}</title>
+    <title>Admin Dashboard - {{ config('app.name', 'Ebigcart') }}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -36,9 +36,9 @@
             <!-- Logo Header -->
             <div class="flex items-center justify-between px-6 py-5 bg-slate-950 border-b border-slate-800/70">
                 <div class="flex items-center space-x-3">
-                    <img src="{{ asset('images/mahadev_logo.jpg') }}" alt="Mahadev Tractor Logo" class="h-10 w-auto object-contain bg-white rounded-md p-1 shadow-sm">
+                    <img src="{{ asset('images/ebigcart_logo.png') }}" alt="Ebigcart Logo" class="h-10 w-auto object-contain bg-white rounded-md p-1 shadow-sm">
                     <div>
-                        <h1 class="text-sm font-bold font-serif text-white uppercase tracking-wider leading-none">Mahadev Tractor</h1>
+                        <h1 class="text-sm font-bold font-serif text-white uppercase tracking-wider leading-none">Ebigcart</h1>
                         <span class="text-[9px] text-[#C49A6C] uppercase font-bold tracking-widest block mt-1">Admin Portal</span>
                     </div>
                 </div>

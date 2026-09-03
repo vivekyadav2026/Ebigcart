@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Maha Shringar - Buy Best Laddu Gopal Dresses, Accessories and Ornaments</title>
+    <title>Ebigcart - Buy Best Laddu Gopal Dresses, Accessories and Ornaments</title>
     <meta name="description" content="Explore beautiful Laddu Gopal dresses and accessories to adorn your divine idol with elegance and charm. Shop the best selection today!">
     
     <script src="https://cdn.tailwindcss.com"></script><script>tailwind.config = { corePlugins: { preflight: false } }</script>
