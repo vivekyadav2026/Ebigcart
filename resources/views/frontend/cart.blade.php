@@ -3,35 +3,39 @@
 @section('title', 'Shopping Cart')
 
 @section('content')
-<div class="container" style="padding-top: 20px; padding-bottom: 50px;">
-    <!-- Breadcrumb & Title Inline -->
-    <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 25px 15px 60px 15px;">
+    <!-- Breadcrumb & Page Header -->
+    <div style="margin-bottom: 25px; border-bottom: 1px solid #eeeeee; padding-bottom: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
         <div>
-            <h1 style="font-size: 1.6rem; font-weight: 700; color: #222; margin: 0; font-family: 'Outfit', sans-serif;">Shopping Cart</h1>
-            <p style="font-size: 0.8rem; color: #777; margin: 4px 0 0 0;">
-                <a href="/" style="color: #b71c1c; text-decoration: none;">Home</a> 
-                <span style="margin: 0 5px; color: #ccc;">/</span> 
-                <span style="color: #333; font-weight: 600;">Cart</span>
+            <h1 style="font-size: 1.75rem; font-weight: 800; color: #1e293b; margin: 0; font-family: 'Outfit', sans-serif;">Shopping Cart</h1>
+            <p style="font-size: 0.82rem; color: #64748b; margin: 4px 0 0 0;">
+                <a href="/" style="color: #b71c1c; text-decoration: none; font-weight: 600;">Home</a> 
+                <span style="margin: 0 6px; color: #cbd5e1;">/</span> 
+                <span style="color: #334155; font-weight: 700;">Cart</span>
             </p>
         </div>
-        <a href="/shop" style="font-size: 0.8rem; font-weight: 700; color: #b71c1c; text-decoration: none;">
+        <a href="/shop" style="font-size: 0.85rem; font-weight: 700; color: #b71c1c; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
             <i class="bi bi-arrow-left"></i> Continue Shopping
         </a>
     </div>
 
     @if(empty($cart))
-        <div style="text-align: center; padding: 60px 20px; background: #fff; border-radius: 12px; border: 1px solid #e8e8e8; margin: 20px 0;">
-            <i class="bi bi-bag-x" style="font-size: 3.5rem; color: #ccc; margin-bottom: 12px; display: block;"></i>
-            <h2 style="font-size: 1.4rem; font-weight: 700; color: #333; margin-bottom: 6px;">Your Cart is Empty</h2>
-            <p style="font-size: 0.85rem; color: #777; margin-bottom: 25px; max-width: 380px; margin-left: auto; margin-right: auto;">Explore our exclusive Laddu Gopal dresses, mukuts, and divine accessories to add items to your cart.</p>
-            <a href="/shop" style="display: inline-block; background: #b71c1c; color: #fff; padding: 12px 28px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 12px rgba(183,28,28,0.2);">
-                Start Shopping
+        <div style="text-align: center; padding: 70px 20px; background: #ffffff; border-radius: 14px; border: 1px dashed #cbd5e1; margin: 20px 0;">
+            <i class="bi bi-bag-x" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 15px; display: block;"></i>
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">Your Cart is Currently Empty</h2>
+            <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 25px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.5;">Browse our handcrafted Laddu Gopal dresses, mukuts, and ornaments collection to add your favorite divine items.</p>
+            <a href="/shop" style="display: inline-block; background: #b71c1c; color: #ffffff; padding: 13px 32px; border-radius: 8px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 14px rgba(183,28,28,0.25);">
+                Explore Collection
             </a>
         </div>
     @else
-        <div class="cart-layout-grid" style="display: grid; grid-template-columns: 1fr 340px; gap: 30px; align-items: start;">
-            <!-- Cart Items Column -->
-            <div style="background: #fff; border-radius: 12px; border: 1px solid #e8e8e8; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+        <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;" class="cart-flex-wrapper">
+            <!-- Left: Cart Items List -->
+            <div style="flex: 1; min-width: 300px; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                <h2 style="font-size: 1.1rem; font-weight: 800; color: #1e293b; margin-top: 0; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; font-family: 'Outfit', sans-serif;">
+                    Items in Your Cart ({{ count($cart) }})
+                </h2>
+
                 <div style="display: flex; flex-direction: column; gap: 20px;">
                     @foreach($cart as $id => $item)
                         @php
@@ -39,40 +43,46 @@
                             $itemName = $liveProduct ? $liveProduct->name : $item['name'];
                             $itemPrice = $liveProduct ? ($liveProduct->sale_price ?? $liveProduct->price) : $item['price'];
                             $itemImage = $liveProduct ? $liveProduct->primary_image_url : $item['image'];
+                            $itemSlug = $liveProduct ? $liveProduct->slug : ($item['slug'] ?? '');
                         @endphp
-                        <div style="display: flex; gap: 15px; align-items: center; padding-bottom: 18px; border-bottom: 1px solid #f0f0f0;" id="cart-row-{{ $id }}">
-                            <!-- Thumbnail -->
-                            <div style="width: 75px; height: 75px; background: #fafafa; border: 1px solid #eee; border-radius: 8px; padding: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <img src="{{ asset($itemImage) }}" alt="{{ $itemName }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-                            </div>
 
-                            <!-- Details -->
+                        <div id="cart-item-row-{{ $id }}" style="display: flex; gap: 18px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9;">
+                            <!-- Thumbnail with Direct Product Link -->
+                            <a href="{{ route('product.show', $itemSlug) }}" style="width: 85px; height: 85px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; transition: border-color 0.2s ease;">
+                                <img src="{{ asset($itemImage) }}" alt="{{ $itemName }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                            </a>
+
+                            <!-- Details Column -->
                             <div style="flex: 1; min-width: 0;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
-                                    <a href="/shop" style="font-size: 0.95rem; font-weight: 700; color: #222; text-decoration: none; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px;">
+                                    <a href="{{ route('product.show', $itemSlug) }}" style="font-size: 1rem; font-weight: 700; color: #1e293b; text-decoration: none; display: block; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
                                         {{ $itemName }}
                                     </a>
-                                    <span style="font-size: 1rem; font-weight: 800; color: #b71c1c; white-space: nowrap;">
+                                    <span style="font-size: 1.1rem; font-weight: 800; color: #b71c1c; white-space: nowrap;">
                                         &#8377;{{ number_format($itemPrice * $item['quantity'], 2) }}
                                     </span>
                                 </div>
 
-                                <p style="font-size: 0.78rem; color: #888; margin: 3px 0 10px 0;">&#8377;{{ number_format($itemPrice, 2) }} each</p>
+                                <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 12px 0; font-weight: 600;">
+                                    &#8377;{{ number_format($itemPrice, 2) }} each
+                                </p>
 
-                                <!-- Stepper & Remove -->
-                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-                                    <div style="display: inline-flex; align-items: center; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fdfdfd;">
-                                        <button type="button" style="width: 30px; height: 30px; background: none; border: none; font-weight: 700; cursor: pointer; color: #444;" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] - 1 }})">
+                                <!-- Stepper & Remove Action Row -->
+                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                                    <!-- Stepper -->
+                                    <div style="display: inline-flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background: #ffffff; height: 34px;">
+                                        <button type="button" style="width: 34px; height: 100%; background: #f8fafc; border: none; font-weight: 800; cursor: pointer; color: #334155; font-size: 1rem; display: flex; align-items: center; justify-content: center;" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] - 1 }})">
                                             <i class="bi bi-dash"></i>
                                         </button>
-                                        <span style="width: 36px; text-align: center; font-size: 0.85rem; font-weight: 700; color: #222;">{{ $item['quantity'] }}</span>
-                                        <button type="button" style="width: 30px; height: 30px; background: none; border: none; font-weight: 700; cursor: pointer; color: #444;" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] + 1 }})">
+                                        <span style="width: 40px; text-align: center; font-size: 0.9rem; font-weight: 800; color: #0f172a;">{{ $item['quantity'] }}</span>
+                                        <button type="button" style="width: 34px; height: 100%; background: #f8fafc; border: none; font-weight: 800; cursor: pointer; color: #334155; font-size: 1rem; display: flex; align-items: center; justify-content: center;" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] + 1 }})">
                                             <i class="bi bi-plus"></i>
                                         </button>
                                     </div>
 
-                                    <button type="button" style="background: none; border: none; color: #dc3545; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;" onclick="removeCartItem('{{ $id }}')">
-                                        <i class="bi bi-trash3"></i> Remove
+                                    <!-- Remove Button -->
+                                    <button type="button" style="background: none; border: none; color: #ef4444; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 6px; transition: background 0.2s ease;" onclick="removeCartItem('{{ $id }}')">
+                                        <i class="bi bi-trash3" style="font-size: 0.9rem;"></i> Remove
                                     </button>
                                 </div>
                             </div>
@@ -81,38 +91,40 @@
                 </div>
             </div>
 
-            <!-- Summary Sidebar -->
+            <!-- Right: Order Summary Sidebar -->
             @php 
                 $subtotal = array_sum(array_map(function($item) { return $item['price'] * $item['quantity']; }, $cart));
                 $total = $subtotal;
             @endphp
-            <div style="background: #fff; border-radius: 12px; border: 1px solid #e8e8e8; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: sticky; top: 100px;">
-                <h3 style="font-size: 1.1rem; font-weight: 700; color: #222; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; font-family: 'Outfit', sans-serif;">Order Summary</h3>
-                
-                <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; font-size: 0.88rem;">
-                    <div style="display: flex; justify-content: space-between; color: #555;">
+            <div style="width: 360px; max-width: 100%; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: sticky; top: 90px;" class="cart-summary-card">
+                <h3 style="font-size: 1.15rem; font-weight: 800; color: #1e293b; margin-top: 0; margin-bottom: 18px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; font-family: 'Outfit', sans-serif;">
+                    Order Summary
+                </h3>
+
+                <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; font-size: 0.9rem;">
+                    <div style="display: flex; justify-content: space-between; color: #475569;">
                         <span>Subtotal</span>
-                        <span style="font-weight: 700; color: #222;">&#8377;{{ number_format($subtotal, 2) }}</span>
+                        <span style="font-weight: 700; color: #0f172a;">&#8377;{{ number_format($subtotal, 2) }}</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; color: #555;">
-                        <span>Shipping Fee</span>
-                        <span style="font-weight: 700; color: #28a745; text-transform: uppercase; font-size: 0.78rem;">FREE</span>
+                    <div style="display: flex; justify-content: space-between; color: #475569;">
+                        <span>Delivery Charge</span>
+                        <span style="font-weight: 800; color: #16a34a; text-transform: uppercase; font-size: 0.8rem; background: #dcfce7; padding: 2px 8px; border-radius: 6px;">FREE</span>
                     </div>
-                    <div style="border-top: 1px solid #eee; padding-top: 10px; display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: 800; color: #b71c1c;">
+                    <div style="border-top: 1px solid #e2e8f0; padding-top: 14px; display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: #b71c1c;">
                         <span>Total Payable</span>
                         <span>&#8377;{{ number_format($total, 2) }}</span>
                     </div>
                 </div>
 
-                <a href="{{ route('checkout.index') }}" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: #b71c1c; color: #fff; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; box-shadow: 0 4px 12px rgba(183,28,28,0.25);">
-                    Proceed to Checkout <i class="bi bi-arrow-right"></i>
+                <a href="{{ route('checkout.index') }}" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: #b71c1c; color: #ffffff; text-decoration: none; padding: 14px; border-radius: 10px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 14px rgba(183,28,28,0.3); transition: transform 0.2s ease;">
+                    Proceed to Checkout <i class="bi bi-arrow-right" style="font-size: 1rem;"></i>
                 </a>
             </div>
         </div>
     @endif
 </div>
 
-<!-- Cart Scripts -->
+<!-- AJAX Stepper & Item Removal Scripts -->
 <script>
 function updateCartQty(productId, qty) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -130,7 +142,7 @@ function updateCartQty(productId, qty) {
             if (window.Ebigcart) window.Ebigcart.updateHeaderCounts();
             location.reload();
         } else {
-            alert(data.message || 'Error updating cart.');
+            alert(data.message || 'Error updating cart quantity.');
         }
     })
     .catch(err => console.error(err));
@@ -162,10 +174,13 @@ function removeCartItem(productId) {
 </script>
 
 <style>
-@media (max-width: 850px) {
-    .cart-layout-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
+@media (max-width: 900px) {
+    .cart-flex-wrapper {
+        flex-direction: column !important;
+    }
+    .cart-summary-card {
+        width: 100% !important;
+        position: static !important;
     }
 }
 </style>
