@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+$file = 'resources/views/layouts/frontend.blade.php';
+$content = file_get_contents($file);
+
+// Extract the header and body content from <div id="page" class="site"... to </div><!-- #page -->
+preg_match('/<div id="page" class="site".*?<\/div><!-- #page -->/is', $content, $matches);
+$pageContent = $matches[0] ?? '';
+
+$newContent = '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +15,7 @@
     <meta name="description" content="Explore beautiful Laddu Gopal dresses and accessories to adorn your divine idol with elegance and charm. Shop the best selection today!">
     
     <!-- Vite CSS/JS (Tailwind, app.js) -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite([\'resources/css/app.css\', \'resources/js/app.js\'])
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -212,20 +220,7 @@
 </head>
 <body class="home singular">
 
-    <div id="page" class="site" style="margin-top: 0 !important; padding-top: 0 !important;">
-
-
-@include('frontend.partials.header')
-
-@yield('content')
-
-@include('frontend.partials.footer')
-
-<!-- End Footer -->
-
-
-
-</div><!-- #page -->
+    ' . $pageContent . '
 
     <!-- Essential Scripts -->
     <script src="/mahashringar_assets/jquery.min.js.download"></script>
@@ -272,4 +267,7 @@
         });
     </script>
 </body>
-</html>
+</html>';
+
+file_put_contents($file, $newContent);
+echo "Frontend layout completely sanitized!\n";
