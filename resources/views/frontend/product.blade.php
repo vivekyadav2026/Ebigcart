@@ -18,11 +18,14 @@
             <div class="main-image bg-white rounded-xl border border-gray-100 shadow-sm p-4 mb-4">
                 <img src="{{ asset($product->primary_image_url) }}" alt="{{ $product->name }}" class="w-full h-auto rounded-lg object-contain" style="max-height: 500px;">
             </div>
-            @if($product->images && count($product->images) > 0)
-            <div class="grid grid-cols-4 gap-4">
-                @foreach($product->images as $image)
+            @php
+                $allImages = $product->all_image_urls ?? [];
+            @endphp
+            @if(count($allImages) > 1)
+            <div class="grid grid-cols-4 gap-4 mt-4">
+                @foreach($allImages as $imgUrl)
                 <div class="bg-white rounded-lg border border-gray-100 p-2 cursor-pointer hover:border-[#b71c1c]">
-                    <img src="{{ asset($image->image_url) }}" alt="{{ $product->name }}" class="w-full h-24 object-cover rounded">
+                    <img src="{{ $imgUrl }}" alt="{{ $product->name }}" class="w-full h-24 object-contain rounded">
                 </div>
                 @endforeach
             </div>
@@ -39,8 +42,8 @@
             </div>
             
             <div class="price text-2xl font-bold text-[#b71c1c] mb-6">
-                @if($product->discount_price)
-                    <del class="text-gray-400 text-lg mr-2">?{{ $product->price }}</del> <span>?{{ $product->discount_price }}</span>
+                @if($product->sale_price)
+                    <del class="text-gray-400 text-lg mr-2">?{{ $product->price }}</del> <span>?{{ $product->sale_price }}</span>
                 @else
                     <span>?{{ $product->price }}</span>
                 @endif

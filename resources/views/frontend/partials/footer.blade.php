@@ -1,4 +1,4 @@
-﻿<footer class="padt70 ">
+<footer class="padt70 ">
     <!-- Size Chart Modal -->
     <div id="size-chart-modal" class="modal">
         <div class="modal-content">

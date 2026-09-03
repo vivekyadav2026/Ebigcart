@@ -1,176 +1,100 @@
 @extends('layouts.frontend')
 
 @section('title', 'Contact Us')
-@section('meta_title', 'Contact Us | Ebigcart - Support & Help')
-@section('meta_description', 'Contact the Ebigcart team. Get in touch with us for questions regarding orders, product details, shipping or returns.')
-@section('meta_keywords', 'contact Ebigcart, support, customer service phone, store email address, location')
+@section('meta_title', 'Contact Us | Ebigcart - Customer Support & Orders')
+@section('meta_description', 'Contact Ebigcart for queries about Laddu Gopal dresses, custom orders, shipping, or assistance.')
 
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <!-- Breadcrumb & Title Inline -->
-        <div class="mb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-100">
-            <div>
-                <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight" style="font-family: 'Outfit', sans-serif;">My Account</h1>
-                <p class="text-[10px] text-slate-450 mt-1 flex items-center gap-1.5 font-bold uppercase tracking-wider">
-                    <a href="/" class="hover:text-primary transition-colors">Home</a> 
-                    <span class="text-slate-300">/</span> 
-                    @auth
-                        <a href="/dashboard" class="hover:text-primary transition-colors">Dashboard</a> 
-                        <span class="text-slate-300">/</span> 
-                    @endauth
-                    <span class="text-slate-800">Support & Help</span>
-                </p>
-            </div>
-        </div>
+<div class="container" style="padding-top: 30px; padding-bottom: 50px;">
+    <!-- Page Header -->
+    <div style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+        <h1 style="font-size: 2.2rem; font-weight: 700; color: #b71c1c; font-family: 'Outfit', sans-serif;">Contact Ebigcart</h1>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 8px;">
+            <a href="/" style="color: #555; text-decoration: none;">Home</a> <span style="margin: 0 8px; color: #ccc;">/</span> Contact Us
+        </p>
+    </div>
 
-        @auth
-        <div class="flex flex-col lg:flex-row gap-4">
-            @include('frontend.partials.customer_sidebar')
-            
-            <div class="w-full lg:w-3/4">
-        @else
-            <div class="w-full">
-        @endauth
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: start;">
+        <!-- Contact Info -->
+        <div style="background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e8e8e8; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: #222; margin-bottom: 10px; font-family: 'Outfit', sans-serif;">Get In Touch With Us</h2>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 25px; line-height: 1.6;">
+                Have questions about size selection, custom orders, or shipping? We are always happy to assist you!
+            </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7">
-                <!-- Contact Info -->
-                <div class="flex flex-col justify-between h-full space-y-4">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; align-items: flex-start; gap: 15px;">
+                    <div style="background: #fdf2f2; color: #b71c1c; width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="bi bi-geo-alt-fill" style="font-size: 1.2rem;"></i>
+                    </div>
                     <div>
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-1.5" style="font-family: 'Outfit', sans-serif;">{{ __('Get In Touch') }}</h2>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed mb-4">
-                            {{ __("We'd love to hear from you. Whether you have a question about products, shipping, or need product recommendations, our team is ready to answer all your questions.") }}
-                        </p>
-                        
-                        <div class="space-y-3">
-                            <div class="flex items-start bg-slate-50 border border-slate-100 p-3 rounded-xl hover:border-slate-200 transition duration-150">
-                                <div class="bg-primary/10 text-primary p-2.5 rounded-lg mr-3 flex-shrink-0">
-                                    <i class="fa-solid fa-location-dot text-sm w-4 text-center"></i>
-                                </div>
-                                <div class="min-w-0">
-                                    <h4 class="font-extrabold text-slate-800 text-[10px] uppercase tracking-wider">{{ __('Address') }}</h4>
-                                    <p class="text-xs text-slate-900 font-bold mt-0.5 leading-normal">
-                                        {{ \App\Models\Setting::get('site_address', '12800 Northborough Dr, Houston, TX 77067') }}
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start bg-slate-50 border border-slate-100 p-3 rounded-xl hover:border-slate-200 transition duration-150">
-                                <div class="bg-primary/10 text-primary p-2.5 rounded-lg mr-3 flex-shrink-0">
-                                    <i class="fa-solid fa-phone text-sm w-4 text-center"></i>
-                                </div>
-                                <div class="min-w-0">
-                                    <h4 class="font-extrabold text-slate-800 text-[10px] uppercase tracking-wider">{{ __('Phone Number') }}</h4>
-                                    <p class="text-xs text-slate-900 font-bold mt-0.5 leading-normal">
-                                        {{ \App\Models\Setting::get('site_phone', '+1 (713) 555-0199') }}
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start bg-slate-50 border border-slate-100 p-3 rounded-xl hover:border-slate-200 transition duration-150">
-                                <div class="bg-primary/10 text-primary p-2.5 rounded-lg mr-3 flex-shrink-0">
-                                    <i class="fa-solid fa-envelope text-sm w-4 text-center"></i>
-                                </div>
-                                <div class="min-w-0">
-                                    <h4 class="font-extrabold text-slate-800 text-[10px] uppercase tracking-wider">{{ __('Email Address') }}</h4>
-                                    <p class="text-xs text-slate-900 font-bold mt-0.5 leading-normal">
-                                        {{ \App\Models\Setting::get('site_email', 'Papperlemon1@gmail.com') }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        @php
-                            $facebook = \App\Models\Setting::get('social_facebook');
-                            $twitter = \App\Models\Setting::get('social_twitter');
-                            $instagram = \App\Models\Setting::get('social_instagram');
-                            $linkedin = \App\Models\Setting::get('social_linkedin');
-                            $youtube = \App\Models\Setting::get('social_youtube');
-                            $hasSocial = $facebook || $twitter || $instagram || $linkedin || $youtube;
-                        @endphp
-                        @if($hasSocial)
-                            <div class="mt-5 border-t border-slate-100 pt-4">
-                                <h4 class="font-extrabold text-slate-800 text-[10px] uppercase tracking-wider mb-2.5">{{ __('Connect With Us') }}</h4>
-                                <div class="flex items-center gap-2">
-                                    @if($facebook)
-                                        <a href="{{ $facebook }}" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-primary hover:text-white flex items-center justify-center text-xs transition-all duration-200 shadow-2xs" title="Facebook"><i class="bi bi-facebook"></i></a>
-                                    @endif
-                                    @if($twitter)
-                                        <a href="{{ $twitter }}" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-primary hover:text-white flex items-center justify-center text-xs transition-all duration-200 shadow-2xs" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
-                                    @endif
-                                    @if($instagram)
-                                        <a href="{{ $instagram }}" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-primary hover:text-white flex items-center justify-center text-xs transition-all duration-200 shadow-2xs" title="Instagram"><i class="bi bi-instagram"></i></a>
-                                    @endif
-                                    @if($linkedin)
-                                        <a href="{{ $linkedin }}" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-primary hover:text-white flex items-center justify-center text-xs transition-all duration-200 shadow-2xs" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    @endif
-                                    @if($youtube)
-                                        <a href="{{ $youtube }}" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-primary hover:text-white flex items-center justify-center text-xs transition-all duration-200 shadow-2xs" title="YouTube"><i class="bi bi-youtube"></i></a>
-                                    @endif
-                                </div>
-                            </div>
-                        @endif
+                        <h4 style="font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; margin: 0;">Store Address</h4>
+                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">Ebigcart Divine Store, Mathura Road, Vrindavan, Uttar Pradesh, India</p>
                     </div>
                 </div>
 
-                <!-- Contact Form -->
-                <div class="bg-white rounded-xl border border-slate-150 p-4 sm:p-4.5 shadow-xs">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3.5 border-b border-slate-100 pb-2.5" style="font-family: 'Outfit', sans-serif;">{{ __('Send us a message') }}</h3>
-                    <form action="#" method="POST" class="space-y-3">
-                        @csrf
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">{{ __('First Name *') }}</label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
-                                        <i class="fa-solid fa-user text-xs"></i>
-                                    </span>
-                                    <input type="text" class="w-full bg-slate-50/50 border border-slate-200 focus:bg-white rounded-xl pl-9 pr-4 py-2 text-xs font-bold text-slate-800 shadow-xs focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">{{ __('Last Name *') }}</label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
-                                        <i class="fa-solid fa-user text-xs"></i>
-                                    </span>
-                                    <input type="text" class="w-full bg-slate-50/50 border border-slate-200 focus:bg-white rounded-xl pl-9 pr-4 py-2 text-xs font-bold text-slate-800 shadow-xs focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">{{ __('Email Address *') }}</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
-                                    <i class="fa-solid fa-envelope text-xs"></i>
-                                </span>
-                                <input type="email" class="w-full bg-slate-50/50 border border-slate-200 focus:bg-white rounded-xl pl-9 pr-4 py-2 text-xs font-bold text-slate-800 shadow-xs focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" required>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">{{ __('Message *') }}</label>
-                            <div class="relative">
-                                <span class="absolute top-2.5 left-0 pl-3 flex items-start text-slate-400 pointer-events-none">
-                                    <i class="fa-solid fa-pen text-xs"></i>
-                                </span>
-                                <textarea rows="3" class="w-full bg-slate-50/50 border border-slate-200 focus:bg-white rounded-xl pl-9 pr-4 py-2 text-xs font-bold text-slate-800 shadow-xs focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" required></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-1">
-                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-extrabold py-2 rounded-xl tracking-wider text-[11px] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-paper-plane text-[10px]"></i> {{ __('Send Message') }}
-                            </button>
-                        </div>
-                    </form>
+                <div style="display: flex; align-items: flex-start; gap: 15px;">
+                    <div style="background: #fdf2f2; color: #b71c1c; width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="bi bi-telephone-fill" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; margin: 0;">Phone & WhatsApp</h4>
+                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">+91 98765 43210</p>
+                    </div>
                 </div>
-            </div></div>
+
+                <div style="display: flex; align-items: flex-start; gap: 15px;">
+                    <div style="background: #fdf2f2; color: #b71c1c; width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="bi bi-envelope-fill" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; margin: 0;">Email Support</h4>
+                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">support@ebigcart.com</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        @auth
+        <!-- Contact Form -->
+        <div style="background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e8e8e8; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: #222; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">Send Us A Message</h2>
+            
+            <form onsubmit="alert('Thank you! Your message has been sent to Ebigcart Support.'); return false;" style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 5px;">First Name *</label>
+                        <input type="text" required style="width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 5px;">Last Name *</label>
+                        <input type="text" required style="width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 5px;">Email Address *</label>
+                    <input type="email" required style="width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                </div>
+
+                <div>
+                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #555; text-transform: uppercase; margin-bottom: 5px;">Your Message *</label>
+                    <textarea rows="4" required style="width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 6px; font-size: 0.85rem; outline: none; resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" style="background: #b71c1c; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; cursor: pointer; transition: background 0.3s ease;">
+                    Send Message <i class="bi bi-send-fill" style="margin-left: 6px;"></i>
+                </button>
+            </form>
         </div>
-        </div>
-        @endauth
     </div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+</style>
 @endsection

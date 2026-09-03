@@ -1,4 +1,4 @@
-﻿@extends('layouts.frontend')
+@extends('layouts.frontend')
 
 @section('content')
 
@@ -19,65 +19,195 @@
     </div>
 </div>
 <style>
-/* Hero & Category Navigation Overrides */
-.owl-nav button.owl-prev, .owl-nav button.owl-next {
+/* Universal Owl Slider Nav (Next / Prev) Styling - Transparent & Compact */
+.owl-carousel {
+    position: relative !important;
+}
+
+.owl-carousel .owl-nav {
+    display: block !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 32px !important;
+    height: 32px !important;
     background: transparent !important;
-    color: #b71c1c !important; /* Crimson color for the arrow itself */
-    width: 40px !important;
-    height: 40px !important;
+    color: #b71c1c !important;
+    border-radius: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     box-shadow: none !important;
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    opacity: 0.8 !important;
+    z-index: 99 !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
     transition: all 0.3s ease !important;
-    text-shadow: 0 0 10px rgba(255,255,255,0.9);
     margin: 0 !important;
     padding: 0 !important;
+    opacity: 0.85 !important;
+    text-shadow: 0 0 4px rgba(255,255,255,0.8);
 }
-.owl-nav button.owl-prev i, .owl-nav button.owl-next i { font-size: 2rem !important; margin: 0 !important; padding: 0 !important; line-height: 1 !important; }
-.owl-nav button.owl-prev:hover, .owl-nav button.owl-next:hover { opacity: 1 !important; transform: translateY(-50%) scale(1.2) !important; color: #000 !important; }
 
-/* Hero Slider specific */
-.sale-banner .owl-nav button.owl-prev { left: 10px !important; }
-.sale-banner .owl-nav button.owl-next { right: 10px !important; }
+.owl-carousel .owl-nav button.owl-prev {
+    left: 8px !important;
+}
 
-/* Category Slider specific */
-.owl-carousel-product { position: relative !important; }
-.owl-carousel-product .owl-nav button.owl-prev { left: 0px !important; }
-.owl-carousel-product .owl-nav button.owl-next { right: 0px !important; }
+.owl-carousel .owl-nav button.owl-next {
+    right: 8px !important;
+}
 
-/* Fix extra white space */
-.sale-banner { margin-bottom: 0 !important; padding-bottom: 0 !important; display: block; }
-.home-banner-new { margin-top: 0 !important; padding-top: 20px !important; }
+.owl-carousel .owl-nav button.owl-prev:hover,
+.owl-carousel .owl-nav button.owl-next:hover {
+    background: transparent !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1.15) !important;
+    box-shadow: none !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev i,
+.owl-carousel .owl-nav button.owl-next i {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+}
+
+/* Full Width Banners - Zero Left & Right Padding */
+.sale-banner, .winter-bnr, .middle-banner-full {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.sale-banner img, .winter-bnr img, .middle-banner-full img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
 
 /* Responsive adjustments */
-@@media (max-width: 768px) {
-    .sale-banner img.desktop-hero {
-        height: auto !important;
-        width: 100% !important;
-        aspect-ratio: 16/9 !important;
-        object-fit: cover !important;
+@media (max-width: 768px) {
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+        width: 26px !important;
+        height: 26px !important;
     }
-    .owl-nav button.owl-prev, .owl-nav button.owl-next {
+    .owl-carousel .owl-nav button.owl-prev { left: 4px !important; }
+    .owl-carousel .owl-nav button.owl-next { right: 4px !important; }
+    .owl-carousel .owl-nav button.owl-prev i,
+    .owl-carousel .owl-nav button.owl-next i { font-size: 0.9rem !important; }
+}
+
+/* Category Item Vertical Layout (Image Top, Name Below) */
+.owl-carousel-product .category-item-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 10px 5px !important;
+}
+
+.owl-carousel-product .banner-item {
+    width: 100% !important;
+    max-width: 160px !important;
+    margin: 0 auto !important;
+    flex: 0 0 auto !important;
+}
+
+.owl-carousel-product .banner-item img.category-img {
+    width: 100% !important;
+    height: 130px !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.owl-carousel-product .leftpart-banner {
+    width: 100% !important;
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+.owl-carousel-product .leftpart-banner .bann-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
+}
+
+.owl-carousel-product .leftpart-banner .bann-title a {
+    color: #222222 !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+/* Mobile View 2 Columns Per Row for Products */
+@media (max-width: 768px) {
+    ul.products {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 0 5px !important;
+    }
+
+    .rs-product-card {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .rs-card-img-box {
+        height: 140px !important;
+    }
+
+    .rs-card-title {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+        height: 2.4em !important;
+    }
+
+    .rs-card-actions {
+        flex-direction: row !important;
+        gap: 6px !important;
+    }
+
+    .rs-btn-buynow {
+        font-size: 0.7rem !important;
+        padding: 6px 8px !important;
+        flex: 1 !important;
+        text-align: center !important;
+    }
+
+    .rs-btn-carticon {
         width: 30px !important;
         height: 30px !important;
+        font-size: 0.85rem !important;
     }
-    .owl-nav button.owl-prev i, .owl-nav button.owl-next i { font-size: 1.5rem !important; }
 }
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         if(window.jQuery && jQuery().owlCarousel) {
+            var navBtns = ['<i class="bi bi-chevron-left"></i>', '<i class="bi bi-chevron-right"></i>'];
+
             jQuery('.hero-slider').owlCarousel({
                 loop: true,
                 margin: 0,
                 nav: true,
-                navText: ['<i class="bi bi-chevron-left" style="font-size: 1.2rem; margin-top:2px; font-weight:900;"></i>', '<i class="bi bi-chevron-right" style="font-size: 1.2rem; margin-top:2px; font-weight:900;"></i>'],
+                navText: navBtns,
                 dots: true,
                 autoplay: true,
                 autoplayTimeout: 3500,
@@ -85,11 +215,38 @@ document.addEventListener("DOMContentLoaded", function() {
                 items: 1
             });
 
-            // Overwrite existing category slider nav items with icons to fix broken chars
-            jQuery('.owl-carousel-product .owl-nav .owl-prev').html('<i class="bi bi-chevron-left" style="font-size: 1.2rem; margin-top:2px; font-weight:900;"></i>');
-            jQuery('.owl-carousel-product .owl-nav .owl-next').html('<i class="bi bi-chevron-right" style="font-size: 1.2rem; margin-top:2px; font-weight:900;"></i>');
+            jQuery('.owl-carousel-product').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                navText: navBtns,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3500,
+                responsive: { 0: { items: 2 }, 600: { items: 3 }, 1000: { items: 4 } }
+            });
+
+            jQuery('.owl-carousel-testimonials').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                navText: navBtns,
+                dots: true,
+                autoplay: true,
+                responsive: { 0: { items: 1 }, 768: { items: 2 }, 1000: { items: 3 } }
+            });
+
+            jQuery('.owl-carousel-video-testimonials').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                navText: navBtns,
+                dots: true,
+                autoplay: false,
+                responsive: { 0: { items: 1 }, 600: { items: 2 }, 1000: { items: 4 } }
+            });
         }
-    }, 500);
+    }, 300);
 });
 </script>
 <div class="home-banner-new">
@@ -99,148 +256,22 @@ document.addEventListener("DOMContentLoaded", function() {
             <h2>SHOP BY CATEGORIES</h2>
             <span class="ornament-line"></span>
         </div>
-        <div class="owl-carousel owl-carousel-product owl-loaded owl-drag">
-                    <!-- Let's show our custom fields here now -->                      
-                      
-                    <!-- Let's show our custom fields here now -->                      
-                      
-                    <!-- Let's show our custom fields here now -->                      
-                      
-                    <!-- Let's show our custom fields here now -->                      
-                      
-                    <!-- Let's show our custom fields here now -->                      
-                      
-                    <!-- Let's show our custom fields here now -->                      
-                      
-                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1234px, 0px, 0px); transition: 0.25s; width: 3951px;"><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
+                        <div class="owl-carousel owl-carousel-product owl-theme">
+            @foreach($categories as $cat)
+            <div class="category-item-card">
                 <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/summer.webp" class="attachment-full size-full wp-post-image" alt="summer" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
+                    <a href="{{ route('shop', ['cat' => $cat->slug]) }}">
+                        <img src="{{ $cat->image ? asset($cat->image) : asset('images/ebigcart_logo.png') }}" class="category-img" alt="{{ $cat->name }}" loading="lazy">
+                    </a>
                 </div>
                 <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Summer Dresses </a></div>
+                    <div class="bann-title"> 
+                        <a href="{{ route('shop', ['cat' => $cat->slug]) }}">{{ $cat->name }}</a>
+                    </div>
                 </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/mukut.webp" class="attachment-full size-full wp-post-image" alt="mukut" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Mukuts/Pagadi </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/aasan.webp" class="attachment-full size-full wp-post-image" alt="aasan" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Quilts/Aasan </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="500" height="500" src="/mahashringar_assets/Laddu-Gopal-Bansuri.webp" class="attachment-full size-full wp-post-image" alt="Laddu Gopal Bansuri" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri.webp 500w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:500px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Bansuri </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="500" height="500" src="/mahashringar_assets/best_pink_cotton_gopi_dress-removebg-preview.png" class="attachment-full size-full wp-post-image" alt="best pink cotton gopi dress" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview.png 500w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-300x300.png 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-150x150.png 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-400x400.png 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-100x100.png 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-96x96.png 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:500px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Gopi Dress </a></div>
-                </div>
-            </div></div><div class="owl-item active" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/3-768x768-1.png" class="attachment-full size-full wp-post-image" alt="Laddu Gopal designer dress" decoding="async" fetchpriority="high" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1.png 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-300x300.png 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-150x150.png 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-400x400.png 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-100x100.png 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-96x96.png 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Designer Dresses </a></div>
-                </div>
-            </div></div><div class="owl-item active" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/summer.webp" class="attachment-full size-full wp-post-image" alt="summer" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Summer Dresses </a></div>
-                </div>
-            </div></div><div class="owl-item active" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/mukut.webp" class="attachment-full size-full wp-post-image" alt="mukut" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Mukuts/Pagadi </a></div>
-                </div>
-            </div></div><div class="owl-item active" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/aasan.webp" class="attachment-full size-full wp-post-image" alt="aasan" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Quilts/Aasan </a></div>
-                </div>
-            </div></div><div class="owl-item active" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="500" height="500" src="/mahashringar_assets/Laddu-Gopal-Bansuri.webp" class="attachment-full size-full wp-post-image" alt="Laddu Gopal Bansuri" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri.webp 500w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:500px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Bansuri </a></div>
-                </div>
-            </div></div><div class="owl-item" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="500" height="500" src="/mahashringar_assets/best_pink_cotton_gopi_dress-removebg-preview.png" class="attachment-full size-full wp-post-image" alt="best pink cotton gopi dress" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview.png 500w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-300x300.png 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-150x150.png 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-400x400.png 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-100x100.png 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/28110329/best_pink_cotton_gopi_dress-removebg-preview-96x96.png 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:500px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Gopi Dress </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/3-768x768-1.png" class="attachment-full size-full wp-post-image" alt="Laddu Gopal designer dress" decoding="async" fetchpriority="high" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1.png 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-300x300.png 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-150x150.png 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-400x400.png 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-100x100.png 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/07/07193707/3-768x768-1-96x96.png 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Designer Dresses </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/summer.webp" class="attachment-full size-full wp-post-image" alt="summer" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/04121443/summer-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Summer Dresses </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/mukut.webp" class="attachment-full size-full wp-post-image" alt="mukut" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120040/mukut-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Mukuts/Pagadi </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="600" height="600" src="/mahashringar_assets/aasan.webp" class="attachment-full size-full wp-post-image" alt="aasan" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan.webp 600w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/05/04120035/aasan-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:600px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Quilts/Aasan </a></div>
-                </div>
-            </div></div><div class="owl-item cloned" style="width: 246.934px;"><div class="d-flex flex-wrap jsb aic">
-                <div class="banner-item">
-                    <a href="/shop">
-                        <img width="500" height="500" src="/mahashringar_assets/Laddu-Gopal-Bansuri.webp" class="attachment-full size-full wp-post-image" alt="Laddu Gopal Bansuri" decoding="async" srcset="https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri.webp 500w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-300x300.webp 300w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-150x150.webp 150w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-400x400.webp 400w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-100x100.webp 100w, https://mahashringar.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/04/18114043/Laddu-Gopal-Bansuri-96x96.webp 96w" sizes="(max-width:767px) 100vw, 1200px" style="width:100%;height:100%;max-width:500px;" fetchpriority="high" loading="eager">                    </a>
-                </div>
-                <div class="leftpart-banner">
-                    <div class="bann-title"> <a href="/shop">Bansuri </a></div>
-                </div>
-            </div></div></div></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
 <!--End banner -->
@@ -260,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <li style="list-style:none;">
             <div class="rs-product-card">
                 <div class="rs-card-img-box">
-                    @if($product->discount_price)
+                    @if($product->sale_price)
                         <span class="rs-card-badge">SALE</span>
                     @endif
                     <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
@@ -271,8 +302,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="rs-card-body">
                     <a href="{{ route('product.show', $product->slug) }}" class="rs-card-title">{{ $product->name }}</a>
                     <div class="rs-card-price">
-                        @if($product->discount_price)
-                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->discount_price }}</bdi></span>
+                        @if($product->sale_price)
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->sale_price }}</bdi></span>
                             <span class="rs-card-price-old">₹{{ $product->price }}</span>
                         @else
                             <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->price }}</bdi></span>
@@ -289,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </ul>
     
     <div class="view-more-wrapper">
-        <a href="#" class="view-more-btn">
+        <a href="{{ route('shop') }}" class="view-more-btn">
             View More
         </a>
     </div>
@@ -298,9 +329,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     </div>
 </div>
-<div class="container">
-    <a href="/shop"><img src="/mahashringar_assets/middle-gopi-dresses.jpg" width="1440" height="700" alt="Laddu Golpal Summer Dress"></a>
-</div>
+<div class="middle-banner-full" style="width: 100%; margin: 25px 0; padding: 0;">
+      <a href="/shop"><img src="/mahashringar_assets/middle-gopi-dresses.jpg" alt="Laddu Gopal Summer Dress" style="width: 100%; height: auto; display: block;"></a>
+  </div>
 
 <div class="latest-dress products-list text-center padt60 padtb80" id="latest_collection">
     <div class="container">
@@ -312,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <li style="list-style:none;">
             <div class="rs-product-card">
                 <div class="rs-card-img-box">
-                    @if($product->discount_price)
+                    @if($product->sale_price)
                         <span class="rs-card-badge">SALE</span>
                     @endif
                     <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
@@ -323,8 +354,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="rs-card-body">
                     <a href="{{ route('product.show', $product->slug) }}" class="rs-card-title">{{ $product->name }}</a>
                     <div class="rs-card-price">
-                        @if($product->discount_price)
-                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->discount_price }}</bdi></span>
+                        @if($product->sale_price)
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->sale_price }}</bdi></span>
                             <span class="rs-card-price-old">₹{{ $product->price }}</span>
                         @else
                             <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $product->price }}</bdi></span>
@@ -513,115 +544,241 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </section>
 
-<section class="video-testi">
-    <h2 class="section-title" style="font-size: 1.5rem; text-align: center; margin: 30px 0;">&#10024; Customer Video Reviews &#10024;</h2>
+<section class="video-testi" style="padding: 40px 0; background: #fafafa;">
     <div class="container">
-        <div class="reel-grid owl-carousel owl-carousel-video-testimonials owl-loaded owl-drag">
-            
-      <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1250px, 0px, 0px); transition: all; width: 5003px;"><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-6.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-7.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-8.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-1.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-2.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-3.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item active" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-4.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-6.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-7.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-8.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-1.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-2.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-3.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
-              <video src="#/wp-content/themes/Ebigcart/assets/videos/video-testi-4.mp4" playsinline="" loop=""></video>
-              <button class="reel-play" aria-label="Play reel">â–¶</button>
-            </div></div></div></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+        <h2 class="section-title" style="font-size: 1.8rem; text-align: center; margin-bottom: 25px; font-weight: 700; color: #b71c1c;">✨ Customer Video Reviews ✨</h2>
+        
+        <div class="owl-carousel owl-carousel-video-testimonials owl-theme">
+            <div class="reel-item" style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #000; height: 360px;">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-hand-holding-a-small-gold-cross-41557-large.mp4" poster="/mahashringar_assets/summer.webp" playsinline loop style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <button class="reel-play" aria-label="Play reel" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(183, 28, 28, 0.9); color: #fff; border: none; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <i class="bi bi-play-fill" style="margin-left: 2px;"></i>
+                </button>
+            </div>
+            <div class="reel-item" style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #000; height: 360px;">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-lit-candle-in-the-dark-41560-large.mp4" poster="/mahashringar_assets/janmasthmi-banner.webp" playsinline loop style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <button class="reel-play" aria-label="Play reel" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(183, 28, 28, 0.9); color: #fff; border: none; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <i class="bi bi-play-fill" style="margin-left: 2px;"></i>
+                </button>
+            </div>
+            <div class="reel-item" style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #000; height: 360px;">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-person-holding-a-small-statue-41558-large.mp4" poster="/mahashringar_assets/aasan.webp" playsinline loop style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <button class="reel-play" aria-label="Play reel" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(183, 28, 28, 0.9); color: #fff; border: none; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <i class="bi bi-play-fill" style="margin-left: 2px;"></i>
+                </button>
+            </div>
+            <div class="reel-item" style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #000; height: 360px;">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-hand-holding-a-small-gold-cross-41557-large.mp4" poster="/mahashringar_assets/home-hero-img2.webp" playsinline loop style="width: 100%; height: 100%; object-fit: cover;"></video>
+                <button class="reel-play" aria-label="Play reel" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(183, 28, 28, 0.9); color: #fff; border: none; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <i class="bi bi-play-fill" style="margin-left: 2px;"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </section>
 <style>
-.video-testi{padding:0px 0px 50px; text-align: center;background: #f8f6f2;}
-.reel-item{position:relative;border-radius:12px;overflow:hidden;background:#2b0d08;aspect-ratio:9/16;cursor:pointer;box-shadow:0 8px 24px rgba(95,0,20,.2)}
-.reel-item video{width:100%;height:100%;object-fit:cover;display:block}
-.reel-play{position:absolute;left:5%;bottom:5%;z-index:2;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:18px;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 8px rgba(255,255,255,.14);animation:pulse 1.9s ease-in-out infinite;transition:.25s}
-.reel-play:hover{background:var(--wine);transform:translate(-50%,-50%) scale(1.08)}
-.reel-play.playing{background:rgba(0,0,0,.45)}
-.owl-carousel-video-testimonials .owl-item{padding:10px 0}
-.owl-dot{ background:#000 !important; width:10px; height:10px; border-radius:50%; margin:5px; }
-.owl-dot.active{ background:#6d5c45 !important; }
-
-
-@@media (max-width: 767px) {
-
-    .sale-banner {
-        width: 100%;
-        aspect-ratio: 16 / 9 !important;
-        overflow: hidden;
-    }
-
-    .sale-banner .owl-carousel-hero:not(.owl-loaded) {
-        display: block !important;
-    }
-
-    .sale-banner .owl-carousel-hero:not(.owl-loaded) > .item {
-        display: none !important;
-    }
-
-    .sale-banner .owl-carousel-hero:not(.owl-loaded) > .item:first-child {
-        display: block !important;
-    }
-
+/* Universal Owl Slider Nav (Next / Prev) Styling - Transparent & Compact */
+.owl-carousel {
+    position: relative !important;
 }
 
+.owl-carousel .owl-nav {
+    display: block !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: transparent !important;
+    color: #b71c1c !important;
+    border-radius: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+    z-index: 99 !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0.85 !important;
+    text-shadow: 0 0 4px rgba(255,255,255,0.8);
+}
+
+.owl-carousel .owl-nav button.owl-prev {
+    left: 8px !important;
+}
+
+.owl-carousel .owl-nav button.owl-next {
+    right: 8px !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev:hover,
+.owl-carousel .owl-nav button.owl-next:hover {
+    background: transparent !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1.15) !important;
+    box-shadow: none !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev i,
+.owl-carousel .owl-nav button.owl-next i {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+}
+
+/* Full Width Banners - Zero Left & Right Padding */
+.sale-banner, .winter-bnr, .middle-banner-full {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.sale-banner img, .winter-bnr img, .middle-banner-full img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+        width: 26px !important;
+        height: 26px !important;
+    }
+    .owl-carousel .owl-nav button.owl-prev { left: 4px !important; }
+    .owl-carousel .owl-nav button.owl-next { right: 4px !important; }
+    .owl-carousel .owl-nav button.owl-prev i,
+    .owl-carousel .owl-nav button.owl-next i { font-size: 0.9rem !important; }
+}
+
+/* Category Item Vertical Layout (Image Top, Name Below) */
+.owl-carousel-product .category-item-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 10px 5px !important;
+}
+
+.owl-carousel-product .banner-item {
+    width: 100% !important;
+    max-width: 160px !important;
+    margin: 0 auto !important;
+    flex: 0 0 auto !important;
+}
+
+.owl-carousel-product .banner-item img.category-img {
+    width: 100% !important;
+    height: 130px !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.owl-carousel-product .leftpart-banner {
+    width: 100% !important;
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+.owl-carousel-product .leftpart-banner .bann-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
+}
+
+.owl-carousel-product .leftpart-banner .bann-title a {
+    color: #222222 !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+/* Mobile View 2 Columns Per Row for Products */
+@media (max-width: 768px) {
+    ul.products {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 0 5px !important;
+    }
+
+    .rs-product-card {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .rs-card-img-box {
+        height: 140px !important;
+    }
+
+    .rs-card-title {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+        height: 2.4em !important;
+    }
+
+    .rs-card-actions {
+        flex-direction: row !important;
+        gap: 6px !important;
+    }
+
+    .rs-btn-buynow {
+        font-size: 0.7rem !important;
+        padding: 6px 8px !important;
+        flex: 1 !important;
+        text-align: center !important;
+    }
+
+    .rs-btn-carticon {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.85rem !important;
+    }
+}
 </style>
 <script>
 document.addEventListener('click', function (event) {
   const btn = event.target.closest('.reel-play');
+  if (!btn) return;
 
-  if (!btn) {
-    return;
-  }
-
-  const video = btn.closest('.reel-item').querySelector('video');
+  const container = btn.closest('.reel-item');
+  const video = container ? container.querySelector('video') : null;
+  if (!video) return;
 
   if (video.paused) {
+    document.querySelectorAll('.video-testi video').forEach(function(v) {
+      v.pause();
+    });
+    document.querySelectorAll('.video-testi .reel-play i').forEach(function(icon) {
+      icon.className = 'bi bi-play-fill';
+    });
+
     video.play();
-    btn.textContent = 'â¸';
-    btn.classList.add('playing');
+    const icon = btn.querySelector('i');
+    if (icon) icon.className = 'bi bi-pause-fill';
   } else {
     video.pause();
-    btn.textContent = 'â–¶';
-    btn.classList.remove('playing');
+    const icon = btn.querySelector('i');
+    if (icon) icon.className = 'bi bi-play-fill';
   }
 });
 </script>
