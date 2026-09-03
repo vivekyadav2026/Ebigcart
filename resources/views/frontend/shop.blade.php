@@ -95,12 +95,12 @@
                 <ul class="products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0;">
                     @foreach($products as $product)
                         <li class="product" style="list-style:none;">
-                            <div class="rs-product-card">
+                            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
                                 <div class="rs-card-img-box">
                                     @if($product->sale_price)
                                         <span class="rs-card-badge">SALE</span>
                                     @endif
-                                    <a href="/wishlist" class="rs-wishlist-heart" title="Add to Wishlist"><i class="bi bi-heart"></i></a>
+                                    @php $inWishlist = in_array($product->id, session()->get('wishlist', [])); @endphp<button type="button" class="rs-wishlist-heart" style="border:none; background:none; cursor:pointer; {{ $inWishlist ? 'color:#ff4757;' : '' }}" onclick="Ebigcart.toggleWishlist('{{ $product->id }}', this, event)" title="Add to Wishlist"><i class="bi {{ $inWishlist ? 'bi-heart-fill' : 'bi-heart' }}"></i></button>
                                     <a href="{{ route('product.show', $product->slug) }}">
                                         <img src="{{ asset($product->primary_image_url) }}" alt="{{ $product->name }}" loading="lazy">
                                     </a>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="rs-card-actions">
                                         <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-buynow">Buy Now</a>
-                                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-carticon"><i class="bi bi-cart-plus-fill"></i></a>
+                                        <button type="button" class="rs-btn-carticon" style="border:none; cursor:pointer;" onclick="Ebigcart.addToCart('{{ $product->id }}', 1, event)" title="Add to Cart"><i class="bi bi-cart-plus-fill"></i></button>
                                     </div>
                                 </div>
                             </div>

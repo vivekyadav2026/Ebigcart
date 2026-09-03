@@ -53,7 +53,7 @@
                 {!! $product->short_description ?? $product->description !!}
             </div>
 
-            <form action="{{ route('cart.add') }}" method="POST" class="mb-8">
+            <form onsubmit="Ebigcart.addToCart('{{ $product->id }}', document.getElementById('qty').value, event); return false;" class="mb-8">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="flex items-center gap-4">
@@ -62,8 +62,12 @@
                         <input type="number" id="qty" name="quantity" value="1" min="1" class="w-16 text-center border-0 focus:ring-0">
                         <button type="button" class="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-600 font-bold" onclick="document.getElementById('qty').value = parseInt(document.getElementById('qty').value) + 1">+</button>
                     </div>
-                    <button type="submit" class="flex-1 bg-[#b71c1c] text-white py-3 px-6 rounded-lg font-bold text-lg hover:bg-[#8e1515] transition-colors shadow-lg shadow-red-900/20">
+                    @php $inWishlist = in_array($product->id, session()->get('wishlist', [])); @endphp
+                    <button type="submit" class="flex-1 bg-[#b71c1c] text-white py-3 px-6 rounded-lg font-bold text-lg hover:bg-[#8e1515] transition-colors shadow-lg shadow-red-900/20 cursor-pointer">
                         <i class="bi bi-cart-plus mr-2"></i> Add to Cart
+                    </button>
+                    <button type="button" onclick="Ebigcart.toggleWishlist('{{ $product->id }}', this, event)" class="bg-gray-100 text-gray-700 p-3 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer" title="Add to Wishlist" style="{{ $inWishlist ? 'color:#ff4757;' : '' }}">
+                        <i class="bi {{ $inWishlist ? 'bi-heart-fill' : 'bi-heart' }} text-xl"></i>
                     </button>
                 </div>
             </form>

@@ -14,17 +14,17 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     .rs-top-bar span { margin: 0 10px; opacity: 0.8; }
 
     /* Middle Main Bar */
-    .rs-main-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 30px; max-width: 1500px; margin: 0 auto; gap: 15px; }
+    .rs-main-bar { display: flex; align-items: center; justify-content: space-between; padding: 5px 30px; max-width: 1500px; margin: 0 auto; gap: 15px; position: relative !important; min-height: 64px; }
     
     /* Left Search Box */
-    .rs-search-box { position: relative; flex: 1; max-width: 320px; }
+    .rs-search-box { position: relative; flex: 1; max-width: 320px; z-index: 5; }
     .rs-search-input { width: 100%; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 30px; padding: 8px 40px 8px 18px; color: #222; font-size: 0.85rem; font-family: 'Outfit', sans-serif; outline: none; transition: all 0.3s ease; }
     .rs-search-input::placeholder { color: #888888; font-style: italic; }
     .rs-search-input:focus { border-color: #b71c1c; background: #ffffff; box-shadow: 0 0 10px rgba(183,28,28,0.15); }
     .rs-search-btn { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #b71c1c; font-size: 0.95rem; cursor: pointer; }
 
-    /* Center Logo */
-    .rs-logo-container { flex: 1; display: flex; justify-content: center; align-items: center; text-align: center; }
+    /* Center Logo (Dead Centered on Desktop & Mobile) */
+    .rs-logo-container { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 20 !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin: 0 !important; }
     .rs-logo { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
     .rs-logo img { height: 75px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
     .rs-logo:hover img { transform: scale(1.03); }
@@ -41,7 +41,7 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     .rs-nav-list { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; max-width: 1500px; margin: 0 auto; }
     .rs-nav-item { display: flex; align-items: center; }
     .rs-nav-item .sep { color: #b71c1c; font-size: 0.65rem; opacity: 0.5; padding: 0 12px; }
-    .rs-nav-link { color: #333333; font-size: 0.85rem; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 1px; padding: 15px 0; transition: all 0.3s ease; position: relative; }
+    .rs-nav-link { color: #333333; font-size: 0.85rem; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 1px; padding: 8px 0; transition: all 0.3s ease; position: relative; }
     .rs-nav-link:hover, .rs-nav-link.active { color: #b71c1c; }
     .rs-nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #b71c1c; }
 
@@ -127,14 +127,12 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
       </a>
 
       <a href="/wishlist" class="rs-action-link">
-        <span class="rs-badge">0</span>
-        <i class="bi bi-heart rs-action-icon"></i>
+        <span class="rs-badge wishlist-count-badge">0</span><i class="bi bi-heart rs-action-icon"></i>
         <span>WISHLIST</span>
       </a>
 
       <a href="/cart" class="rs-action-link">
-        <span class="rs-badge">0</span>
-        <i class="bi bi-bag rs-action-icon"></i>
+        <span class="rs-badge cart-count-badge">0</span><i class="bi bi-bag rs-action-icon"></i>
         <span>BAG</span>
       </a>
     </div>

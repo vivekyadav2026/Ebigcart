@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ebigcart - Buy Best Laddu Gopal Dresses, Accessories and Ornaments</title>
@@ -17,11 +18,21 @@
     <link rel="stylesheet" href="/mahashringar_assets/style.css"> <!-- Megamenu / Theme -->
 
     <style>
-        /* Ultra aggressive top space removal */
+                /* Ultra aggressive top space removal & Sticky Header */
         :root, html, body {
             margin: 0 !important;
             padding: 0 !important;
             top: 0 !important;
+            overflow-x: clip !important;
+        }
+        #page, .site {
+            overflow: visible !important;
+        }
+        .ranisahab-header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 9999 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
         }
         .admin-bar, .admin-bar html, .admin-bar body, .admin-bar #page {
             margin-top: 0 !important;
@@ -60,6 +71,16 @@
         .rs-product-card:hover {
             transform: translateY(-4px) !important;
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09) !important;
+        }
+                .rs-card-img-box a {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            height: 100% !important;
+            text-decoration: none !important;
+            position: relative !important;
+            z-index: 2 !important;
         }
         .rs-card-img-box {
             background: #f8f9fa !important;
@@ -265,6 +286,114 @@
                 }
             });
         });
+    </script>
+    <!-- Ebigcart Global Cart & Wishlist Helper -->
+    <script>
+    window.Ebigcart = {
+        csrfToken: document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{ csrf_token() }}',
+        
+        addToCart: function(productId, quantity, event) {
+            if (event) event.preventDefault();
+            quantity = quantity || 1;
+            fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': this.csrfToken
+                },
+                body: JSON.stringify({ product_id: productId, quantity: quantity })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    this.updateHeaderCounts();
+                    this.showToast(data.message || 'Added to cart!', 'success');
+                } else {
+                    this.showToast(data.message || 'Could not add to cart.', 'error');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                this.showToast('Error adding to cart.', 'error');
+            });
+        },
+
+        toggleWishlist: function(productId, btnElement, event) {
+            if (event) event.preventDefault();
+            fetch('/wishlist/toggle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': this.csrfToken
+                },
+                body: JSON.stringify({ product_id: productId })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    this.updateHeaderCounts();
+                    this.showToast(data.message, 'success');
+                    if (btnElement) {
+                        const icon = btnElement.querySelector('i');
+                        if (icon) {
+                            if (data.in_wishlist) {
+                                icon.className = 'bi bi-heart-fill';
+                                btnElement.style.color = '#ff4757';
+                            } else {
+                                icon.className = 'bi bi-heart';
+                                btnElement.style.color = '';
+                            }
+                        }
+                    }
+                }
+            })
+            .catch(err => console.error(err));
+        },
+
+        updateHeaderCounts: function() {
+            fetch('/cart/count')
+                .then(res => res.json())
+                .then(data => {
+                    document.querySelectorAll('.cart-count-badge').forEach(el => {
+                        el.textContent = data.cart_count || 0;
+                    });
+                });
+
+            fetch('/wishlist/count')
+                .then(res => res.json())
+                .then(data => {
+                    document.querySelectorAll('.wishlist-count-badge').forEach(el => {
+                        el.textContent = data.wishlist_count || 0;
+                    });
+                });
+        },
+
+        showToast: function(message, type) {
+            let toast = document.getElementById('ebigcart-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'ebigcart-toast';
+                toast.style.cssText = 'position: fixed; bottom: 25px; right: 25px; z-index: 9999; background: #b71c1c; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(0,0,0,0.25); transition: all 0.3s ease; opacity: 0; transform: translateY(10px);';
+                document.body.appendChild(toast);
+            }
+            if (type === 'error') {
+                toast.style.background = '#333';
+            } else {
+                toast.style.background = '#b71c1c';
+            }
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+            }, 3000);
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        window.Ebigcart.updateHeaderCounts();
+    });
     </script>
 </body>
 </html>
