@@ -11,11 +11,35 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="d-grid grid-4">
+    <style>
+.padt70 { padding-top: 50px; background-color: #f9f9f9; border-top: 1px solid #e0e0e0; }
+.footer-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+.f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px; }
+.f-col h2.widget-title { font-size: 1.2rem; font-weight: 700; color: #b71c1c; margin-bottom: 20px; text-transform: uppercase; }
+.f-col p, .f-col .textwidget { color: #555; line-height: 1.6; font-size: 0.95rem; }
+.f-col ul { list-style: none; padding: 0; margin: 0; }
+.f-col ul li { margin-bottom: 12px; }
+.f-col ul li a { color: #555; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+.f-col ul li a:hover { color: #b71c1c; }
+.social-icons ul { display: flex; gap: 15px; margin-top: 20px; }
+.social-icons ul li a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #e0e0e0; border-radius: 50%; color: #333; transition: all 0.3s; }
+.social-icons ul li a:hover { background: #b71c1c; color: #fff; transform: translateY(-3px); }
+.social-icons ul li a svg { width: 18px; height: 18px; fill: currentColor; }
+.talk-to-us .f-call-us span { display: block; font-weight: 600; color: #333; margin-bottom: 5px; }
+.talk-to-us .f-call-us a { color: #b71c1c; font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+.talk-to-us ul li { display: flex; align-items: flex-start; gap: 15px; margin-top: 15px; }
+.talk-to-us ul li .tt-icon { color: #b71c1c; margin-top: 3px; }
+.copy-col { border-top: 1px solid #ddd; padding: 20px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.9rem; color: #666; }
+.copy-col a { color: #b71c1c; text-decoration: none; font-weight: 600; }
+@media (max-width: 768px) {
+    .copy-col { flex-direction: column; text-align: center; gap: 10px; }
+}
+</style>
+<div class="footer-container">
+        <div class="f-grid">
             <div class="f-col f-about">
-                <img src="/mahashringar_assets/maha-logo.png" width="120" height="91" alt="maha logo">
-                <section id="custom_html-6" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Mahashringar is a divine inspiration which inspires you to make your Laddu Gopal ready as your little one. In Gokul, Laddu Gopal is called Lalan means a little infant baby. We are one stop solution for your Laddu Gopal dresses, Mukut, Bansuri, Kangan, Hair, Singhasan, Quilts and other Ornaments &amp; Accessories. </div></section>
+                <img src="/images/ebigcart_logo.png" width="180" style="max-width:100%; height:auto;" alt="Ebigcart Logo">
+                <section id="custom_html-6" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Ebigcart is a divine inspiration which inspires you to make your Laddu Gopal ready as your little one. In Gokul, Laddu Gopal is called Lalan means a little infant baby. We are one stop solution for your Laddu Gopal dresses, Mukut, Bansuri, Kangan, Hair, Singhasan, Quilts and other Ornaments &amp; Accessories. </div></section>
                 <div class="social-icons">
                     <ul class="d-flex">
                         <li><a target="_blank" href="https://www.facebook.com/Msd.laddugopal/"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
@@ -66,7 +90,6 @@
             <div class="f-col talk-to-us">
                 <section id="custom_html-7" class="widget_text widget widget_custom_html"><h2 class="widget-title">Talk To Us</h2><div class="textwidget custom-html-widget"><div class="f-call-us">
 <span>Got Questions? Call us</span>
-<p><a href="tel:+916396704602"> +91 6396704602</a> <br> <a href="https://wa.me/+919928717073" target="_blank">+91 9928717073</a></p>
 </div>
 <ul>
 <li>
@@ -77,7 +100,7 @@
 <path d="M1 8.19922H3.4" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
 </div>
-<div class="tt-content"><a href="mailto:contact@@shop.com">contact@@shop.com</a>
+<div class="tt-content"><a href="mailto:support@@ebigcart.com">support@@ebigcart.com</a>
 </div>
  </li>
 
@@ -89,7 +112,6 @@
 </svg>
 </div>
 <div class="tt-content">
-<a href="https://share.google/SUjeFfoFiQRPkrUlU" target="_blank"> 3rd Floor Malwa Towers, A-13 &amp; 37, Hanuman Nagar, Jaipur, Rajasthan 302021</a> 
 </div>
 </li>
  </ul></div></section>
@@ -103,8 +125,7 @@
 	
         <div class="copyright">
 
-            Copyright Â©
-            2026, Shop, All rights reserved.
+            Copyright &copy; 2026 Ebigcart. All rights reserved.
 
         </div>
 		

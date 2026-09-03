@@ -810,13 +810,6 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="container">
         <div class="reel-grid owl-carousel owl-carousel-video-testimonials owl-loaded owl-drag">
             
-            
-            
-            
-            
-            
-            
-            
       <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1250px, 0px, 0px); transition: all; width: 5003px;"><div class="owl-item cloned" style="width: 296.668px; margin-right: 16px;"><div class="reel-item">
               <video src="#/wp-content/themes/mahashringar/assets/videos/video-testi-5.mp4" playsinline="" loop=""></video>
               <button class="reel-play" aria-label="Play reel">â–¶</button>

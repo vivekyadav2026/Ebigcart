@@ -32,42 +32,41 @@
                 <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-3 mb-3">
                     @foreach($products as $product)
                     <div class="col" data-product>
-                      <div class="pl-product-card">
-                        <div class="pl-product-img-wrap">
-                          <!-- Tags Overlay -->
+                                            <div class="rs-product-card" style="height: 100%;">
+                        <div class="rs-card-img-box">
                           @if($product->sale_price)
-                            <div class="pl-card-tags">
-                              @php
-                                $discount = round((($product->price - $product->sale_price) / $product->price) * 100);
-                              @endphp
-                              <span class="pl-tag pl-tag-sale">{{ $discount }}% OFF</span>
-                            </div>
+                              <span class="rs-card-badge">SALE</span>
                           @endif
                           @if($product->quantity <= 0)
-                            <div class="pl-card-tags" style="top:auto;bottom:8px;left:8px;right:auto;">
-                              <span class="pl-tag" style="background:#ef4444;color:#fff;">Out of Stock</span>
-                            </div>
+                              <span class="rs-card-badge" style="background:#ef4444; top:auto; bottom:8px;">OUT OF STOCK</span>
                           @endif
-                          <button class="pl-wishlist-btn" data-wishlist-product-id="{{ $product->id }}" onclick="PL.toggleWishlist('{{ $product->id }}')"><i class="bi bi-heart-fill text-danger"></i></button>
-                          <a href="{{ route('product.show', $product->slug) }}"><img src="{{ $product->primary_image_url }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: contain;"></a>
+                          <button class="rs-wishlist-heart" style="border:none; cursor:pointer; color:#ff4757;" onclick="PL.toggleWishlist('{{ $product->id }}')"><i class="bi bi-heart-fill"></i></button>
+                          <a href="{{ route('product.show', $product->slug) }}">
+                            <img src="{{ $product->primary_image_url }}" alt="{{ $product->name }}" loading="lazy">
+                          </a>
                         </div>
-                        <div class="pl-product-body">
-                          <a href="{{ route('product.show', $product->slug) }}" class="pl-product-title" title="{{ $product->name }}">{{ $product->name }}</a>
-                          <div class="pl-product-price">&#8377;{{ number_format($product->sale_price ?? $product->price, 2) }}
+                        <div class="rs-card-body">
+                          <a href="{{ route('product.show', $product->slug) }}" class="rs-card-title">{{ $product->name }}</a>
+                          <div class="rs-card-price">
                             @if($product->sale_price)
-                              <span class="pl-old">&#8377;{{ number_format($product->price, 2) }}</span>
+                              <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ number_format($product->sale_price, 2) }}</bdi></span>
+                              <span class="rs-card-price-old">₹{{ number_format($product->price, 2) }}</span>
+                            @else
+                              <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ number_format($product->price, 2) }}</bdi></span>
                             @endif
                           </div>
-                          <div class="mt-auto d-flex gap-2">
+                          <div class="rs-card-actions">
                             @if($product->quantity > 0)
-                              <button class="pl-btn-outline text-center flex-grow-1 py-2" onclick="PL.buyNow('{{ $product->id }}')">Buy Now</button>
-                              <button class="btn btn-pl-primary px-3 d-flex align-items-center justify-content-center" style="border-radius:8px;" onclick="PL.addToCartById('{{ $product->id }}')"><i class="bi bi-cart-plus"></i></button>
+                              <button class="rs-btn-buynow" style="cursor:pointer;" onclick="PL.buyNow('{{ $product->id }}')">Buy Now</button>
+                              <button class="rs-btn-carticon" style="cursor:pointer;" onclick="PL.addToCartById('{{ $product->id }}')"><i class="bi bi-cart-plus-fill"></i></button>
                             @else
-                              <button class="btn w-100 py-2" style="border-radius:8px;background:#f1f5f9;color:#94a3b8;border:1px solid #e2e8f0;font-size:0.75rem;font-weight:700;cursor:not-allowed;" disabled><i class="bi bi-x-circle me-1"></i> Out of Stock</button>
+                              <button class="rs-btn-buynow" style="background:#f1f5f9;color:#94a3b8;cursor:not-allowed;" disabled>Out of Stock</button>
                             @endif
                           </div>
                         </div>
                       </div>
+</div>
+
                     </div>
                     @endforeach
                 </div>
