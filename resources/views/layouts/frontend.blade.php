@@ -73,13 +73,7 @@
             overflow: hidden !important;
             padding: 6px !important;
         }
-        .rs-card-img-box a {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 100% !important;
-            height: 100% !important;
-        }
+    
         .rs-card-img-box img {
             max-width: 100% !important;
             max-height: 100% !important;
