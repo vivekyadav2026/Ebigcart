@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+﻿@extends('layouts.frontend')
 
 @section('content')
 
@@ -647,8 +647,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <!-- End Shop Banner -->
 
-<section class="testimonials">
-  <h2 class="section-title">✨ Video Testimonials ✨</h2>
+<section class="testimonials"><h2 class="section-title" style="font-size: 1.8rem; text-align: center; margin: 30px 0; font-weight: 700; color: #b71c1c;">&#10024; LOVED BY DEVOTEES &#10024;</h2>
 <div class="container">
   <div class="owl-carousel owl-carousel-testimonials owl-loaded owl-drag">
     
@@ -807,7 +806,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </section>
 
 <section class="video-testi">
-    <h2 class="section-title">✨ Video Testimonials ✨</h2>
+    <h2 class="section-title" style="font-size: 1.5rem; text-align: center; margin: 30px 0;">&#10024; Customer Video Reviews &#10024;</h2>
     <div class="container">
         <div class="reel-grid owl-carousel owl-carousel-video-testimonials owl-loaded owl-drag">
             
