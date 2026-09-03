@@ -648,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- End Shop Banner -->
 
 <section class="testimonials">
-  <h2 class="section-title">LOVED BY DEVOTEES</h2>
+  <h2 class="section-title">✨ Video Testimonials ✨</h2>
 <div class="container">
   <div class="owl-carousel owl-carousel-testimonials owl-loaded owl-drag">
     
@@ -659,7 +659,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1852px, 0px, 0px); transition: 0.25s; width: 3705px;"><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
       </p>
@@ -671,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
       </p>
@@ -683,7 +683,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "Timely delivery and excellent customer service. Highly recommended!"
       </p>
@@ -695,7 +695,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to MahaShingar!"
       </p>
@@ -707,7 +707,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
       </p>
@@ -719,7 +719,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
       </p>
@@ -731,7 +731,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "Timely delivery and excellent customer service. Highly recommended!"
       </p>
@@ -743,7 +743,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to MahaShingar!"
       </p>
@@ -755,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
       </p>
@@ -767,7 +767,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
       </p>
@@ -779,7 +779,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "Timely delivery and excellent customer service. Highly recommended!"
       </p>
@@ -791,7 +791,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
     </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="review">
         "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to MahaShingar!"
       </p>
@@ -807,7 +807,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </section>
 
 <section class="video-testi">
-    <h2 class="section-title">à¤­à¤•à¥à¤¤à¥‹à¤‚ à¤•à¤¾ à¤ªà¥à¤¯à¤¾à¤°</h2>
+    <h2 class="section-title">✨ Video Testimonials ✨</h2>
     <div class="container">
         <div class="reel-grid owl-carousel owl-carousel-video-testimonials owl-loaded owl-drag">
             
@@ -973,51 +973,6 @@ document.addEventListener('click', function (event) {
         </div>
     </div>
 </div>
-
-<div class="bottom-banner">
-    <div class="desktop-hero"><img src="/mahashringar_assets/bottom-banner-desktop.jpg" width="1920" height="1080" alt="bottom-banner"></div>
-    <div class="mobile-hero"><img src="/mahashringar_assets/bottom-banner-mobile.jpg" width="1920" height="1080" alt="mobile-banner"></div>
-</div>
-
-<div class="newsletter-sub relative overflow-hid d-flex aic"> 
- <div class="relative overflow-hid d-flex aic">
-	<div class=" d-grid grid-2 aic container ">
-	<div>
-	
-    <h2>Stay Connected with Divine Elegance!</h2>
-	<p style="margin-top: 15px;">
-	    Subscribe to our newsletter for the latest Laddu Gopal dress designs, stunning jewellery collections, and exclusive blogs
-	</p>
-    </div>
-	
-    <script>(function() {
-	window.mc4wp = window.mc4wp || {
-		listeners: [],
-		forms: {
-			on: function(evt, cb) {
-				window.mc4wp.listeners.push(
-					{
-						event   : evt,
-						callback: cb
-					}
-				);
-			}
-		}
-	}
-})();
-</script><!-- Mailchimp for WordPress v4.14.0 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-13142" method="post" data-id="13142" data-name="newsletter-ms"><div class="mc4wp-form-fields"><p>
- 
-		<input type="email" id="email" name="EMAIL" placeholder="Your e-mail address" required="" class="input-mc-ms">
-
-</p>
-
-<p>
-	<input type="submit" value="Sign up" class="submit-mc-ms">
-</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1788355944"><input type="hidden" name="_mc4wp_form_id" value="13142"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"></div></form><!-- / Mailchimp for WordPress Plugin -->	
- </div>
-	 </div>
-	</div>
-<!--footer -->
 
 
 @endsection
