@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <ul class="products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0;">
     @foreach($bestSellers as $product)
         <li style="list-style:none;">
-            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
+            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon, .rs-btn-buynow')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
                 <div class="rs-card-img-box">
                     @if($product->sale_price)
                         <span class="rs-card-badge">SALE</span>
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         @endif
                     </div>
                     <div class="rs-card-actions">
-                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-buynow">Buy Now</a>
+                        <button type="button" class="rs-btn-buynow" style="border:none; cursor:pointer;" onclick="Ebigcart.buyNow('{{ $product->id }}', 1, event)">Buy Now</button>
                         <button type="button" class="rs-btn-carticon" style="border:none; cursor:pointer;" onclick="Ebigcart.addToCart('{{ $product->id }}', 1, event)" title="Add to Cart"><i class="bi bi-cart-plus-fill"></i></button>
                     </div>
                 </div>
@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <h2 class="site-title" style="color: #b71c1c;">Deal of the Week</h2>
         <p class="mini-discription">Don't miss out on this week's special offer!</p>
         <div class="deal-product" style="max-width: 400px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $dealOfWeek->slug) }}';" style="cursor: pointer; border: none;">
+            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon, .rs-btn-buynow')) window.location.href='{{ route('product.show', $dealOfWeek->slug) }}';" style="cursor: pointer; border: none;">
                 <div class="rs-card-img-box" style="height: 250px;">
                     <a href="{{ route('product.show', $dealOfWeek->slug) }}">
                         <img src="{{ asset($dealOfWeek->primary_image_url) }}" alt="{{ $dealOfWeek->name }}" style="max-height: 250px; object-fit: contain;">
@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         @endif
                     </div>
                     <div class="rs-card-actions" style="justify-content: center;">
-                        <a href="{{ route('product.show', $dealOfWeek->slug) }}" class="rs-btn-buynow" style="width: 100%; max-width: 200px;">Shop Now</a>
+                        <button type="button" class="rs-btn-buynow" style="width: 100%; max-width: 200px; border:none; cursor:pointer;" onclick="Ebigcart.buyNow('{{ $dealOfWeek->id }}', 1, event)">Shop Now</button>
                     </div>
                 </div>
             </div>
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <ul class="products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0;">
     @foreach($featuredProducts as $product)
         <li style="list-style:none;">
-            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
+            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon, .rs-btn-buynow')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
                 <div class="rs-card-img-box">
                     @if($product->sale_price)
                         <span class="rs-card-badge">SALE</span>
@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         @endif
                     </div>
                     <div class="rs-card-actions">
-                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-buynow">Buy Now</a>
+                        <button type="button" class="rs-btn-buynow" style="border:none; cursor:pointer;" onclick="Ebigcart.buyNow('{{ $product->id }}', 1, event)">Buy Now</button>
                         <button type="button" class="rs-btn-carticon" style="border:none; cursor:pointer;" onclick="Ebigcart.addToCart('{{ $product->id }}', 1, event)" title="Add to Cart"><i class="bi bi-cart-plus-fill"></i></button>
                     </div>
                 </div>

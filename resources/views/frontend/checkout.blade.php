@@ -83,79 +83,41 @@
             <div class="flex flex-col lg:flex-row gap-5 lg:gap-8">
                 <!-- Shipping details form -->
                 <div class="w-full lg:w-2/3">
-                    <h2 class="text-base font-bold text-gray-900 mb-3 pb-1.5 border-b border-gray-100 flex items-center gap-2" style="font-family: 'Outfit', sans-serif;">
-                        <span class="inline-block w-1 h-4 bg-primary rounded-full"></span>
-                        Delivery Options
-                    </h2>
-
-                    <!-- Delivery Type Options -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                        <label class="flex items-center p-3 border rounded-xl cursor-pointer hover:bg-primary/5 transition shadow-sm relative"
-                               :class="deliveryType === 'online_delivery' ? 'border-primary bg-primary/5' : 'border-gray-200 bg-white'">
-                            <input type="radio" name="delivery_type" value="online_delivery" x-model="deliveryType" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 cursor-pointer">
-                            <div class="ml-2.5">
-                                <span class="font-bold text-gray-900 text-xs block">Online Delivery</span>
-                                <span class="text-[10px] text-gray-400">Shipped directly to your address</span>
-                            </div>
-                            <div class="ms-auto text-primary opacity-60">
-                                <i class="fa-solid fa-truck-fast text-base"></i>
-                            </div>
-                        </label>
-                        <label class="flex items-center p-3 border rounded-xl cursor-pointer hover:bg-primary/5 transition shadow-sm relative"
-                               :class="deliveryType === 'self_pickup' ? 'border-primary bg-primary/5' : 'border-gray-200 bg-white'">
-                            <input type="radio" name="delivery_type" value="self_pickup" x-model="deliveryType" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 cursor-pointer">
-                            <div class="ml-2.5">
-                                <span class="font-bold text-gray-900 text-xs block">Self Pickup</span>
-                                <span class="text-[10px] text-gray-400">Pick up from our warehouse</span>
-                            </div>
-                            <div class="ms-auto text-primary opacity-60">
-                                <i class="fa-solid fa-house-chimney text-base"></i>
-                            </div>
-                        </label>
-                    </div>
+                    <!-- Hidden field for delivery_type -->
+                    <input type="hidden" name="delivery_type" value="online_delivery">
 
                     <h2 class="text-base font-bold text-gray-900 mb-3 pb-1.5 border-b border-gray-100 flex items-center gap-2" style="font-family: 'Outfit', sans-serif;">
                         <span class="inline-block w-1 h-4 bg-primary rounded-full"></span>
                         Customer & Contact Info
                     </h2>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2.5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                         <div>
                             <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" name="shipping_name" value="{{ old('shipping_name', auth()->check() ? auth()->user()->name : '') }}" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200">
+                            <input type="text" name="shipping_name" value="{{ old('shipping_name', auth()->check() ? auth()->user()->name : '') }}" required class="w-full bg-white border @error('shipping_name') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Full Name">
+                            @error('shipping_name')
+                                <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Email Address <span class="text-red-500">*</span></label>
-                            <input type="email" name="shipping_email" value="{{ old('shipping_email', auth()->check() ? auth()->user()->email : '') }}" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200">
+                            <input type="email" name="shipping_email" value="{{ old('shipping_email', auth()->check() ? auth()->user()->email : '') }}" required class="w-full bg-white border @error('shipping_email') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Email Address">
+                            @error('shipping_email')
+                                <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2.5">
-                        <div class="mb-2.5">
-                            <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone Number <span class="text-red-500">*</span></label>
-                            <input type="text" name="shipping_phone" value="{{ old('shipping_phone', auth()->check() ? auth()->user()->phone : '') }}" required class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="+1 (555) 000-0000">
-                        </div>
-                        <div x-show="deliveryType === 'online_delivery'">
-                            <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">ZIP / Postal Code <span class="text-red-500">*</span></label>
-                            <input type="text" name="shipping_zip" value="{{ old('shipping_zip', auth()->check() ? auth()->user()->zip : '') }}" :required="deliveryType === 'online_delivery'" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200">
-                        </div>
+                    <div class="mb-3">
+                        <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone Number <span class="text-red-500">*</span></label>
+                        <input type="text" name="shipping_phone" value="{{ old('shipping_phone', auth()->check() ? auth()->user()->phone : '') }}" required class="w-full bg-white border @error('shipping_phone') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Phone Number">
+                        @error('shipping_phone')
+                            <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <!-- Warehouse Address details if self pickup is active -->
-                    <div x-show="deliveryType === 'self_pickup'" class="mb-4 p-4 bg-amber-50/60 border border-amber-200 rounded-xl space-y-2 text-xs text-amber-900">
-                        <div class="font-bold flex items-center gap-1.5 text-amber-950">
-                            <i class="fa-solid fa-location-dot text-amber-700"></i> Pickup Warehouse Address
-                        </div>
-                        <p class="font-medium text-slate-700 leading-relaxed">
-                            <strong>Pickup Address:</strong> {{ \App\Models\Setting::get('site_address', '12800 Northborough Dr, Houston, TX 77067') }}<br>
-                            <strong>Phone Support:</strong> {{ \App\Models\Setting::get('site_phone', '+1 (713) 555-0199') }}<br>
-                            <strong>Email:</strong> {{ \App\Models\Setting::get('site_email', 'Papperlemon1@gmail.com') }}
-                        </p>
-                        <p class="text-[10px] text-slate-500 italic mt-1">Please bring your order ID and invoice when picking up your products.</p>
-                    </div>
-
-                    <!-- Shipping details if delivery is active -->
-                    <div x-show="deliveryType === 'online_delivery'" class="space-y-2.5">
+                    <!-- Shipping details -->
+                    <div class="space-y-3 mb-4">
                         @auth
                             @php
                                 $userAddresses = auth()->user()->addresses;
@@ -189,73 +151,50 @@
                             @endif
                         @endauth
 
-                        <div x-show="selectedAddressId === 'new'" class="space-y-2.5">
-                            <div class="mb-2.5">
+                        <div x-show="selectedAddressId === 'new'" class="space-y-3">
+                            <div>
                                 <div class="flex justify-between items-center mb-1">
                                     <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Flat / House No. / Building <span class="text-red-500">*</span></label>
-                                    <button type="button" id="detect-location-btn" class="text-[9px] text-primary bg-primary/5 hover:bg-primary/10 border border-primary/10 rounded-full px-2 py-0.5 font-semibold flex items-center gap-1 cursor-pointer transition">
+                                    <button type="button" id="detect-location-btn" class="text-[9px] text-primary bg-primary/5 hover:bg-primary/10 border border-primary/10 rounded-full px-2.5 py-1 font-semibold flex items-center gap-1 cursor-pointer transition">
                                         <i class="fa-solid fa-location-crosshairs"></i> Auto-Detect
                                     </button>
                                 </div>
-                                <input type="text" name="shipping_address" value="{{ old('shipping_address', $address1) }}" :required="deliveryType === 'online_delivery' && selectedAddressId === 'new'" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="e.g. 1234 Main St, Apt 5B">
+                                <input type="text" name="shipping_address" value="{{ old('shipping_address', $address1) }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_address') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="e.g. 1234 Main St, Apt 5B">
+                                @error('shipping_address')
+                                    <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                                @enderror
                             </div>
 
-                            <div class="mb-2.5">
+                            <div>
                                 <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Area / Colony / Street / Landmark</label>
-                                <input type="text" name="shipping_address2" value="{{ old('shipping_address2', $address2) }}" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="e.g. Sector 12, near Kali Temple, Dwarka">
+                                <input type="text" name="shipping_address2" value="{{ old('shipping_address2', $address2) }}" class="w-full bg-white border @error('shipping_address2') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="e.g. Sector 12, near Kali Temple, Dwarka">
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2.5">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                                 <div>
                                     <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">City <span class="text-red-500">*</span></label>
-                                    <input type="text" name="shipping_city" value="{{ old('shipping_city', auth()->check() ? auth()->user()->city : '') }}" :required="deliveryType === 'online_delivery' && selectedAddressId === 'new'" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200">
+                                    <input type="text" name="shipping_city" value="{{ old('shipping_city', auth()->check() ? auth()->user()->city : '') }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_city') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="City">
+                                    @error('shipping_city')
+                                        <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div>
-                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">State / Zip <span class="text-red-500">*</span></label>
-                                    <div class="grid grid-cols-2 gap-1.5">
-                                        <input type="text" name="shipping_state" value="{{ old('shipping_state', auth()->check() ? auth()->user()->state : '') }}" :required="deliveryType === 'online_delivery' && selectedAddressId === 'new'" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200 uppercase" placeholder="TX">
-                                        <input type="text" name="shipping_zip" value="{{ old('shipping_zip', auth()->check() ? auth()->user()->zip : '') }}" :required="deliveryType === 'online_delivery' && selectedAddressId === 'new'" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="77067">
-                                    </div>
+                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">State <span class="text-red-500">*</span></label>
+                                    <input type="text" name="shipping_state" value="{{ old('shipping_state', auth()->check() ? auth()->user()->state : '') }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_state') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200 uppercase" placeholder="State">
+                                    @error('shipping_state')
+                                        <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">ZIP / Postal Code <span class="text-red-500">*</span></label>
+                                    <input type="text" name="shipping_zip" value="{{ old('shipping_zip', auth()->check() ? auth()->user()->zip : '') }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_zip') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Pincode / ZIP">
+                                    @error('shipping_zip')
+                                        <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
                             @auth
-                                <!-- Document Uploads at add address time -->
-                                <div class="bg-slate-50 p-3.5 border border-slate-100 rounded-xl space-y-2.5 mt-2">
-                                     <h4 class="font-extrabold text-slate-800 text-[9px] uppercase tracking-wider pb-1.5 border-b border-slate-200/75 flex items-center gap-1">
-                                         <i class="fa-solid fa-shield-halved text-primary"></i> Verification Documents (Optional)
-                                     </h4>
-                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                         <div class="space-y-1">
-                                             <label class="block text-[9px] font-bold text-gray-500 uppercase tracking-wider">Driving License (Optional)</label>
-                                             <div class="relative flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-xl bg-white p-3 hover:bg-gray-50/50 transition cursor-pointer">
-                                                 <input type="file" name="driving_license" accept=".pdf,.jpg,.jpeg,.png"
-                                                        class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                                                        onchange="document.getElementById('checkout-dl-file-name').innerText = this.files[0] ? this.files[0].name : 'Upload File'; document.getElementById('checkout-dl-icon').className = this.files[0] ? 'fa-solid fa-circle-check text-emerald-500 text-base mb-1' : 'fa-solid fa-cloud-arrow-up text-primary text-base mb-1';">
-                                                 <div class="text-center pointer-events-none">
-                                                     <i class="fa-solid fa-cloud-arrow-up text-primary text-base mb-1" id="checkout-dl-icon"></i>
-                                                     <p class="text-[10px] font-bold text-gray-700 uppercase" id="checkout-dl-file-name">Upload File</p>
-                                                     <span class="text-[8px] text-gray-400 block mt-0.5">PDF, JPG, PNG up to 5MB</span>
-                                                 </div>
-                                             </div>
-                                         </div>
-
-                                         <div class="space-y-1">
-                                             <label class="block text-[9px] font-bold text-gray-500 uppercase tracking-wider">Sales Tax Permit (Optional)</label>
-                                             <div class="relative flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-xl bg-white p-3 hover:bg-gray-50/50 transition cursor-pointer">
-                                                 <input type="file" name="sales_tax_permit" accept=".pdf,.jpg,.jpeg,.png"
-                                                        class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                                                        onchange="document.getElementById('checkout-st-file-name').innerText = this.files[0] ? this.files[0].name : 'Upload File'; document.getElementById('checkout-st-icon').className = this.files[0] ? 'fa-solid fa-circle-check text-emerald-500 text-base mb-1' : 'fa-solid fa-cloud-arrow-up text-primary text-base mb-1';">
-                                                 <div class="text-center pointer-events-none">
-                                                     <i class="fa-solid fa-cloud-arrow-up text-primary text-base mb-1" id="checkout-st-icon"></i>
-                                                     <p class="text-[10px] font-bold text-gray-700 uppercase" id="checkout-st-file-name">Upload File</p>
-                                                     <span class="text-[8px] text-gray-400 block mt-0.5">PDF, JPG, PNG up to 5MB</span>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-
                                 <!-- Set default checkbox -->
                                 <div class="flex items-center gap-2 pt-1">
                                     <input type="checkbox" name="is_default" id="is_default" value="1" class="rounded border-gray-300 text-primary focus:ring-primary/25 h-3.5 w-3.5 cursor-pointer">

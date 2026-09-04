@@ -107,7 +107,7 @@
                 </div>
 
                 <!-- Buy Now Direct Checkout Button -->
-                <button type="button" onclick="Ebigcart.addToCart('{{ $product->id }}', parseInt(document.getElementById('productQty').value), event); setTimeout(function(){ window.location.href='/checkout'; }, 500);" style="width: 100%; background: #d35400; color: #fff; border: none; padding: 13px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(211,84,0,0.25); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <button type="button" onclick="Ebigcart.buyNow('{{ $product->id }}', parseInt(document.getElementById('productQty').value), event);" style="width: 100%; background: #d35400; color: #fff; border: none; padding: 13px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(211,84,0,0.25); display: flex; align-items: center; justify-content: center; gap: 8px;">
                     <i class="bi bi-lightning-charge-fill"></i> Buy It Now
                 </button>
             </div>
@@ -187,7 +187,7 @@
             </h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
                 @foreach($relatedProducts as $relProduct)
-                    <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $relProduct->slug) }}';" style="cursor: pointer;">
+                    <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon, .rs-btn-buynow')) window.location.href='{{ route('product.show', $relProduct->slug) }}';" style="cursor: pointer;">
                         <div class="rs-card-img-box">
                             @if($relProduct->sale_price)
                                 <span class="rs-card-badge">SALE</span>
@@ -211,7 +211,7 @@
                                 @endif
                             </div>
                             <div class="rs-card-actions">
-                                <a href="{{ route('product.show', $relProduct->slug) }}" class="rs-btn-buynow">Buy Now</a>
+                                <button type="button" class="rs-btn-buynow" style="border:none; cursor:pointer;" onclick="Ebigcart.buyNow('{{ $relProduct->id }}', 1, event)">Buy Now</button>
                                 <button type="button" class="rs-btn-carticon" style="border:none; cursor:pointer;" onclick="Ebigcart.addToCart('{{ $relProduct->id }}', 1, event)" title="Add to Cart">
                                     <i class="bi bi-cart-plus-fill"></i>
                                 </button>

@@ -7,6 +7,12 @@
     <title>Ebigcart - Buy Best Laddu Gopal Dresses, Accessories and Ornaments</title>
     <meta name="description" content="Explore beautiful Laddu Gopal dresses and accessories to adorn your divine idol with elegance and charm. Shop the best selection today!">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/ebigcart_logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/ebigcart_logo.png') }}">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { 
@@ -334,6 +340,31 @@
             .catch(err => {
                 console.error(err);
                 this.showToast('Error adding to cart.', 'error');
+            });
+        },
+
+        buyNow: function(productId, quantity, event) {
+            if (event) event.preventDefault();
+            quantity = quantity || 1;
+            fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': this.csrfToken
+                },
+                body: JSON.stringify({ product_id: productId, quantity: quantity })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/checkout';
+                } else {
+                    this.showToast(data.message || 'Could not add to cart.', 'error');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                this.showToast('Error processing request.', 'error');
             });
         },
 

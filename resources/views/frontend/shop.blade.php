@@ -127,7 +127,7 @@
                 <ul class="products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0;">
                     @foreach($products as $product)
                         <li class="product" style="list-style:none;">
-                            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
+                            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon, .rs-btn-buynow')) window.location.href='{{ route('product.show', $product->slug) }}';" style="cursor: pointer;">
                                 <div class="rs-card-img-box">
                                     @if($product->sale_price)
                                         <span class="rs-card-badge">SALE</span>
@@ -148,7 +148,7 @@
                                         @endif
                                     </div>
                                     <div class="rs-card-actions">
-                                        <a href="{{ route('product.show', $product->slug) }}" class="rs-btn-buynow">Buy Now</a>
+                                        <button type="button" class="rs-btn-buynow" style="border:none; cursor:pointer;" onclick="Ebigcart.buyNow('{{ $product->id }}', 1, event)">Buy Now</button>
                                         <button type="button" class="rs-btn-carticon" style="border:none; cursor:pointer;" onclick="Ebigcart.addToCart('{{ $product->id }}', 1, event)" title="Add to Cart"><i class="bi bi-cart-plus-fill"></i></button>
                                     </div>
                                 </div>
