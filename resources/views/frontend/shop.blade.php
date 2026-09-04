@@ -41,17 +41,49 @@
                             <a href="{{ route('shop') }}" style="font-size: 0.75rem; color: #b71c1c; text-decoration: underline;">Clear</a>
                         @endif
                     </h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; max-height: 220px; overflow-y: auto;">
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; max-height: 320px; overflow-y: auto; padding-right: 4px;">
                         @foreach($categories as $cat)
                             @php
-                                $isChecked = (isset($selectedCategories) && in_array($cat->id, $selectedCategories)) || (request('cat') == $cat->slug);
+                                $isCatChecked = (isset($selectedCategories) && in_array($cat->id, $selectedCategories)) || (request('cat') == $cat->slug);
                             @endphp
-                            <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #444;">
-                                <div style="display: flex; align-items: center; gap: 8px;">
-                                    <input type="checkbox" name="categories[]" value="{{ $cat->id }}" {{ $isChecked ? 'checked' : '' }} onchange="this.form.submit()" style="width: 16px; height: 16px; accent-color: #b71c1c; cursor: pointer;">
-                                    <span style="{{ $isChecked ? 'font-weight: 700; color: #b71c1c;' : '' }}">{{ $cat->name }}</span>
-                                </div>
-                            </label>
+                            <div style="margin-bottom: 4px;">
+                                <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #1e293b; font-weight: 700;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <input type="checkbox" name="categories[]" value="{{ $cat->id }}" {{ $isCatChecked ? 'checked' : '' }} onchange="this.form.submit()" style="width: 15px; height: 15px; accent-color: #b71c1c; cursor: pointer;">
+                                        <span style="{{ $isCatChecked ? 'color: #b71c1c;' : '' }}">{{ $cat->name }}</span>
+                                    </div>
+                                </label>
+
+                                @if($cat->children && $cat->children->count() > 0)
+                                    <div style="padding-left: 18px; margin-top: 4px; display: flex; flex-direction: column; gap: 4px;">
+                                        @foreach($cat->children as $child)
+                                            @php
+                                                $isChildChecked = (isset($selectedCategories) && in_array($child->id, $selectedCategories)) || (request('cat') == $child->slug);
+                                            @endphp
+                                            <div>
+                                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: #475569; font-size: 0.8rem; font-weight: 600;">
+                                                    <input type="checkbox" name="categories[]" value="{{ $child->id }}" {{ $isChildChecked ? 'checked' : '' }} onchange="this.form.submit()" style="width: 14px; height: 14px; accent-color: #b71c1c; cursor: pointer;">
+                                                    <span style="{{ $isChildChecked ? 'color: #b71c1c; font-weight: 700;' : '' }}">{{ $child->name }}</span>
+                                                </label>
+
+                                                @if($child->children && $child->children->count() > 0)
+                                                    <div style="padding-left: 14px; margin-top: 2px; display: flex; flex-direction: column; gap: 2px;">
+                                                        @foreach($child->children as $subChild)
+                                                            @php
+                                                                $isSubChecked = (isset($selectedCategories) && in_array($subChild->id, $selectedCategories)) || (request('cat') == $subChild->slug);
+                                                            @endphp
+                                                            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: #64748b; font-size: 0.75rem;">
+                                                                <input type="checkbox" name="categories[]" value="{{ $subChild->id }}" {{ $isSubChecked ? 'checked' : '' }} onchange="this.form.submit()" style="width: 13px; height: 13px; accent-color: #b71c1c; cursor: pointer;">
+                                                                <span style="{{ $isSubChecked ? 'color: #b71c1c; font-weight: 700;' : '' }}">{{ $subChild->name }}</span>
+                                                            </label>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
                         @endforeach
                     </div>
                 </div>

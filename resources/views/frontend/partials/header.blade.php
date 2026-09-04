@@ -1,5 +1,5 @@
 @php
-    $headerCategories = \App\Models\Category::where('is_active', true)->get();
+    $headerCategories = \App\Models\Category::parents()->with('children.children')->where('is_active', true)->get();
 @endphp
 <header class="ranisahab-header">
   <style>
@@ -37,25 +37,155 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     .rs-badge { position: absolute; top: -7px; left: 10px; background: #b71c1c; color: #fff; font-size: 0.65rem; font-weight: 800; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1.5px solid #fff; }
 
     /* Bottom Navigation Bar */
-    .rs-nav-bar { background: #ffffff; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; }
+    .rs-nav-bar { background: #ffffff; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; position: relative; z-index: 900; }
     .rs-nav-list { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; max-width: 1500px; margin: 0 auto; }
-    .rs-nav-item { display: flex; align-items: center; }
-    .rs-nav-item .sep { color: #b71c1c; font-size: 0.65rem; opacity: 0.5; padding: 0 12px; }
-    .rs-nav-link { color: #333333; font-size: 0.85rem; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 1px; padding: 8px 0; transition: all 0.3s ease; position: relative; }
-    .rs-nav-link:hover, .rs-nav-link.active { color: #b71c1c; }
+    .rs-nav-item { display: flex; align-items: center; position: relative; }
+    .rs-nav-item .sep { color: #b71c1c; font-size: 0.65rem; opacity: 0.5; padding: 0 10px; }
+    .rs-nav-link { color: #333333; font-size: 0.82rem; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.8px; padding: 10px 0; transition: all 0.2s ease; position: relative; display: flex; align-items: center; gap: 4px; }
+    .rs-nav-link:hover, .rs-nav-item:hover > .rs-nav-link, .rs-nav-link.active { color: #b71c1c; }
     .rs-nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #b71c1c; }
 
-    /* Mobile Drawer & Controls */
+    /* Dropdown & Mega Menu */
+    .rs-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: #ffffff;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+        min-width: 220px;
+        padding: 12px 0;
+        pointer-events: none;
+    }
+    .rs-nav-item:hover > .rs-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Mega Menu specifically for Laddu Gopal (Multi-column) */
+    .rs-mega-menu {
+        min-width: 780px !important;
+        padding: 20px 24px !important;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important;
+    }
+    .rs-mega-col-title {
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: #b71c1c;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding-bottom: 6px;
+        margin-bottom: 8px;
+        border-bottom: 1.5px solid #fee2e2;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none !important;
+    }
+    .rs-mega-col-title:hover {
+        color: #8e1515;
+    }
+    .rs-mega-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .rs-mega-item a {
+        color: #475569;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none !important;
+        padding: 3px 0;
+        display: block;
+        transition: all 0.15s ease;
+    }
+    .rs-mega-item a:hover {
+        color: #b71c1c;
+        padding-left: 4px;
+    }
+
+    /* Standard Single Column Dropdown */
+    .rs-simple-menu {
+        list-style: none;
+        padding: 6px 0;
+        margin: 0;
+    }
+    .rs-simple-item a {
+        color: #334155;
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-decoration: none !important;
+        padding: 8px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+    }
+    .rs-simple-item a:hover {
+        background: #fdf2f2;
+        color: #b71c1c;
+        padding-left: 22px;
+    }
+
+    /* Mobile Drawer */
     .rs-mobile-toggle { display: none; background: none; border: 1px solid #b71c1c; color: #b71c1c; border-radius: 4px; padding: 4px 10px; cursor: pointer; align-items: center; gap: 5px; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; flex: 1; max-width: 90px; justify-content: flex-start; }
     .rs-mobile-toggle i { font-size: 1.4rem; }
     .rs-mobile-search-icon { display: none !important; }
     
-    .rs-mobile-drawer { display: none; background: #ffffff; border-top: 1px solid #eee; padding: 15px 20px; }
+    .rs-mobile-drawer { display: none; background: #ffffff; border-top: 1px solid #eee; padding: 15px 20px; max-height: 80vh; overflow-y: auto; }
     .rs-mobile-drawer.active { display: block; }
     .rs-mobile-drawer ul { list-style: none; padding: 0; margin: 0; }
-    .rs-mobile-drawer li { margin-bottom: 12px; }
-    .rs-mobile-drawer a { color: #333; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 700; display: block; }
+    .rs-mobile-drawer li { margin-bottom: 8px; }
+    .rs-mobile-drawer a { color: #333; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 700; display: block; }
     .rs-mobile-drawer a:hover { color: #b71c1c; }
+
+    .rs-mobile-accordion {
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 8px;
+    }
+    .rs-mobile-acc-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 6px 0;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #1e293b;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .rs-mobile-sublist {
+        padding-left: 14px;
+        margin-top: 6px;
+        display: none;
+    }
+    .rs-mobile-sublist.open {
+        display: block;
+    }
+    .rs-mobile-sublist a {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #64748b;
+        padding: 4px 0;
+        text-transform: capitalize;
+    }
 
     @media (max-width: 768px) {
       .rs-top-bar {
@@ -151,7 +281,7 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     </div>
   </div>
 
-  <!-- Bottom Navigation Bar (Dynamic Categories) -->
+  <!-- Bottom Navigation Bar (Dynamic Hierarchical Categories) -->
   <div class="rs-nav-bar">
     <ul class="rs-nav-list">
       <li class="rs-nav-item">
@@ -167,7 +297,52 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
           <span class="sep">✦</span>
           <a href="{{ route('shop', ['cat' => $hCat->slug]) }}" class="rs-nav-link {{ request('cat') == $hCat->slug ? 'active' : '' }}">
             {{ strtoupper($hCat->name) }}
+            @if($hCat->children && $hCat->children->count() > 0)
+              <i class="bi bi-chevron-down" style="font-size: 0.65rem; opacity: 0.7; margin-left: 2px;"></i>
+            @endif
           </a>
+
+          @if($hCat->children && $hCat->children->count() > 0)
+            @if($hCat->children->where('children', '!=', null)->count() > 0 && $hCat->slug === 'laddu-gopal')
+              <!-- Multi-column Mega Menu for Laddu Gopal -->
+              <div class="rs-dropdown rs-mega-menu">
+                @foreach($hCat->children as $child)
+                  <div class="rs-mega-col">
+                    <a href="{{ route('shop', ['cat' => $child->slug]) }}" class="rs-mega-col-title">
+                      {{ $child->name }}
+                    </a>
+                    @if($child->children && $child->children->count() > 0)
+                      <ul class="rs-mega-list">
+                        @foreach($child->children as $subChild)
+                          <li class="rs-mega-item">
+                            <a href="{{ route('shop', ['cat' => $subChild->slug]) }}">
+                              {{ $subChild->name }}
+                            </a>
+                          </li>
+                        @endforeach
+                      </ul>
+                    @endif
+                  </div>
+                @endforeach
+              </div>
+            @else
+              <!-- Standard Dropdown Menu for Other Categories -->
+              <div class="rs-dropdown">
+                <ul class="rs-simple-menu">
+                  @foreach($hCat->children as $child)
+                    <li class="rs-simple-item">
+                      <a href="{{ route('shop', ['cat' => $child->slug]) }}">
+                        <span>{{ $child->name }}</span>
+                        @if($child->children && $child->children->count() > 0)
+                          <i class="bi bi-chevron-right" style="font-size: 0.65rem; opacity: 0.5;"></i>
+                        @endif
+                      </a>
+                    </li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+          @endif
         </li>
       @endforeach
 
@@ -182,7 +357,7 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     </ul>
   </div>
 
-  <!-- Mobile Drawer (Dynamic Categories & User Profile Header) -->
+  <!-- Mobile Drawer (Hierarchical Categories with Collapsible Accordions) -->
   <div class="rs-mobile-drawer" id="rsMobileDrawer">
     @auth
       <div style="background: #fdf2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between;">
@@ -223,13 +398,44 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     <ul>
       <li><a href="/" style="{{ request()->is('/') ? 'color: #b71c1c;' : '' }}">HOME</a></li>
       <li><a href="/shop" style="{{ request()->is('shop') && !request('cat') ? 'color: #b71c1c;' : '' }}">SHOP ALL</a></li>
+      
       @foreach($headerCategories as $hCat)
-        <li>
-          <a href="{{ route('shop', ['cat' => $hCat->slug]) }}" style="{{ request('cat') == $hCat->slug ? 'color: #b71c1c;' : '' }}">
-            {{ strtoupper($hCat->name) }}
-          </a>
+        <li class="rs-mobile-accordion">
+          @if($hCat->children && $hCat->children->count() > 0)
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <a href="{{ route('shop', ['cat' => $hCat->slug]) }}" style="{{ request('cat') == $hCat->slug ? 'color: #b71c1c;' : '' }}">
+                {{ strtoupper($hCat->name) }}
+              </a>
+              <button type="button" onclick="this.parentElement.nextElementSibling.classList.toggle('open'); this.querySelector('i').classList.toggle('bi-chevron-up'); this.querySelector('i').classList.toggle('bi-chevron-down');" style="background: none; border: none; padding: 6px 10px; cursor: pointer; color: #64748b;">
+                <i class="bi bi-chevron-down"></i>
+              </button>
+            </div>
+            <div class="rs-mobile-sublist">
+              @foreach($hCat->children as $child)
+                <div style="margin-bottom: 4px;">
+                  <a href="{{ route('shop', ['cat' => $child->slug]) }}" style="font-weight: 700; color: #1e293b;">
+                    • {{ $child->name }}
+                  </a>
+                  @if($child->children && $child->children->count() > 0)
+                    <div style="padding-left: 12px; margin-top: 2px;">
+                      @foreach($child->children as $subChild)
+                        <a href="{{ route('shop', ['cat' => $subChild->slug]) }}" style="font-size: 0.78rem; color: #64748b; display: block; padding: 2px 0;">
+                          - {{ $subChild->name }}
+                        </a>
+                      @endforeach
+                    </div>
+                  @endif
+                </div>
+              @endforeach
+            </div>
+          @else
+            <a href="{{ route('shop', ['cat' => $hCat->slug]) }}" style="{{ request('cat') == $hCat->slug ? 'color: #b71c1c;' : '' }}">
+              {{ strtoupper($hCat->name) }}
+            </a>
+          @endif
         </li>
       @endforeach
+
       <li><a href="/about" style="{{ request()->is('about') ? 'color: #b71c1c;' : '' }}">ABOUT US</a></li>
       <li><a href="/contact" style="{{ request()->is('contact') ? 'color: #b71c1c;' : '' }}">CONTACT</a></li>
     </ul>

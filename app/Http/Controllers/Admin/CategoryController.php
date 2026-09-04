@@ -11,19 +11,21 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::latest()->paginate(10);
+        $categories = Category::with('parent')->latest()->paginate(20);
         return view('admin.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.categories.create');
+        $parentCategories = Category::all();
+        return view('admin.categories.create', compact('parentCategories'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:categories,id',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
@@ -43,6 +45,7 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id ?: null,
             'description' => $request->description,
             'image' => $imagePath,
             'is_active' => $request->has('is_active'),
@@ -53,13 +56,15 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        $parentCategories = Category::where('id', '!=', $category->id)->get();
+        return view('admin.categories.edit', compact('category', 'parentCategories'));
     }
 
     public function update(Request $request, Category $category)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:categories,id',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
@@ -79,6 +84,7 @@ class CategoryController extends Controller
         $category->update([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id ?: null,
             'description' => $request->description,
             'image' => $imagePath,
             'is_active' => $request->has('is_active'),

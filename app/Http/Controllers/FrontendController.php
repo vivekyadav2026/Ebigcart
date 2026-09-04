@@ -52,15 +52,25 @@ class FrontendController extends Controller
             });
         }
 
-        // Selected categories resolver (supports both categories[] IDs and cat=slug)
+        // Selected categories resolver (supports both categories[] IDs and cat=slug with subcategories)
         $selectedCategories = [];
         if ($request->has('categories')) {
             $selectedCategories = (array) $request->input('categories');
         }
         if ($request->has('cat') && $request->input('cat') != '') {
-            $cat = Category::where('slug', $request->input('cat'))->first();
-            if ($cat && !in_array($cat->id, $selectedCategories)) {
-                $selectedCategories[] = $cat->id;
+            $cat = Category::where('slug', $request->input('cat'))->with('allChildren')->first();
+            if ($cat) {
+                $categoryIds = collect([$cat->id]);
+                $collectChildren = function($category) use (&$collectChildren, &$categoryIds) {
+                    if ($category->children) {
+                        foreach ($category->children as $child) {
+                            $categoryIds->push($child->id);
+                            $collectChildren($child);
+                        }
+                    }
+                };
+                $collectChildren($cat);
+                $selectedCategories = array_unique(array_merge($selectedCategories, $categoryIds->toArray()));
             }
         }
 
@@ -110,7 +120,7 @@ class FrontendController extends Controller
         }
 
         $products = $query->paginate(12)->withQueryString();
-        $categories = Category::where('is_active', true)->get();
+        $categories = Category::parents()->with('children.children')->where('is_active', true)->get();
 
         return view('frontend.shop', compact('products', 'categories', 'selectedCategories'));
     }
