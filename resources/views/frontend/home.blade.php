@@ -7,15 +7,24 @@
 
 <div class="sale-banner" style="position: relative; overflow: hidden; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
     <div class="owl-carousel hero-slider owl-theme">
-        <a href="/shop" style="display: block; width: 100%;">
-            <img src="/mahashringar_assets/new_hero_banner_v2.jpg" alt="Ebigcart Special Festival Collection" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
-        </a>
-        <a href="/shop?cat=ornaments" style="display: block; width: 100%;">
-            <img src="/mahashringar_assets/hero_slider_2.jpg" alt="Premium Mukut and Ornaments" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
-        </a>
-        <a href="/shop?cat=laddu-gopal-dresses" style="display: block; width: 100%;">
-            <img src="/mahashringar_assets/hero_slider_3.jpg" alt="Beautiful Designer Poshak" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
-        </a>
+        @php $heroBanners = $banners->where('type', 'hero'); @endphp
+        @if($heroBanners->count() > 0)
+            @foreach($heroBanners as $banner)
+                <a href="{{ $banner->link ?? '#' }}" style="display: block; width: 100%;">
+                    <img src="{{ asset($banner->image_path) }}" alt="{{ $banner->title }}" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
+                </a>
+            @endforeach
+        @else
+            <a href="/shop" style="display: block; width: 100%;">
+                <img src="/mahashringar_assets/new_hero_banner_v2.jpg" alt="Ebigcart Special Festival Collection" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
+            </a>
+            <a href="/shop?cat=ornaments" style="display: block; width: 100%;">
+                <img src="/mahashringar_assets/hero_slider_2.jpg" alt="Premium Mukut and Ornaments" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
+            </a>
+            <a href="/shop?cat=laddu-gopal-dresses" style="display: block; width: 100%;">
+                <img src="/mahashringar_assets/hero_slider_3.jpg" alt="Beautiful Designer Poshak" class="desktop-hero" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
+            </a>
+        @endif
     </div>
 </div>
 <style>
@@ -274,10 +283,21 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
-<!--End banner -->
+<!-- Promo Banners (Middle Banners) -->
+@php
+    $promoBanners = $banners->where('type', 'promo')->values();
+@endphp
+
 <div class="winter-bnr">
-	<a href="/shop">
-	<img src="/mahashringar_assets/holi-bnr-new.webp" alt="holi bnr new"></a>
+    @if(isset($promoBanners[0]))
+        <a href="{{ $promoBanners[0]->link ?? '#' }}">
+            <img src="{{ asset($promoBanners[0]->image_path) }}" alt="{{ $promoBanners[0]->title }}">
+        </a>
+    @else
+        <a href="/shop">
+            <img src="/mahashringar_assets/holi-bnr-new.webp" alt="holi bnr new">
+        </a>
+    @endif
 </div>
 
 
@@ -330,8 +350,48 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </div>
 <div class="middle-banner-full" style="width: 100%; margin: 25px 0; padding: 0;">
-      <a href="/shop"><img src="/mahashringar_assets/middle-gopi-dresses.jpg" alt="Laddu Gopal Summer Dress" style="width: 100%; height: auto; display: block;"></a>
-  </div>
+    @if(isset($promoBanners[1]))
+        <a href="{{ $promoBanners[1]->link ?? '#' }}">
+            <img src="{{ asset($promoBanners[1]->image_path) }}" alt="{{ $promoBanners[1]->title }}" style="width: 100%; height: auto; display: block;">
+        </a>
+    @else
+        <a href="/shop">
+            <img src="/mahashringar_assets/middle-gopi-dresses.jpg" alt="Laddu Gopal Summer Dress" style="width: 100%; height: auto; display: block;">
+        </a>
+    @endif
+</div>
+
+@if($dealOfWeek)
+<div class="deal-of-week padtb80" style="background: #fff8f8; text-align: center; margin-top: 25px; margin-bottom: 25px;">
+    <div class="container">
+        <h2 class="site-title" style="color: #b71c1c;">Deal of the Week</h2>
+        <p class="mini-discription">Don't miss out on this week's special offer!</p>
+        <div class="deal-product" style="max-width: 400px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div class="rs-product-card" onclick="if (!event.target.closest('.rs-wishlist-heart, .rs-btn-carticon')) window.location.href='{{ route('product.show', $dealOfWeek->slug) }}';" style="cursor: pointer; border: none;">
+                <div class="rs-card-img-box" style="height: 250px;">
+                    <a href="{{ route('product.show', $dealOfWeek->slug) }}">
+                        <img src="{{ asset($dealOfWeek->primary_image_url) }}" alt="{{ $dealOfWeek->name }}" style="max-height: 250px; object-fit: contain;">
+                    </a>
+                </div>
+                <div class="rs-card-body">
+                    <a href="{{ route('product.show', $dealOfWeek->slug) }}" class="rs-card-title" style="font-size: 1.2rem;">{{ $dealOfWeek->name }}</a>
+                    <div class="rs-card-price" style="font-size: 1.1rem; justify-content: center; margin-bottom: 15px;">
+                        @if($dealOfWeek->sale_price)
+                            <span class="woocommerce-Price-amount amount" style="color: #b71c1c; font-weight: 700;"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $dealOfWeek->sale_price }}</bdi></span>
+                            <span class="rs-card-price-old" style="text-decoration: line-through; color: #999; margin-left: 10px;">₹{{ $dealOfWeek->price }}</span>
+                        @else
+                            <span class="woocommerce-Price-amount amount" style="color: #b71c1c; font-weight: 700;"><bdi><span class="woocommerce-Price-currencySymbol">₹</span>{{ $dealOfWeek->price }}</bdi></span>
+                        @endif
+                    </div>
+                    <div class="rs-card-actions" style="justify-content: center;">
+                        <a href="{{ route('product.show', $dealOfWeek->slug) }}" class="rs-btn-buynow" style="width: 100%; max-width: 200px;">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="latest-dress products-list text-center padt60 padtb80" id="latest_collection">
     <div class="container">
@@ -388,159 +448,84 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <section class="testimonials"><h2 class="section-title" style="font-size: 1.8rem; text-align: center; margin: 30px 0; font-weight: 700; color: #b71c1c;">&#10024; LOVED BY DEVOTEES &#10024;</h2>
 <div class="container">
-  <div class="owl-carousel owl-carousel-testimonials owl-loaded owl-drag">
-    
-
-    
-
-    
-
-    
-    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1852px, 0px, 0px); transition: 0.25s; width: 3705px;"><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
-      </p>
-      <div class="user">
-        <span class="user-initial">N</span>
-        <div>
-          <div class="testi-name">Neha Sharma</div>
-          <span>Delhi</span>
+  <div class="owl-carousel owl-carousel-testimonials owl-theme">
+    @if($testimonials->count() > 0)
+        @foreach($testimonials as $testimonial)
+        <div class="item card">
+          <div class="stars">
+            @for($i = 0; $i < ($testimonial->rating ?? 5); $i++)
+                &#11088;
+            @endfor
+          </div>
+          <p class="review">"{{ $testimonial->content }}"</p>
+          <div class="user">
+            @if($testimonial->image_path)
+                <img src="{{ asset($testimonial->image_path) }}" alt="{{ $testimonial->name }}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+            @else
+                <span class="user-initial">{{ substr($testimonial->name, 0, 1) }}</span>
+            @endif
+            <div>
+              <div class="testi-name">{{ $testimonial->name }}</div>
+              <span>{{ $testimonial->designation ?? 'Customer' }}</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
-      </p>
-      <div class="user">
-        <span class="user-initial">P</span>
-        <div>
-          <div class="testi-name">Priya Patel</div>
-          <span>Vadodara</span>
+        @endforeach
+    @else
+        <div class="item card">
+          <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+          <p class="review">
+            "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
+          </p>
+          <div class="user">
+            <span class="user-initial">N</span>
+            <div>
+              <div class="testi-name">Neha Sharma</div>
+              <span>Delhi</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "Timely delivery and excellent customer service. Highly recommended!"
-      </p>
-      <div class="user">
-        <span class="user-initial">R</span>
-        <div>
-          <div class="testi-name">Ramesh Verma</div>
-          <span>Jaipur</span>
+        <div class="item card">
+          <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+          <p class="review">
+            "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
+          </p>
+          <div class="user">
+            <span class="user-initial">P</span>
+            <div>
+              <div class="testi-name">Priya Patel</div>
+              <span>Vadodara</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
-      </p>
-      <div class="user">
-        <span class="user-initial">A</span>
-        <div>
-          <div class="testi-name">Anjali Mehta</div>
-          <span>Mumbai</span>
+        <div class="item card">
+          <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+          <p class="review">
+            "Timely delivery and excellent customer service. Highly recommended!"
+          </p>
+          <div class="user">
+            <span class="user-initial">R</span>
+            <div>
+              <div class="testi-name">Ramesh Verma</div>
+              <span>Jaipur</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div></div><div class="owl-item" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
-      </p>
-      <div class="user">
-        <span class="user-initial">N</span>
-        <div>
-          <div class="testi-name">Neha Sharma</div>
-          <span>Delhi</span>
+        <div class="item card">
+          <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+          <p class="review">
+            "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
+          </p>
+          <div class="user">
+            <span class="user-initial">A</span>
+            <div>
+              <div class="testi-name">Anjali Mehta</div>
+              <span>Mumbai</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div></div><div class="owl-item" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
-      </p>
-      <div class="user">
-        <span class="user-initial">P</span>
-        <div>
-          <div class="testi-name">Priya Patel</div>
-          <span>Vadodara</span>
-        </div>
-      </div>
-    </div></div><div class="owl-item active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "Timely delivery and excellent customer service. Highly recommended!"
-      </p>
-      <div class="user">
-        <span class="user-initial">R</span>
-        <div>
-          <div class="testi-name">Ramesh Verma</div>
-          <span>Jaipur</span>
-        </div>
-      </div>
-    </div></div><div class="owl-item active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
-      </p>
-      <div class="user">
-        <span class="user-initial">A</span>
-        <div>
-          <div class="testi-name">Anjali Mehta</div>
-          <span>Mumbai</span>
-        </div>
-      </div>
-    </div></div><div class="owl-item cloned active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "The quality and detailing of the poshaks is amazing. You can feel the devotion in each piece."
-      </p>
-      <div class="user">
-        <span class="user-initial">N</span>
-        <div>
-          <div class="testi-name">Neha Sharma</div>
-          <span>Delhi</span>
-        </div>
-      </div>
-    </div></div><div class="owl-item cloned active" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "Beautiful collection and very soft fabric. My Laddu Gopal looks so adorable!"
-      </p>
-      <div class="user">
-        <span class="user-initial">P</span>
-        <div>
-          <div class="testi-name">Priya Patel</div>
-          <span>Vadodara</span>
-        </div>
-      </div>
-    </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "Timely delivery and excellent customer service. Highly recommended!"
-      </p>
-      <div class="user">
-        <span class="user-initial">R</span>
-        <div>
-          <div class="testi-name">Ramesh Verma</div>
-          <span>Jaipur</span>
-        </div>
-      </div>
-    </div></div><div class="owl-item cloned" style="width: 308.668px;"><div class="item card">
-      <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p class="review">
-        "My Laddu Gopal dresses always get noticed &amp; compliments. Grateful to Ebigcart!"
-      </p>
-      <div class="user">
-        <span class="user-initial">A</span>
-        <div>
-          <div class="testi-name">Anjali Mehta</div>
-          <span>Mumbai</span>
-        </div>
-      </div>
-    </div></div></div></div><div class="owl-dots disabled"></div></div>
+    @endif
+  </div>
   </div>
 </section>
 
