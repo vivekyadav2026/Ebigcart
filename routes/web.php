@@ -65,8 +65,27 @@ Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.in
 Route::get('/api/product/{slug}', [FrontendController::class, 'apiProductDetails'])->name('api.product.details');
 
 Route::get('/dashboard', function () {
-    $orders = App\Models\Order::where('user_id', auth()->id())->with('items')->latest()->get();
-    return view('dashboard', compact('orders'));
+    $user = auth()->user();
+    $orders = App\Models\Order::where('user_id', $user->id)->with(['items.product'])->latest()->get();
+    $addresses = $user->addresses()->latest()->get();
+    $defaultAddress = $addresses->where('is_default', true)->first() ?? $addresses->first();
+    $wishlistIds = session()->get('wishlist', []);
+    $wishlistCount = count($wishlistIds);
+    $cartCount = count(session()->get('cart', []));
+    
+    // Active in-pipeline orders
+    $activeOrders = $orders->whereIn('status', ['pending', 'processing', 'shipped']);
+    $latestActiveOrder = $activeOrders->first();
+
+    return view('dashboard', compact(
+        'orders', 
+        'addresses', 
+        'defaultAddress', 
+        'wishlistCount', 
+        'cartCount', 
+        'activeOrders', 
+        'latestActiveOrder'
+    ));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

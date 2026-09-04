@@ -1,239 +1,195 @@
-<!-- Sidebar Navigation (Desktop only) -->
+<style>
+    .cp-sidebar {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 18px !important;
+        padding: 20px !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+    }
+    .cp-sidebar-user {
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        padding-bottom: 16px !important;
+        margin-bottom: 16px !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+    }
+    .cp-sidebar-avatar {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        border-radius: 14px !important;
+        background: linear-gradient(135deg, #b71c1c 0%, #e11d48 100%) !important;
+        color: #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        box-shadow: 0 3px 8px rgba(183, 28, 28, 0.3) !important;
+    }
+    .cp-nav-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+    .cp-nav-item {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 10px 14px !important;
+        border-radius: 12px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #334155 !important;
+        text-decoration: none !important;
+        transition: all 0.15s ease !important;
+    }
+    .cp-nav-item:hover {
+        background: #f8fafc !important;
+        color: #b71c1c !important;
+    }
+    .cp-nav-item.active {
+        background: #b71c1c !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 10px rgba(183, 28, 28, 0.25) !important;
+    }
+    .cp-nav-item.active i {
+        color: #ffffff !important;
+    }
+</style>
+
+<!-- Sidebar Navigation (Desktop) -->
 <div class="hidden lg:block w-full lg:w-1/4 flex-shrink-0">
-    <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm space-y-1 sticky top-24">
-        <!-- User Profile Card -->
-        <div style="display: flex !important; align-items: center !important; gap: 12px !important;" class="mb-4 pb-4 border-b border-slate-100">
-            <div class="relative flex-shrink-0" style="width: 44px; height: 44px; min-width: 44px;">
-                <div class="bg-gradient-to-tr from-primary to-primary-dark text-white rounded-xl font-extrabold text-base shadow-sm select-none" style="width: 44px; height: 44px; display: flex !important; align-items: center !important; justify-content: center !important;">
-                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                </div>
-                <span class="absolute -bottom-0.5 -right-0.5 block h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+    <div class="cp-sidebar">
+        <!-- User Info -->
+        <div class="cp-sidebar-user">
+            <div class="cp-sidebar-avatar">
+                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
             </div>
-            <div class="min-w-0 flex-1" style="margin: 0 !important; padding: 0 !important;">
-                <h4 class="font-extrabold text-slate-900 text-sm tracking-tight truncate" style="margin: 0 !important; padding: 0 !important; line-height: 1.2 !important; font-size: 0.9rem !important;">{{ Auth::user()->name }}</h4>
-                <span class="text-[10px] text-slate-500 font-extrabold uppercase tracking-wider block whitespace-nowrap" style="margin-top: 3px !important; display: block !important; line-height: 1 !important;">
-                    <i class="fa-solid fa-shield-check text-primary text-[10px] mr-1"></i> Customer Account
-                </span>
+            <div style="flex: 1; min-width: 0;">
+                <h4 style="font-size: 14px; font-weight: 800; color: #0f172a; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{ Auth::user()->name }}
+                </h4>
+                <div style="font-size: 10px; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; display: flex; align-items: center; gap: 4px;">
+                    <i class="fa-solid fa-circle-check"></i> Customer Account
+                </div>
             </div>
         </div>
         
         <!-- Nav Links -->
-        <a href="{{ url('/dashboard') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('dashboard') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-chart-line mr-3 text-sm {{ request()->is('dashboard') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                Dashboard Overview
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('dashboard') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
+        <div class="cp-nav-list">
+            <a href="{{ url('/dashboard') }}" class="cp-nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-chart-pie" style="font-size: 14px; color: {{ request()->is('dashboard') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    Dashboard
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
 
-        <a href="{{ url('/orders') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('orders*') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-box mr-3 text-sm {{ request()->is('orders*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                My Orders
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('orders*') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
-        
-        <a href="{{ url('/wishlist') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('wishlist') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-heart mr-3 text-sm {{ request()->is('wishlist') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                My Wishlist
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('wishlist') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
-        
-        <a href="{{ url('/cart') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('cart') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-cart-shopping mr-3 text-sm {{ request()->is('cart') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                My Shopping Cart
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('cart') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
-        
-        <a href="{{ route('profile.edit') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('profile') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-user-gear mr-3 text-sm {{ request()->is('profile') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                Account Settings
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('profile') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
+            <a href="{{ url('/orders') }}" class="cp-nav-item {{ request()->is('orders*') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-box-archive" style="font-size: 14px; color: {{ request()->is('orders*') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    My Orders
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
+            
+            <a href="{{ url('/wishlist') }}" class="cp-nav-item {{ request()->is('wishlist') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-heart" style="font-size: 14px; color: {{ request()->is('wishlist') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    My Wishlist
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
+            
+            <a href="{{ url('/cart') }}" class="cp-nav-item {{ request()->is('cart') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-bag-shopping" style="font-size: 14px; color: {{ request()->is('cart') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    Shopping Cart
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
+            
+            <a href="{{ route('profile.edit') }}" class="cp-nav-item {{ request()->is('profile') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-user-gear" style="font-size: 14px; color: {{ request()->is('profile') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    Account Settings
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
 
-        <a href="{{ url('/addresses') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('addresses*') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-map-location-dot mr-3 text-sm {{ request()->is('addresses*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                My Addresses
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('addresses*') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
-        
-        <a href="{{ url('/contact') }}" 
-           class="group relative w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->is('contact') ? 'bg-primary text-white shadow-sm font-extrabold' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' }}"
-           style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-headset mr-3 text-sm {{ request()->is('contact') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
-                Support & Help
-            </span>
-            <i class="fa-solid fa-chevron-right text-[8px] {{ request()->is('contact') ? 'text-white' : 'text-slate-300' }}"></i>
-        </a>
-        
-        <form method="POST" action="{{ route('logout') }}" class="pt-3 border-t border-slate-100 mt-2">
-            @csrf
-            <button type="submit" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold text-red-500 hover:bg-red-50 transition-all cursor-pointer group" style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-arrow-right-from-bracket mr-3 text-sm text-red-400 group-hover:translate-x-0.5 transition-transform"></i> Log Out
-            </button>
-        </form>
+            <a href="{{ url('/addresses') }}" class="cp-nav-item {{ request()->is('addresses*') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-map-location-dot" style="font-size: 14px; color: {{ request()->is('addresses*') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    My Addresses
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
+            
+            <a href="{{ url('/contact') }}" class="cp-nav-item {{ request()->is('contact') ? 'active' : '' }}">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-headset" style="font-size: 14px; color: {{ request()->is('contact') ? '#ffffff' : '#64748b' }}; width: 16px;"></i>
+                    Support & Help
+                </span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 10px; opacity: 0.6;"></i>
+            </a>
+            
+            <form method="POST" action="{{ route('logout') }}" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+                @csrf
+                <button type="submit" style="width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 700; color: #dc2626; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: background 0.15s;">
+                    <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 14px;"></i> Log Out
+                </button>
+            </form>
+        </div>
 
-        <!-- Sidebar Promo Card -->
-        <div class="mt-5 p-4 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-xl relative overflow-hidden shadow-sm">
-            <div class="absolute -right-4 -bottom-4 w-20 h-20 bg-primary/20 rounded-full blur-xl"></div>
-            <span class="text-[9px] font-extrabold text-amber-400 uppercase tracking-widest block mb-1">Customer Support</span>
-            <p class="text-[11px] text-slate-300 leading-snug font-medium mb-3" style="margin: 0 0 10px 0 !important;">Need assistance with your order or account?</p>
-            <a href="{{ url('/contact') }}" class="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white rounded-lg px-3 py-1.5 text-[10px] font-extrabold transition-all shadow-xs gap-1.5" style="text-decoration: none !important; display: inline-flex !important;">
-                <i class="fa-solid fa-comments text-[9px]"></i> Contact Us
+        <!-- Sidebar Promo / Help Box -->
+        <div style="margin-top: 18px; padding: 14px; border-radius: 14px; background: #0f172a; color: #ffffff; position: relative; overflow: hidden;">
+            <div style="font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #fbbf24; margin-bottom: 4px;">Need Assistance?</div>
+            <p style="font-size: 11px; color: #94a3b8; margin: 0 0 10px 0; line-height: 1.4;">Contact our support team for quick order help.</p>
+            <a href="{{ url('/contact') }}" style="display: inline-flex; align-items: center; gap: 6px; background: #b71c1c; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; text-decoration: none;">
+                <i class="fa-solid fa-comments"></i> Get Support
             </a>
         </div>
     </div>
 </div>
 
-<!-- Mobile Collapsible Navigation (Mobile only) -->
-<div class="block lg:hidden w-full mb-4" x-data="{ expanded: false }">
-    <!-- Header trigger bar -->
-    <div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl p-3 shadow-xs" style="display: flex !important; align-items: center !important; justify-content: space-between !important;">
-        <div class="flex items-center gap-3" style="display: flex !important; align-items: center !important;">
-            <div class="bg-primary text-white h-8 w-8 rounded-lg font-extrabold text-xs shadow-xs" style="display: flex !important; align-items: center !important; justify-content: center !important;">
+<!-- Mobile Drawer Navigation -->
+<div class="block lg:hidden w-full mb-4" x-data="{ openMenu: false }">
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="cp-sidebar-avatar" style="width: 38px; height: 38px; min-width: 38px; font-size: 14px; border-radius: 10px;">
                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
             </div>
             <div>
-                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block" style="margin: 0 !important;">Current Page</span>
-                <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5" style="margin: 0 !important;">
-                    @if(request()->is('dashboard'))
-                        <i class="fa-solid fa-chart-line text-[10px] text-primary"></i> Dashboard Overview
-                    @elseif(request()->is('orders*'))
-                        <i class="fa-solid fa-box text-[10px] text-primary"></i> My Orders
-                    @elseif(request()->is('wishlist'))
-                        <i class="fa-solid fa-heart text-[10px] text-primary"></i> My Wishlist
-                    @elseif(request()->is('cart'))
-                        <i class="fa-solid fa-cart-shopping text-[10px] text-primary"></i> Shopping Cart
-                    @elseif(request()->is('profile'))
-                        <i class="fa-solid fa-user-gear text-[10px] text-primary"></i> Account Settings
-                    @elseif(request()->is('addresses*'))
-                        <i class="fa-solid fa-map-location-dot text-[10px] text-primary"></i> My Addresses
-                    @elseif(request()->is('contact'))
-                        <i class="fa-solid fa-headset text-[10px] text-primary"></i> Support & Help
-                    @else
-                        <i class="fa-solid fa-circle text-[10px] text-primary"></i> Account Navigation
-                    @endif
-                </span>
+                <div style="font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Active Menu</div>
+                <div style="font-size: 13px; font-weight: 800; color: #0f172a;">
+                    @if(request()->is('dashboard')) Dashboard
+                    @elseif(request()->is('orders*')) My Orders
+                    @elseif(request()->is('wishlist')) My Wishlist
+                    @elseif(request()->is('cart')) Shopping Cart
+                    @elseif(request()->is('profile')) Account Settings
+                    @elseif(request()->is('addresses*')) My Addresses
+                    @else Account Menu @endif
+                </div>
             </div>
         </div>
-        
-        <!-- Toggle Button -->
-        <button type="button" @click="expanded = !expanded" class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 hover:bg-slate-100 rounded-lg px-3 py-1.5 text-xs font-bold text-slate-700 transition cursor-pointer" style="display: flex !important; align-items: center !important;">
-            <i class="fa-solid fa-bars text-[10px]" x-show="!expanded"></i>
-            <i class="fa-solid fa-xmark text-[10px]" x-show="expanded"></i>
-            <span>Menu</span>
-            <i class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200" :class="expanded ? 'rotate-180' : ''"></i>
+
+        <button type="button" @click="openMenu = !openMenu" style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-bars"></i> Menu
         </button>
     </div>
 
-    <!-- Collapsible Vertical Links Menu -->
-    <div x-show="expanded" 
-         x-transition:enter="transition ease-out duration-150"
-         x-transition:enter-start="opacity-0 transform -translate-y-2"
-         x-transition:enter-end="opacity-100 transform translate-y-0"
-         x-transition:leave="transition ease-in duration-100"
-         x-transition:leave-start="opacity-100 transform translate-y-0"
-         x-transition:leave-end="opacity-0 transform -translate-y-2"
-         class="mt-2 bg-white border border-slate-200 rounded-xl p-2 shadow-sm space-y-1"
-         style="display: none;">
-        
-        <a href="{{ url('/dashboard') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('dashboard') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-chart-line mr-2.5 text-xs {{ request()->is('dashboard') ? 'text-white' : 'text-slate-400' }}"></i>
-                Dashboard Overview
-            </span>
-            @if(request()->is('dashboard'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-
-        <a href="{{ url('/orders') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('orders*') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-box mr-2.5 text-xs {{ request()->is('orders*') ? 'text-white' : 'text-slate-400' }}"></i>
-                My Orders
-            </span>
-            @if(request()->is('orders*'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-        
-        <a href="{{ url('/wishlist') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('wishlist') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-heart mr-2.5 text-xs {{ request()->is('wishlist') ? 'text-white' : 'text-slate-400' }}"></i>
-                My Wishlist
-            </span>
-            @if(request()->is('wishlist'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-        
-        <a href="{{ url('/cart') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('cart') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-cart-shopping mr-2.5 text-xs {{ request()->is('cart') ? 'text-white' : 'text-slate-400' }}"></i>
-                My Shopping Cart
-            </span>
-            @if(request()->is('cart'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-        
-        <a href="{{ route('profile.edit') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('profile') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-user-gear mr-2.5 text-xs {{ request()->is('profile') ? 'text-white' : 'text-slate-400' }}"></i>
-                Account Settings
-            </span>
-            @if(request()->is('profile'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-
-        <a href="{{ url('/addresses') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('addresses*') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-map-location-dot mr-2.5 text-xs {{ request()->is('addresses*') ? 'text-white' : 'text-slate-400' }}"></i>
-                My Addresses
-            </span>
-            @if(request()->is('addresses*'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-        
-        <a href="{{ url('/contact') }}" class="group w-full px-3 py-2 rounded-lg text-xs font-bold transition-all {{ request()->is('contact') ? 'bg-primary text-white font-bold' : 'text-slate-700 hover:bg-slate-50' }}" style="display: flex !important; align-items: center !important; justify-content: space-between !important; text-decoration: none !important;">
-            <span style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-headset mr-2.5 text-xs {{ request()->is('contact') ? 'text-white' : 'text-slate-400' }}"></i>
-                Support & Help
-            </span>
-            @if(request()->is('contact'))
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-            @endif
-        </a>
-        
-        <form method="POST" action="{{ route('logout') }}" class="pt-2 border-t border-slate-100 mt-2">
-            @csrf
-            <button type="submit" class="w-full text-left px-3 py-2 rounded-lg text-xs font-bold text-red-500 hover:bg-red-50 transition-all cursor-pointer" style="display: flex !important; align-items: center !important;">
-                <i class="fa-solid fa-arrow-right-from-bracket mr-2.5 text-xs text-red-400"></i> Log Out
-            </button>
-        </form>
+    <!-- Dropdown list for mobile -->
+    <div x-show="openMenu" x-transition style="margin-top: 8px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 10px; display: none;">
+        <div class="cp-nav-list">
+            <a href="{{ url('/dashboard') }}" class="cp-nav-item {{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a>
+            <a href="{{ url('/orders') }}" class="cp-nav-item {{ request()->is('orders*') ? 'active' : '' }}">My Orders</a>
+            <a href="{{ url('/wishlist') }}" class="cp-nav-item {{ request()->is('wishlist') ? 'active' : '' }}">My Wishlist</a>
+            <a href="{{ url('/cart') }}" class="cp-nav-item {{ request()->is('cart') ? 'active' : '' }}">Shopping Cart</a>
+            <a href="{{ route('profile.edit') }}" class="cp-nav-item {{ request()->is('profile') ? 'active' : '' }}">Account Settings</a>
+            <a href="{{ url('/addresses') }}" class="cp-nav-item {{ request()->is('addresses*') ? 'active' : '' }}">My Addresses</a>
+            <a href="{{ url('/contact') }}" class="cp-nav-item {{ request()->is('contact') ? 'active' : '' }}">Support & Help</a>
+        </div>
     </div>
 </div>
