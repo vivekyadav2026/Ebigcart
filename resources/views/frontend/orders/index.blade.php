@@ -148,7 +148,7 @@
                                                 </span>
                                                 <div x-data="{ copied: false, text: '#{{ $order->order_number }}' }" class="flex items-center gap-1 text-[10px] text-slate-500 font-medium">
                                                     <span>Order ID: <strong class="text-slate-900 font-bold" x-text="text"></strong></span>
-                                                    <button @click.stop="navigator.clipboard.writeText(text); copied = true; setTimeout(() => copied = false, 2000)" class="text-slate-400 hover:text-primary transition-colors p-1" title="Copy Order ID">
+                                                    <button @click.stop="navigator.clipboard.writeText(text); copied = true; setTimeout(() => copied = false, 2000)" class="text-slate-400 hover:text-primary transition-colors p-1 cursor-pointer" title="Copy Order ID">
                                                         <i class="fa-regular fa-copy text-[10px]" x-show="!copied"></i>
                                                         <i class="fa-solid fa-check text-[10px] text-emerald-600" x-show="copied"></i>
                                                     </button>
@@ -251,7 +251,7 @@
                                                                 <span class="font-mono font-bold text-slate-800">{{ $order->ups_tracking_number }}</span>
                                                             </div>
                                                             <a href="https://www.ups.com/track?tracknum={{ $order->ups_tracking_number }}" target="_blank"
-                                                               class="w-full text-center block text-white font-extrabold text-[9px] py-1.5 rounded-lg transition bg-slate-900 hover:bg-slate-800">
+                                                               class="w-full text-center block text-white font-extrabold text-[9px] py-1.5 rounded-lg transition bg-primary hover:bg-primary-dark" style="text-decoration: none !important;">
                                                                 <i class="fa-solid fa-magnifying-glass text-[8px] mr-1"></i> Track on UPS.com
                                                             </a>
                                                         </div>
@@ -276,8 +276,8 @@
                                                             <textarea name="refund_account_details" rows="2" placeholder="Provide Zelle email/phone or Bank Account details for refund..." class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-gray-900 shadow-2xs focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500/20 transition"></textarea>
                                                         </div>
                                                         <div class="flex gap-2">
-                                                            <button type="submit" onclick="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition">Confirm Cancel</button>
-                                                            <button type="button" @click="showCancelForm = false" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-lg text-xs transition">Keep Order</button>
+                                                            <button type="submit" onclick="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition cursor-pointer">Confirm Cancel</button>
+                                                            <button type="button" @click="showCancelForm = false" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-lg text-xs transition cursor-pointer">Keep Order</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -289,7 +289,7 @@
                                             <div class="mt-4 pt-3.5 border-t border-slate-200/60">
                                                 <div x-data="{ showReturnForm: false, returnType: '' }">
                                                     <button type="button" @click.stop="showReturnForm = !showReturnForm" 
-                                                            class="inline-flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all">
+                                                            class="inline-flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer">
                                                         <i class="fa-solid fa-arrow-rotate-left"></i>
                                                         <span>Request Return</span>
                                                     </button>
@@ -324,8 +324,8 @@
                                                             <textarea name="refund_account_details" rows="2" x-bind:required="returnType === 'return'" placeholder="Provide Zelle email/phone or Bank Account & Routing number..." class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-gray-900 shadow-2xs focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500/20 transition"></textarea>
                                                         </div>
                                                         <div class="flex gap-2">
-                                                            <button type="submit" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition">Submit Return Request</button>
-                                                            <button type="button" @click="showReturnForm = false" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-lg text-xs transition">Cancel</button>
+                                                            <button type="submit" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition cursor-pointer">Submit Return Request</button>
+                                                            <button type="button" @click="showReturnForm = false" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-lg text-xs transition cursor-pointer">Cancel</button>
                                                         </div>
                                                     </form>
                                                 </div>

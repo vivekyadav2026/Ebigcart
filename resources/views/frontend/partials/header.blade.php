@@ -26,7 +26,7 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
     /* Center Logo (Dead Centered on Desktop & Mobile) */
     .rs-logo-container { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 20 !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin: 0 !important; }
     .rs-logo { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
-    .rs-logo img { height: 48px !important; width: auto !important; object-fit: contain !important; transition: transform 0.3s ease !important; margin: 0 !important; }
+    .rs-logo img { height: 60px !important; width: auto !important; object-fit: contain !important; transition: transform 0.3s ease !important; margin: 0 !important; }
     .rs-logo:hover img { transform: scale(1.03); }
 
     /* Right Action Items */
@@ -82,7 +82,7 @@ body { margin-top: 0px !important; padding-top: 0px !important; }
       .rs-main-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 30px; max-width: 1500px; margin: 0 auto; gap: 15px; position: relative !important; min-height: 60px; }
       
       .rs-logo-container { position: absolute; left: 50%; transform: translateX(-50%); flex: unset; z-index: 10; }
-      .rs-logo img { height: 48px !important; width: auto !important; object-fit: contain !important; transition: transform 0.3s ease !important; margin: 0 !important; }
+      .rs-logo img { height: 60px !important; width: auto !important; object-fit: contain !important; transition: transform 0.3s ease !important; margin: 0 !important; }
       
       .rs-actions { flex: 1; justify-content: flex-end; gap: 15px; }
       .rs-action-link span:not(.rs-badge) { display: none; }

@@ -65,7 +65,7 @@
                                     </div>
 
                                     <div class="flex items-center gap-2">
-                                        <a href="{{ route('product.show', $product->slug) }}" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-center text-[10px] font-extrabold py-2 rounded-xl uppercase tracking-wider transition shadow-2xs">
+                                        <a href="{{ route('product.show', $product->slug) }}" class="flex-1 bg-primary hover:bg-primary-dark text-white text-center text-[10px] font-extrabold py-2 rounded-xl uppercase tracking-wider transition shadow-2xs">
                                             Buy Now
                                         </a>
                                         <button type="button" class="w-8 h-8 rounded-xl bg-primary/10 hover:bg-primary text-primary hover:text-white flex items-center justify-center transition-all cursor-pointer flex-shrink-0" onclick="Ebigcart.addToCart('{{ $product->id }}', 1, event)" title="Add to Cart">

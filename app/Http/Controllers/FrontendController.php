@@ -14,21 +14,21 @@ class FrontendController extends Controller
     {
         $banners = Banner::where('is_active', true)->get();
         $testimonials = Testimonial::where('is_active', true)->get();
-        $bestSellers = Product::where('is_active', true)->where('is_bestseller', true)->latest()->take(8)->get();
-        $featuredProducts = Product::where('is_active', true)->where('is_featured', true)->latest()->take(8)->get();
+        $bestSellers = Product::where('is_active', true)->where('is_bestseller', true)->latest()->take(10)->get();
+        $featuredProducts = Product::where('is_active', true)->where('is_featured', true)->latest()->take(10)->get();
         $dealOfWeek = Product::where('is_active', true)->where('deal_of_week', true)->first();
         $categories = Category::where('is_active', true)->get();
 
         // Fallbacks if database has no flagged products
         if ($bestSellers->isEmpty()) {
-            $bestSellers = Product::where('is_active', true)->latest()->take(8)->get();
+            $bestSellers = Product::where('is_active', true)->latest()->take(10)->get();
         }
         if ($featuredProducts->isEmpty()) {
-            $featuredProducts = Product::where('is_active', true)->latest()->take(8)->get();
+            $featuredProducts = Product::where('is_active', true)->latest()->take(10)->get();
         }
 
         // Paginated "All Products" grid for the infinite scroll section
-        $allProducts = Product::where('is_active', true)->latest()->paginate(12)->withQueryString();
+        $allProducts = Product::where('is_active', true)->latest()->paginate(10)->withQueryString();
 
         return view('frontend.home', compact('banners', 'testimonials', 'bestSellers', 'featuredProducts', 'dealOfWeek', 'categories', 'allProducts'));
     }

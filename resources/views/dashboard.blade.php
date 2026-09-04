@@ -133,16 +133,16 @@
                             <div class="relative z-10">
                                 <div style="display: flex !important; align-items: center !important; justify-content: space-between !important;" class="mb-3">
                                     <div style="display: flex !important; align-items: center !important; gap: 10px !important;">
-                                        <div class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors" style="display: flex !important; align-items: center !important; justify-content: center !important;">
-                                            <i class="fa-solid fa-cart-shopping text-slate-600 group-hover:text-primary text-sm transition-colors"></i>
+                                        <div class="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center transition-colors" style="display: flex !important; align-items: center !important; justify-content: center !important;">
+                                            <i class="fa-solid fa-cart-shopping text-primary text-sm transition-colors"></i>
                                         </div>
                                         <h5 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider" style="margin: 0 !important; padding: 0 !important;">Shopping Cart</h5>
                                     </div>
-                                    <span class="text-[8px] font-extrabold text-slate-400 bg-slate-50 px-2 py-0.5 rounded border border-slate-100 uppercase tracking-wider">Cart Items</span>
+                                    <span class="text-[8px] font-extrabold text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20 uppercase tracking-wider">Cart Items</span>
                                 </div>
                                 <p class="text-xs text-slate-500 leading-relaxed mb-4" style="margin: 0 0 16px 0 !important;">Review items currently in your shopping cart, update item quantities, and proceed to checkout.</p>
                             </div>
-                            <a href="{{ url('/cart') }}" class="relative z-10 inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white shadow-xs px-4 py-2.5 rounded-xl text-xs font-extrabold w-fit transition-all duration-200 group-hover:-translate-y-0.5" style="display: inline-flex !important; align-items: center !important; text-decoration: none !important;">
+                            <a href="{{ url('/cart') }}" class="relative z-10 inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white shadow-xs px-4 py-2.5 rounded-xl text-xs font-extrabold w-fit transition-all duration-200 group-hover:-translate-y-0.5" style="display: inline-flex !important; align-items: center !important; text-decoration: none !important;">
                                 View Shopping Cart <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
@@ -152,16 +152,16 @@
                             <div class="relative z-10">
                                 <div style="display: flex !important; align-items: center !important; justify-content: space-between !important;" class="mb-3">
                                     <div style="display: flex !important; align-items: center !important; gap: 10px !important;">
-                                        <div class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors" style="display: flex !important; align-items: center !important; justify-content: center !important;">
-                                            <i class="fa-solid fa-heart text-slate-600 group-hover:text-primary text-sm transition-colors"></i>
+                                        <div class="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center transition-colors" style="display: flex !important; align-items: center !important; justify-content: center !important;">
+                                            <i class="fa-solid fa-heart text-primary text-sm transition-colors"></i>
                                         </div>
                                         <h5 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider" style="margin: 0 !important; padding: 0 !important;">My Wishlist</h5>
                                     </div>
-                                    <span class="text-[8px] font-extrabold text-slate-400 bg-slate-50 px-2 py-0.5 rounded border border-slate-100 uppercase tracking-wider">Saved Items</span>
+                                    <span class="text-[8px] font-extrabold text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20 uppercase tracking-wider">Saved Items</span>
                                 </div>
                                 <p class="text-xs text-slate-500 leading-relaxed mb-4" style="margin: 0 0 16px 0 !important;">Browse your saved favorite dresses & accessories, check stock availability, and move them to cart.</p>
                             </div>
-                            <a href="{{ url('/wishlist') }}" class="relative z-10 inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white shadow-xs px-4 py-2.5 rounded-xl text-xs font-extrabold w-fit transition-all duration-200 group-hover:-translate-y-0.5" style="display: inline-flex !important; align-items: center !important; text-decoration: none !important;">
+                            <a href="{{ url('/wishlist') }}" class="relative z-10 inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white shadow-xs px-4 py-2.5 rounded-xl text-xs font-extrabold w-fit transition-all duration-200 group-hover:-translate-y-0.5" style="display: inline-flex !important; align-items: center !important; text-decoration: none !important;">
                                 View Wishlist <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
@@ -375,7 +375,7 @@
                                                                     <span class="font-mono font-bold text-slate-800">{{ $order->ups_tracking_number }}</span>
                                                                 </div>
                                                                 <a href="https://www.ups.com/track?tracknum={{ $order->ups_tracking_number }}" target="_blank"
-                                                                   class="w-full text-center block text-white font-extrabold text-[9px] py-1.5 rounded-lg transition bg-slate-900 hover:bg-slate-800" style="text-decoration: none !important;">
+                                                                   class="w-full text-center block text-white font-extrabold text-[9px] py-1.5 rounded-lg transition bg-primary hover:bg-primary-dark" style="text-decoration: none !important;">
                                                                     <i class="fa-solid fa-magnifying-glass text-[8px] mr-1"></i> Track Package on UPS.com
                                                                 </a>
                                                             </div>
