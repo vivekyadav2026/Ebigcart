@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <h4 style="font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; margin: 0;">Store Address</h4>
-                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">Ebigcart Divine Store, Mathura Road, Vrindavan, Uttar Pradesh, India</p>
+                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">{{ \App\Models\Setting::get('site_address', 'Ebigcart Divine Store, Mathura Road, Vrindavan, Uttar Pradesh, India') }}</p>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                     </div>
                     <div>
                         <h4 style="font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; margin: 0;">Phone & WhatsApp</h4>
-                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">+91 98765 43210</p>
+                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">{{ \App\Models\Setting::get('site_phone', '+91 98765 43210') }}</p>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                     </div>
                     <div>
                         <h4 style="font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; margin: 0;">Email Support</h4>
-                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">support@ebigcart.com</p>
+                        <p style="font-size: 0.9rem; font-weight: 700; color: #222; margin: 4px 0 0 0;">{{ \App\Models\Setting::get('site_email', 'support@ebigcart.com') }}</p>
                     </div>
                 </div>
             </div>

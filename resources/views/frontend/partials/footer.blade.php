@@ -88,34 +88,41 @@
             </div>
 
             <div class="f-col talk-to-us">
-                <section id="custom_html-7" class="widget_text widget widget_custom_html"><h2 class="widget-title">Talk To Us</h2><div class="textwidget custom-html-widget"><div class="f-call-us">
-<span>Got Questions? Call us</span>
-</div>
-<ul>
-<li>
-<div class="tt-icon"><svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 5C1 2.2 2.6 1 5 1H13C15.4 1 17 2.2 17 5V10.6C17 13.4 15.4 14.6 13 14.6H5" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-<path d="M13 5.40039L10.496 7.40039C9.672 8.05639 8.32 8.05639 7.496 7.40039L5 5.40039" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-<path d="M1 11.4004H5.8" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-<path d="M1 8.19922H3.4" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-<div class="tt-content"><a href="mailto:support@@ebigcart.com">support@@ebigcart.com</a>
-</div>
- </li>
-
- <li>
- <div class="tt-icon">
-<svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.50001 10.9417C9.99877 10.9417 11.2138 9.72668 11.2138 8.22791C11.2138 6.72915 9.99877 5.51416 8.50001 5.51416C7.00124 5.51416 5.78625 6.72915 5.78625 8.22791C5.78625 9.72668 7.00124 10.9417 8.50001 10.9417Z" stroke="currentColor" stroke-width="1.5"></path>
-<path d="M1.21115 6.64496C2.92464 -0.887449 14.0841 -0.878751 15.7889 6.65366C16.7891 11.0722 14.0406 14.8123 11.6313 17.126C9.88298 18.8134 7.11704 18.8134 5.36006 17.126C2.95943 14.8123 0.210885 11.0635 1.21115 6.64496Z" stroke="currentColor" stroke-width="1.5"></path>
-</svg>
-</div>
-<div class="tt-content">
-</div>
-</li>
- </ul></div></section>
-
+                <section id="custom_html-7" class="widget_text widget widget_custom_html">
+                    <h2 class="widget-title">Talk To Us</h2>
+                    <div class="textwidget custom-html-widget">
+                        <div class="f-call-us">
+                            <span>Got Questions? Call us</span>
+                            <a href="tel:{{ \App\Models\Setting::get('site_phone', '+91 9259449933') }}">{{ \App\Models\Setting::get('site_phone', '+91 9259449933') }}</a>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="tt-icon">
+                                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 5C1 2.2 2.6 1 5 1H13C15.4 1 17 2.2 17 5V10.6C17 13.4 15.4 14.6 13 14.6H5" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M13 5.40039L10.496 7.40039C9.672 8.05639 8.32 8.05639 7.496 7.40039L5 5.40039" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M1 11.4004H5.8" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M1 8.19922H3.4" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div class="tt-content">
+                                    <a href="mailto:{{ \App\Models\Setting::get('site_email', 'support@ebigcart.com') }}">{{ \App\Models\Setting::get('site_email', 'support@ebigcart.com') }}</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tt-icon">
+                                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.50001 10.9417C9.99877 10.9417 11.2138 9.72668 11.2138 8.22791C11.2138 6.72915 9.99877 5.51416 8.50001 5.51416C7.00124 5.51416 5.78625 6.72915 5.78625 8.22791C5.78625 9.72668 7.00124 10.9417 8.50001 10.9417Z" stroke="currentColor" stroke-width="1.5"></path>
+                                        <path d="M1.21115 6.64496C2.92464 -0.887449 14.0841 -0.878751 15.7889 6.65366C16.7891 11.0722 14.0406 14.8123 11.6313 17.126C9.88298 18.8134 7.11704 18.8134 5.36006 17.126C2.95943 14.8123 0.210885 11.0635 1.21115 6.64496Z" stroke="currentColor" stroke-width="1.5"></path>
+                                    </svg>
+                                </div>
+                                <div class="tt-content">
+                                    {{ \App\Models\Setting::get('site_address', 'Near Kalideh police chowk ki Car parking Varindavan ,Mathura') }}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
         </div>
        <!--  <div class="copy-col">

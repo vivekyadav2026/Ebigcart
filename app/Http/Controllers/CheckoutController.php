@@ -33,7 +33,18 @@ class CheckoutController extends Controller
             $subtotal += $item['price'] * $item['quantity'];
         }
 
-        return view('frontend.checkout', compact('cart', 'subtotal'));
+        $coupon = session()->get('coupon');
+        $discountAmount = 0;
+        if ($coupon) {
+            if ($coupon['type'] == 'fixed') {
+                $discountAmount = $coupon['value'];
+            } else {
+                $discountAmount = $subtotal * ($coupon['value'] / 100);
+            }
+        }
+        $total = max(0, $subtotal - $discountAmount);
+
+        return view('frontend.checkout', compact('cart', 'subtotal', 'discountAmount', 'total'));
     }
 
     // Place Order
@@ -171,13 +182,25 @@ class CheckoutController extends Controller
             $subtotal += $item['price'] * $item['quantity'];
         }
 
+        $coupon = session()->get('coupon');
+        $discountAmount = 0;
+        if ($coupon) {
+            if ($coupon['type'] == 'fixed') {
+                $discountAmount = $coupon['value'];
+            } else {
+                $discountAmount = $subtotal * ($coupon['value'] / 100);
+            }
+            \App\Models\Coupon::where('code', $coupon['code'])->increment('used');
+        }
+        $total = max(0, $subtotal - $discountAmount);
+
         $orderNumber = 'ORD-' . date('Ymd') . '-' . strtoupper(Str::random(4));
 
         // Create Order
         $order = Order::create([
             'user_id'          => auth()->id(),
             'order_number'     => $orderNumber,
-            'total_amount'     => $subtotal,
+            'total_amount'     => $total,
             'status'           => 'pending',
             'payment_status'   => 'pending',
             'payment_method'   => $validated['payment_method'],
@@ -216,7 +239,7 @@ class CheckoutController extends Controller
                 Stripe::setApiKey(config('services.stripe.secret'));
 
                 $paymentIntent = PaymentIntent::create([
-                    'amount'      => (int) round($subtotal * 100), // cents
+                    'amount'      => (int) round($total * 100), // cents
                     'currency'    => 'usd',
                     'description' => 'Pepperlemon Order #' . $order->order_number,
                     'metadata'    => [
@@ -248,6 +271,7 @@ class CheckoutController extends Controller
 
         // --- COD FLOW ---
         session()->forget('cart');
+        session()->forget('coupon');
         return redirect()->route('checkout.success', ['order_number' => $order->order_number])
             ->with('success', 'Thank you! Your order has been placed successfully.');
     }
@@ -275,6 +299,7 @@ class CheckoutController extends Controller
             ]);
 
             session()->forget('cart');
+            session()->forget('coupon');
 
             return redirect()->route('checkout.success', ['order_number' => $order->order_number])
                 ->with('success', 'Payment successful! Your order has been placed.');

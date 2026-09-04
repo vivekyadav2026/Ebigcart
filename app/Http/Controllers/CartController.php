@@ -159,4 +159,39 @@ class CartController extends Controller
         $totalCount = array_sum(array_column($cart, 'quantity'));
         return response()->json(['cart_count' => $totalCount]);
     }
+
+    public function applyCoupon(Request $request)
+    {
+        $code = $request->input('code');
+        $coupon = \App\Models\Coupon::where('code', $code)
+            ->where('is_active', true)
+            ->first();
+
+        if (!$coupon) {
+            return back()->with('error', 'Invalid or inactive coupon code.');
+        }
+
+        if ($coupon->expiry_date && $coupon->expiry_date < now()->format('Y-m-d')) {
+            return back()->with('error', 'This coupon has expired.');
+        }
+
+        if ($coupon->usage_limit !== null && $coupon->used >= $coupon->usage_limit) {
+            return back()->with('error', 'This coupon has reached its usage limit.');
+        }
+
+        // Save coupon details in session
+        session()->put('coupon', [
+            'code' => $coupon->code,
+            'type' => $coupon->type,
+            'value' => $coupon->value
+        ]);
+
+        return back()->with('success', 'Coupon applied successfully!');
+    }
+
+    public function removeCoupon()
+    {
+        session()->forget('coupon');
+        return back()->with('success', 'Coupon removed.');
+    }
 }

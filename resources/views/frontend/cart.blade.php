@@ -106,18 +106,59 @@
                     <!-- Right: Order Summary Sidebar -->
                     @php 
                         $subtotal = array_sum(array_map(function($item) { return $item['price'] * $item['quantity']; }, $cart));
-                        $total = $subtotal;
+                        $coupon = session()->get('coupon');
+                        $discount = 0;
+                        if ($coupon) {
+                            if ($coupon['type'] == 'fixed') {
+                                $discount = $coupon['value'];
+                            } else {
+                                $discount = $subtotal * ($coupon['value'] / 100);
+                            }
+                        }
+                        $total = max(0, $subtotal - $discount);
                     @endphp
                     <div class="w-full lg:w-80 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs sticky top-24">
                         <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider mb-4 pb-3 border-b border-slate-100" style="font-family: 'Outfit', sans-serif;">
                             Order Summary
                         </h3>
 
+                        <!-- Coupon Form -->
+                        <div class="mb-5 pb-4 border-b border-slate-100">
+                            @if(session('coupon'))
+                                <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-tag"></i>
+                                        <span>Code: {{ session('coupon')['code'] }} applied!</span>
+                                    </div>
+                                    <form action="{{ route('cart.removeCoupon') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="text-rose-500 hover:text-rose-700 p-1 cursor-pointer" title="Remove Coupon">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            @else
+                                <form action="{{ route('cart.applyCoupon') }}" method="POST" class="flex items-center">
+                                    @csrf
+                                    <input type="text" name="code" placeholder="Enter coupon code" required class="flex-1 bg-slate-50 border border-slate-200 rounded-l-xl px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-primary">
+                                    <button type="submit" class="bg-slate-800 hover:bg-slate-950 text-white px-4 py-2.5 rounded-r-xl text-xs font-extrabold uppercase tracking-wider transition-colors cursor-pointer border border-slate-800">
+                                        Apply
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
+
                         <div class="space-y-3 mb-5 text-xs">
                             <div class="flex justify-between text-slate-600 font-medium">
                                 <span>Subtotal</span>
                                 <span class="font-extrabold text-slate-900">&#8377;{{ number_format($subtotal, 2) }}</span>
                             </div>
+                            @if($discount > 0)
+                            <div class="flex justify-between text-emerald-600 font-bold">
+                                <span>Coupon Discount</span>
+                                <span>-&#8377;{{ number_format($discount, 2) }}</span>
+                            </div>
+                            @endif
                             <div class="flex justify-between text-slate-600 font-medium items-center">
                                 <span>Delivery Charge</span>
                                 <span class="font-extrabold text-emerald-600 uppercase text-[9px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">FREE</span>

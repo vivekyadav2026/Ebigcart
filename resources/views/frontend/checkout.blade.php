@@ -333,6 +333,12 @@
                                 <span>Subtotal</span>
                                 <span class="font-semibold text-gray-900 font-sans">&#8377;{{ number_format($subtotal, 2) }}</span>
                             </div>
+                            @if(isset($discountAmount) && $discountAmount > 0)
+                            <div class="flex justify-between text-emerald-600 text-xs font-semibold">
+                                <span>Coupon Discount</span>
+                                <span>-&#8377;{{ number_format($discountAmount, 2) }}</span>
+                            </div>
+                            @endif
                             <div class="flex justify-between text-gray-500 text-xs">
                                 <span>Shipping</span>
                                 <span class="text-green-600 font-semibold uppercase text-[9px] tracking-wider">Free</span>
@@ -340,12 +346,12 @@
                             <hr class="border-gray-100">
                             <div class="flex justify-between text-xs font-bold text-gray-900">
                                 <span>Grand Total</span>
-                                <span>&#8377;{{ number_format($subtotal, 2) }}</span>
+                                <span>&#8377;{{ number_format(isset($total) ? $total : $subtotal, 2) }}</span>
                             </div>
                         </div>
 
                         <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 rounded-lg tracking-wider text-[11px] transition-all duration-300 shadow-md cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5">
-                            PLACE ORDER (&#8377;{{ number_format($subtotal, 2) }})
+                            PLACE ORDER (&#8377;{{ number_format(isset($total) ? $total : $subtotal, 2) }})
                         </button>
                     </div>
                 </div>

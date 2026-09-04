@@ -41,6 +41,8 @@ Route::get('/shipping-policy', [FrontendController::class, 'shipping'])->name('s
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
+Route::post('/cart/remove-coupon', [CartController::class, 'removeCoupon'])->name('cart.removeCoupon');
 Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
