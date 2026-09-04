@@ -136,7 +136,7 @@
 
         </div>
 		
-		<div class="designby">Designed &amp; Developed by: <a target="_blank" href="https://netleon.com/">Netleon IT Solutions Private Limited</a></div>
+		<div class="designby">Designed &amp; Developed by: <a target="_blank" href="https://foundida.com/">Foundida</a></div>
 		</div>
     </div>
 
