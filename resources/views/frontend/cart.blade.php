@@ -3,125 +3,139 @@
 @section('title', 'Shopping Cart')
 
 @section('content')
-<div style="max-width: 1200px; margin: 0 auto; padding: 25px 15px 60px 15px;">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <!-- Breadcrumb & Page Header -->
-    <div style="margin-bottom: 25px; border-bottom: 1px solid #eeeeee; padding-bottom: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+    <div class="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-100">
         <div>
-            <h1 style="font-size: 1.75rem; font-weight: 800; color: #1e293b; margin: 0; font-family: 'Outfit', sans-serif;">Shopping Cart</h1>
-            <p style="font-size: 0.82rem; color: #64748b; margin: 4px 0 0 0;">
-                <a href="/" style="color: #b71c1c; text-decoration: none; font-weight: 600;">Home</a> 
-                <span style="margin: 0 6px; color: #cbd5e1;">/</span> 
-                <span style="color: #334155; font-weight: 700;">Cart</span>
+            <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight" style="font-family: 'Outfit', sans-serif;">Shopping Cart</h1>
+            <p class="text-[10px] text-slate-400 mt-1 flex items-center gap-1.5 font-bold uppercase tracking-wider">
+                <a href="/" class="hover:text-primary transition-colors">Home</a> 
+                <span class="text-slate-300">/</span> 
+                @if(Auth::check())
+                    <a href="/dashboard" class="hover:text-primary transition-colors">Dashboard</a>
+                    <span class="text-slate-300">/</span>
+                @endif
+                <span class="text-slate-800">Cart</span>
             </p>
         </div>
-        <a href="/shop" style="font-size: 0.85rem; font-weight: 700; color: #b71c1c; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-            <i class="bi bi-arrow-left"></i> Continue Shopping
+        <a href="/shop" class="text-xs font-bold text-primary hover:text-primary-dark transition-colors inline-flex items-center gap-1.5">
+            <i class="fa-solid fa-arrow-left text-[10px]"></i> Continue Shopping
         </a>
     </div>
 
-    @if(empty($cart))
-        <div style="text-align: center; padding: 70px 20px; background: #ffffff; border-radius: 14px; border: 1px dashed #cbd5e1; margin: 20px 0;">
-            <i class="bi bi-bag-x" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 15px; display: block;"></i>
-            <h2 style="font-size: 1.5rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">Your Cart is Currently Empty</h2>
-            <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 25px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.5;">Browse our handcrafted Laddu Gopal dresses, mukuts, and ornaments collection to add your favorite divine items.</p>
-            <a href="/shop" style="display: inline-block; background: #b71c1c; color: #ffffff; padding: 13px 32px; border-radius: 8px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 14px rgba(183,28,28,0.25);">
-                Explore Collection
-            </a>
-        </div>
-    @else
-        <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;" class="cart-flex-wrapper">
-            <!-- Left: Cart Items List -->
-            <div style="flex: 1; min-width: 300px; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-                <h2 style="font-size: 1.1rem; font-weight: 800; color: #1e293b; margin-top: 0; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; font-family: 'Outfit', sans-serif;">
-                    Items in Your Cart ({{ count($cart) }})
-                </h2>
+    <div class="flex flex-col lg:flex-row gap-6">
+        @if(Auth::check())
+            @include('frontend.partials.customer_sidebar')
+        @endif
 
-                <div style="display: flex; flex-direction: column; gap: 20px;">
-                    @foreach($cart as $id => $item)
-                        @php
-                            $liveProduct = \App\Models\Product::find($id);
-                            $itemName = $liveProduct ? $liveProduct->name : $item['name'];
-                            $itemPrice = $liveProduct ? ($liveProduct->sale_price ?? $liveProduct->price) : $item['price'];
-                            $itemImage = $liveProduct ? $liveProduct->primary_image_url : $item['image'];
-                            $itemSlug = $liveProduct ? $liveProduct->slug : ($item['slug'] ?? '');
-                        @endphp
+        <div class="w-full {{ Auth::check() ? 'lg:w-3/4' : 'w-full' }}">
+            @if(empty($cart))
+                <div class="p-10 text-center bg-white border border-slate-200/80 rounded-2xl shadow-sm my-2">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-bag-shopping text-slate-300 text-2xl"></i>
+                    </div>
+                    <h2 class="text-base font-extrabold text-slate-800 mb-1" style="font-family: 'Outfit', sans-serif;">Your Cart is Currently Empty</h2>
+                    <p class="text-xs text-slate-400 mb-5 max-w-sm mx-auto leading-relaxed">Browse our collection of divine items, dresses, and accessories to add your favorite items.</p>
+                    <a href="/shop" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
+                        <i class="fa-solid fa-store text-xs"></i> Explore Collection
+                    </a>
+                </div>
+            @else
+                <div class="flex flex-col lg:flex-row gap-6 items-start">
+                    <!-- Left: Cart Items List -->
+                    <div class="flex-1 bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-2xs w-full">
+                        <h2 class="text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-4 pb-3 border-b border-slate-100 flex items-center gap-2" style="font-family: 'Outfit', sans-serif;">
+                            <i class="fa-solid fa-cart-shopping text-primary"></i> Cart Items ({{ count($cart) }})
+                        </h2>
 
-                        <div id="cart-item-row-{{ $id }}" style="display: flex; gap: 18px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9;">
-                            <!-- Thumbnail with Direct Product Link -->
-                            <a href="{{ route('product.show', $itemSlug) }}" style="width: 85px; height: 85px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; transition: border-color 0.2s ease;">
-                                <img src="{{ asset($itemImage) }}" alt="{{ $itemName }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-                            </a>
+                        <div class="space-y-4">
+                            @foreach($cart as $id => $item)
+                                @php
+                                    $liveProduct = \App\Models\Product::find($id);
+                                    $itemName = $liveProduct ? $liveProduct->name : $item['name'];
+                                    $itemPrice = $liveProduct ? ($liveProduct->sale_price ?? $liveProduct->price) : $item['price'];
+                                    $itemImage = $liveProduct ? $liveProduct->primary_image_url : $item['image'];
+                                    $itemSlug = $liveProduct ? $liveProduct->slug : ($item['slug'] ?? '');
+                                @endphp
 
-                            <!-- Details Column -->
-                            <div style="flex: 1; min-width: 0;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px;">
-                                    <a href="{{ route('product.show', $itemSlug) }}" style="font-size: 1rem; font-weight: 700; color: #1e293b; text-decoration: none; display: block; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                        {{ $itemName }}
+                                <div id="cart-item-row-{{ $id }}" class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-4 border-b border-slate-100 last:pb-0 last:border-b-0">
+                                    <!-- Thumbnail -->
+                                    <a href="{{ route('product.show', $itemSlug) }}" class="w-20 h-20 bg-slate-50 border border-slate-200/80 rounded-xl p-1.5 flex items-center justify-center flex-shrink-0 hover:border-slate-300 transition-all">
+                                        <img src="{{ asset($itemImage) }}" alt="{{ $itemName }}" class="max-w-full max-h-full object-contain">
                                     </a>
-                                    <span style="font-size: 1.1rem; font-weight: 800; color: #b71c1c; white-space: nowrap;">
-                                        &#8377;{{ number_format($itemPrice * $item['quantity'], 2) }}
-                                    </span>
-                                </div>
 
-                                <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 12px 0; font-weight: 600;">
-                                    &#8377;{{ number_format($itemPrice, 2) }} each
-                                </p>
+                                    <!-- Details Column -->
+                                    <div class="flex-1 min-w-0 w-full">
+                                        <div class="flex items-start justify-between gap-3 mb-1">
+                                            <a href="{{ route('product.show', $itemSlug) }}" class="text-xs sm:text-sm font-bold text-slate-900 hover:text-primary transition-colors line-clamp-2 leading-snug">
+                                                {{ $itemName }}
+                                            </a>
+                                            <span class="text-sm font-extrabold text-primary flex-shrink-0">
+                                                &#8377;{{ number_format($itemPrice * $item['quantity'], 2) }}
+                                            </span>
+                                        </div>
 
-                                <!-- Stepper & Remove Action Row -->
-                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-                                    <!-- Stepper -->
-                                    <div style="display: inline-flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background: #ffffff; height: 34px;">
-                                        <button type="button" style="width: 34px; height: 100%; background: #f8fafc; border: none; font-weight: 800; cursor: pointer; color: #334155; font-size: 1rem; display: flex; align-items: center; justify-content: center;" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] - 1 }})">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <span style="width: 40px; text-align: center; font-size: 0.9rem; font-weight: 800; color: #0f172a;">{{ $item['quantity'] }}</span>
-                                        <button type="button" style="width: 34px; height: 100%; background: #f8fafc; border: none; font-weight: 800; cursor: pointer; color: #334155; font-size: 1rem; display: flex; align-items: center; justify-content: center;" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] + 1 }})">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
+                                        <p class="text-[11px] text-slate-400 font-semibold mb-3">
+                                            &#8377;{{ number_format($itemPrice, 2) }} each
+                                        </p>
+
+                                        <!-- Stepper & Remove Action Row -->
+                                        <div class="flex items-center justify-between flex-wrap gap-3">
+                                            <!-- Stepper -->
+                                            <div class="inline-flex items-center border border-slate-200 rounded-xl overflow-hidden bg-slate-50 h-8 shadow-2xs">
+                                                <button type="button" class="w-8 h-full bg-white hover:bg-slate-100 border-r border-slate-200 font-extrabold cursor-pointer text-slate-700 text-xs flex items-center justify-center transition" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] - 1 }})">
+                                                    <i class="fa-solid fa-minus text-[10px]"></i>
+                                                </button>
+                                                <span class="w-10 text-center text-xs font-extrabold text-slate-900">{{ $item['quantity'] }}</span>
+                                                <button type="button" class="w-8 h-full bg-white hover:bg-slate-100 border-l border-slate-200 font-extrabold cursor-pointer text-slate-700 text-xs flex items-center justify-center transition" onclick="updateCartQty('{{ $id }}', {{ $item['quantity'] + 1 }})">
+                                                    <i class="fa-solid fa-plus text-[10px]"></i>
+                                                </button>
+                                            </div>
+
+                                            <!-- Remove Button -->
+                                            <button type="button" class="text-rose-500 hover:text-rose-700 text-xs font-bold flex items-center gap-1.5 px-2.5 py-1 rounded-lg hover:bg-rose-50 transition cursor-pointer" onclick="removeCartItem('{{ $id }}')">
+                                                <i class="fa-regular fa-trash-can text-xs"></i> Remove
+                                            </button>
+                                        </div>
                                     </div>
-
-                                    <!-- Remove Button -->
-                                    <button type="button" style="background: none; border: none; color: #ef4444; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 6px; transition: background 0.2s ease;" onclick="removeCartItem('{{ $id }}')">
-                                        <i class="bi bi-trash3" style="font-size: 0.9rem;"></i> Remove
-                                    </button>
                                 </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Right: Order Summary Sidebar -->
+                    @php 
+                        $subtotal = array_sum(array_map(function($item) { return $item['price'] * $item['quantity']; }, $cart));
+                        $total = $subtotal;
+                    @endphp
+                    <div class="w-full lg:w-80 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs sticky top-24">
+                        <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider mb-4 pb-3 border-b border-slate-100" style="font-family: 'Outfit', sans-serif;">
+                            Order Summary
+                        </h3>
+
+                        <div class="space-y-3 mb-5 text-xs">
+                            <div class="flex justify-between text-slate-600 font-medium">
+                                <span>Subtotal</span>
+                                <span class="font-extrabold text-slate-900">&#8377;{{ number_format($subtotal, 2) }}</span>
+                            </div>
+                            <div class="flex justify-between text-slate-600 font-medium items-center">
+                                <span>Delivery Charge</span>
+                                <span class="font-extrabold text-emerald-600 uppercase text-[9px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">FREE</span>
+                            </div>
+                            <div class="border-t border-slate-100 pt-3 flex justify-between text-sm font-extrabold text-slate-900">
+                                <span>Total Payable</span>
+                                <span class="text-primary text-base">&#8377;{{ number_format($total, 2) }}</span>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            </div>
 
-            <!-- Right: Order Summary Sidebar -->
-            @php 
-                $subtotal = array_sum(array_map(function($item) { return $item['price'] * $item['quantity']; }, $cart));
-                $total = $subtotal;
-            @endphp
-            <div style="width: 360px; max-width: 100%; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: sticky; top: 90px;" class="cart-summary-card">
-                <h3 style="font-size: 1.15rem; font-weight: 800; color: #1e293b; margin-top: 0; margin-bottom: 18px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; font-family: 'Outfit', sans-serif;">
-                    Order Summary
-                </h3>
-
-                <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; font-size: 0.9rem;">
-                    <div style="display: flex; justify-content: space-between; color: #475569;">
-                        <span>Subtotal</span>
-                        <span style="font-weight: 700; color: #0f172a;">&#8377;{{ number_format($subtotal, 2) }}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; color: #475569;">
-                        <span>Delivery Charge</span>
-                        <span style="font-weight: 800; color: #16a34a; text-transform: uppercase; font-size: 0.8rem; background: #dcfce7; padding: 2px 8px; border-radius: 6px;">FREE</span>
-                    </div>
-                    <div style="border-top: 1px solid #e2e8f0; padding-top: 14px; display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: #b71c1c;">
-                        <span>Total Payable</span>
-                        <span>&#8377;{{ number_format($total, 2) }}</span>
+                        <a href="{{ route('checkout.index') }}" class="w-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 py-3 rounded-xl font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition duration-200">
+                            Proceed to Checkout <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
                     </div>
                 </div>
-
-                <a href="{{ route('checkout.index') }}" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: #b71c1c; color: #ffffff; text-decoration: none; padding: 14px; border-radius: 10px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 14px rgba(183,28,28,0.3); transition: transform 0.2s ease;">
-                    Proceed to Checkout <i class="bi bi-arrow-right" style="font-size: 1rem;"></i>
-                </a>
-            </div>
+            @endif
         </div>
-    @endif
+    </div>
 </div>
 
 <!-- AJAX Stepper & Item Removal Scripts -->
@@ -172,16 +186,4 @@ function removeCartItem(productId) {
     }
 }
 </script>
-
-<style>
-@media (max-width: 900px) {
-    .cart-flex-wrapper {
-        flex-direction: column !important;
-    }
-    .cart-summary-card {
-        width: 100% !important;
-        position: static !important;
-    }
-}
-</style>
 @endsection

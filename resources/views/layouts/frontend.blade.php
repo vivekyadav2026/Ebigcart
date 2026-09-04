@@ -7,9 +7,28 @@
     <title>Ebigcart - Buy Best Laddu Gopal Dresses, Accessories and Ornaments</title>
     <meta name="description" content="Explore beautiful Laddu Gopal dresses and accessories to adorn your divine idol with elegance and charm. Shop the best selection today!">
     
-    <script src="https://cdn.tailwindcss.com"></script><script>tailwind.config = { corePlugins: { preflight: false } }</script>
-    <!-- Bootstrap Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#b71c1c',
+                            dark: '#8e1515',
+                        }
+                    }
+                }
+            } 
+        }
+    </script>
+    <!-- FontAwesome & Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Legacy CSS (Will be phased out later) -->
     <link rel="stylesheet" href="/mahashringar_assets/custom.css">
