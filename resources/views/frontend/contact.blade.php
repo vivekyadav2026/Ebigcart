@@ -17,9 +17,9 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: start;">
         <!-- Contact Info -->
         <div style="background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e8e8e8; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
-            <h2 style="font-size: 1.4rem; font-weight: 700; color: #222; margin-bottom: 10px; font-family: 'Outfit', sans-serif;">Get In Touch With Us</h2>
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: #222; margin-bottom: 10px; font-family: 'Outfit', sans-serif;">Get In touch with us me</h2>
             <p style="font-size: 0.85rem; color: #666; margin-bottom: 25px; line-height: 1.6;">
-                Have questions about size selection, custom orders, or shipping? We are always happy to assist you!
+                Have questions about our online shop or need help choosing the perfect product? We’re here to help! Reach out to us anytime—we’d be delighted to assist you and make your shopping experience easy, enjoyable, and hassle-free.
             </p>
 
             <div style="display: flex; flex-direction: column; gap: 20px;">
