@@ -78,11 +78,11 @@
             </div>
 
             <div class="f-col f-links">
-                <section id="nav_menu-4" class="widget widget_nav_menu"><h2 class="widget-title">Policies</h2><nav class="menu-policies-container" aria-label="Policies"><ul id="menu-policies" class="menu"><li id="menu-item-10140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10140"><a href="#">Contact Us</a></li>
-<li id="menu-item-13973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13973"><a href="#">About Us</a></li>
-<li id="menu-item-10137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10137"><a href="#">Terms &amp; Conditions</a></li>
-<li id="menu-item-10138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-10138"><a rel="privacy-policy" href="#">Privacy Policy</a></li>
-<li id="menu-item-10139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10139"><a href="#">Refund and Cancellation</a></li>
+                <section id="nav_menu-4" class="widget widget_nav_menu"><h2 class="widget-title">Policies</h2><nav class="menu-policies-container" aria-label="Policies"><ul id="menu-policies" class="menu"><li id="menu-item-10140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10140"><a href="{{ route('contact') }}">Contact Us</a></li>
+<li id="menu-item-13973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13973"><a href="{{ route('about') }}">About Us</a></li>
+<li id="menu-item-10137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10137"><a href="{{ route('terms') }}">Terms &amp; Conditions</a></li>
+<li id="menu-item-10138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-10138"><a rel="privacy-policy" href="{{ route('privacy') }}">Privacy Policy</a></li>
+<li id="menu-item-10139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10139"><a href="{{ route('refund') }}">Refund and Cancellation</a></li>
 <li id="menu-item-13976" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13976"><a href="#">FAQ for Laddu Gopal</a></li>
 </ul></nav></section>
             </div>
