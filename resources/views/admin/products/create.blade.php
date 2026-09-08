@@ -47,15 +47,38 @@
 
             <!-- Price -->
             <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Regular Price ($) *</label>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Regular Price (&#8377;) *</label>
                 <input type="number" name="price" step="0.01" min="0" value="{{ old('price') }}" required placeholder="e.g. 250.00"
                        class="w-full border border-slate-200 focus:ring-1 focus:ring-[#C49A6C] focus:border-[#C49A6C] rounded-xl text-sm px-4 py-2.5">
             </div>
 
             <!-- Sale Price -->
             <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Sale Price ($) (Optional)</label>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Sale Price (&#8377;) (Optional)</label>
                 <input type="number" name="sale_price" step="0.01" min="0" value="{{ old('sale_price') }}" placeholder="e.g. 199.00"
+                       class="w-full border border-slate-200 focus:ring-1 focus:ring-[#C49A6C] focus:border-[#C49A6C] rounded-xl text-sm px-4 py-2.5">
+            </div>
+
+            <!-- GST Rate (%) -->
+            <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">GST Rate (%)</label>
+                    <div class="flex space-x-1">
+                        <button type="button" onclick="document.getElementById('gst_input').value=0" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 hover:bg-[#C49A6C] hover:text-white transition cursor-pointer font-semibold">0%</button>
+                        <button type="button" onclick="document.getElementById('gst_input').value=5" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 hover:bg-[#C49A6C] hover:text-white transition cursor-pointer font-semibold">5%</button>
+                        <button type="button" onclick="document.getElementById('gst_input').value=12" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 hover:bg-[#C49A6C] hover:text-white transition cursor-pointer font-semibold">12%</button>
+                        <button type="button" onclick="document.getElementById('gst_input').value=18" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 hover:bg-[#C49A6C] hover:text-white transition cursor-pointer font-semibold">18%</button>
+                        <button type="button" onclick="document.getElementById('gst_input').value=28" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 hover:bg-[#C49A6C] hover:text-white transition cursor-pointer font-semibold">28%</button>
+                    </div>
+                </div>
+                <input type="number" id="gst_input" name="gst" step="0.01" min="0" max="100" value="{{ old('gst', 0) }}" placeholder="e.g. 18"
+                       class="w-full border border-slate-200 focus:ring-1 focus:ring-[#C49A6C] focus:border-[#C49A6C] rounded-xl text-sm px-4 py-2.5">
+            </div>
+
+            <!-- HSN Code -->
+            <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">HSN / SAC Code (Optional)</label>
+                <input type="text" name="hsn_code" value="{{ old('hsn_code') }}" placeholder="e.g. 33074100"
                        class="w-full border border-slate-200 focus:ring-1 focus:ring-[#C49A6C] focus:border-[#C49A6C] rounded-xl text-sm px-4 py-2.5">
             </div>
 

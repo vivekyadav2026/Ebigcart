@@ -59,7 +59,10 @@
                             </td>
                             <td class="px-6 py-4">
                                 <span class="block font-semibold text-slate-800 max-w-xs truncate" title="{{ $product->name }}">{{ $product->name }}</span>
-                                <span class="block text-xs text-slate-400 mt-0.5">SKU: {{ $product->sku }}</span>
+                                <span class="block text-xs text-slate-400 mt-0.5">
+                                    SKU: {{ $product->sku }}
+                                    @if($product->hsn_code) | HSN: {{ $product->hsn_code }} @endif
+                                </span>
                             </td>
                             <td class="px-6 py-4 font-medium text-slate-600">{{ $product->category->name }}</td>
                             <td class="px-6 py-4">
@@ -68,6 +71,9 @@
                                     <span class="block text-xs text-slate-400 line-through">&#8377;{{ number_format($product->price, 2) }}</span>
                                 @else
                                     <span class="font-bold text-slate-900">&#8377;{{ number_format($product->price, 2) }}</span>
+                                @endif
+                                @if($product->gst > 0)
+                                    <span class="inline-block text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 mt-1">GST: {{ $product->gst }}%</span>
                                 @endif
                             </td>
                             <td class="px-6 py-4">
