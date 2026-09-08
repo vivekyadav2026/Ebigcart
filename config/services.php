@@ -41,6 +41,11 @@ return [
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET', ''),
     ],
 
+    'razorpay' => [
+        'key' => env('RAZORPAY_KEY'),
+        'secret' => env('RAZORPAY_SECRET'),
+    ],
+
     'ups' => [
         'client_id'      => env('UPS_CLIENT_ID'),
         'client_secret'  => env('UPS_CLIENT_SECRET'),

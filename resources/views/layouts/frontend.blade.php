@@ -59,6 +59,10 @@
             z-index: 9999 !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
         }
+        /* Header Megamenu & Submenu dropdown overlay fix */
+        .mega-menu, .sub-menu, .dropdown-menu, ul.children, ul.sub-menu {
+            z-index: 10000 !important;
+        }
         .admin-bar, .admin-bar html, .admin-bar body, .admin-bar #page {
             margin-top: 0 !important;
             padding-top: 0 !important;
@@ -445,5 +449,7 @@
         window.Ebigcart.updateHeaderCounts();
     });
     </script>
+    @stack('scripts')
+    @yield('scripts')
 </body>
 </html>

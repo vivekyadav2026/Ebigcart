@@ -18,371 +18,484 @@
             }
         }
     @endphp
-    <!-- Flash Messages (cancel/error/warning) -->
-    @if(session('warning'))
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3">
-            <div class="flex items-start gap-2 bg-amber-50 border border-amber-200 text-amber-800 rounded-lg px-3 py-2 text-xs font-medium shadow-sm">
-                <i class="fa-solid fa-triangle-exclamation mt-0.5 text-amber-500"></i>
-                <span>{{ session('warning') }}</span>
-            </div>
-        </div>
-    @endif
-    @if(session('error'))
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3">
-            <div class="flex items-start gap-2 bg-rose-50 border border-rose-200 text-rose-800 rounded-lg px-3 py-2 text-xs font-medium shadow-sm">
-                <i class="fa-solid fa-circle-xmark mt-0.5 text-rose-500"></i>
-                <span>{{ session('error') }}</span>
-            </div>
-        </div>
-    @endif
 
-    <!-- Checkout Form -->
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-4 md:py-6">
-        <!-- Breadcrumb & Title Inline -->
-        <div class="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-2">
-            <div>
-                <h1 class="text-xl md:text-2xl font-bold text-gray-900 leading-tight" style="font-family: 'Outfit', sans-serif;">Checkout</h1>
-                <p class="text-[10px] md:text-[11px] text-gray-400 mt-0.5">
-                    <a href="/" class="hover:text-primary transition">Home</a> / 
-                    <span class="text-gray-900 font-medium">Checkout</span>
-                </p>
+    <div class="bg-slate-50/70 py-6 md:py-10 min-h-screen relative z-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Flash Messages -->
+            @if(session('warning'))
+                <div class="mb-6 flex items-center gap-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-2xl px-4.5 py-3 text-xs font-medium shadow-xs">
+                    <div class="w-7 h-7 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 flex-shrink-0">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <span class="flex-1">{{ session('warning') }}</span>
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="mb-6 flex items-center gap-3 bg-rose-50 border border-rose-200 text-rose-900 rounded-2xl px-4.5 py-3 text-xs font-medium shadow-xs">
+                    <div class="w-7 h-7 rounded-xl bg-rose-100 flex items-center justify-center text-rose-700 flex-shrink-0">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <span class="flex-1">{{ session('error') }}</span>
+                </div>
+            @endif
+
+            <!-- Top Header & Checkout Steps -->
+            <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" style="font-family: 'Outfit', sans-serif;">Checkout</h1>
+                    <nav class="flex text-xs text-slate-400 mt-1 space-x-2">
+                        <a href="/" class="hover:text-primary transition-colors font-medium">Home</a>
+                        <span>/</span>
+                        <a href="{{ route('cart.index') }}" class="hover:text-primary transition-colors font-medium">Cart</a>
+                        <span>/</span>
+                        <span class="text-slate-800 font-bold">Checkout</span>
+                    </nav>
+                </div>
+                
+                <!-- Steps Indicator -->
+                <div class="flex items-center gap-2 self-start sm:self-auto text-xs">
+                    <span class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-extrabold border border-primary/20">
+                        <span class="w-5 h-5 rounded-full bg-primary text-white text-[10px] flex items-center justify-center font-bold">1</span>
+                        Shipping & Address
+                    </span>
+                    <span class="text-slate-300"><i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+                    <span class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-600 font-semibold">
+                        <span class="w-5 h-5 rounded-full bg-slate-300 text-slate-700 text-[10px] flex items-center justify-center font-bold">2</span>
+                        Payment
+                    </span>
+                </div>
             </div>
+
+            @if ($errors->any())
+                <div class="bg-rose-50 border border-rose-200 text-rose-700 px-4.5 py-3 rounded-2xl mb-6 shadow-xs">
+                    <div class="flex items-center gap-2 font-bold text-xs mb-1">
+                        <i class="fa-solid fa-triangle-exclamation text-rose-500"></i> Please fix the following errors:
+                    </div>
+                    <ul class="list-disc list-inside text-xs space-y-0.5 ml-2">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             @guest
-                <span class="text-[9px] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">Guest Checkout</span>
+                <div class="mb-6 p-4 bg-gradient-to-r from-primary/5 via-primary/10 to-transparent border border-primary/20 rounded-2xl flex items-center gap-4 shadow-xs">
+                    <div class="h-10 w-10 rounded-2xl bg-primary/15 flex items-center justify-center text-primary flex-shrink-0">
+                        <i class="fa-regular fa-user text-base"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-xs font-bold text-slate-900">Guest Checkout</h4>
+                        <p class="text-[11px] text-slate-600">Have an account? <a href="{{ route('login') }}" class="text-primary font-bold hover:underline">Log in here</a> to use saved addresses and fast checkout.</p>
+                    </div>
+                </div>
             @endguest
-        </div>
 
-        @if ($errors->any())
-            <div class="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded mb-4">
-                <ul class="list-disc list-inside text-xs">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+            @php
+                $defaultAddress = auth()->check() ? auth()->user()->addresses()->where('is_default', true)->first() : null;
+                $defaultAddressId = $defaultAddress ? $defaultAddress->id : 'new';
+            @endphp
 
-        @guest
-            <div class="mb-4 p-3 bg-primary/5 border border-primary/10 rounded-xl flex items-center gap-3 shadow-sm">
-                <div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                    <i class="fa-regular fa-user text-sm"></i>
-                </div>
-                <div class="flex-1">
-                    <p class="text-xs text-gray-600">Checking out as guest. Already have an account? <a href="{{ route('login') }}" class="text-primary font-bold hover:underline">Log in here</a>.</p>
-                </div>
-            </div>
-        @endguest
+            <form action="{{ route('checkout.store') }}" method="POST" enctype="multipart/form-data" 
+                  x-data="{ deliveryType: 'online_delivery', selectedAddressId: '{{ $defaultAddressId }}', paymentMethod: 'cod' }">
+                @csrf
 
-        @php
-            $defaultAddress = auth()->check() ? auth()->user()->addresses()->where('is_default', true)->first() : null;
-            $defaultAddressId = $defaultAddress ? $defaultAddress->id : 'new';
-        @endphp
-        <form action="{{ route('checkout.store') }}" method="POST" enctype="multipart/form-data" x-data="{ deliveryType: 'online_delivery', selectedAddressId: '{{ $defaultAddressId }}' }">
-            @csrf
-
-            <div class="flex flex-col lg:flex-row gap-5 lg:gap-8">
-                <!-- Shipping details form -->
-                <div class="w-full lg:w-2/3">
-                    <!-- Hidden field for delivery_type -->
-                    <input type="hidden" name="delivery_type" value="online_delivery">
-
-                    <h2 class="text-base font-bold text-gray-900 mb-3 pb-1.5 border-b border-gray-100 flex items-center gap-2" style="font-family: 'Outfit', sans-serif;">
-                        <span class="inline-block w-1 h-4 bg-primary rounded-full"></span>
-                        Customer & Contact Info
-                    </h2>
+                <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-                        <div>
-                            <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" name="shipping_name" value="{{ old('shipping_name', auth()->check() ? auth()->user()->name : '') }}" required class="w-full bg-white border @error('shipping_name') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Full Name">
-                            @error('shipping_name')
-                                <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Email Address <span class="text-red-500">*</span></label>
-                            <input type="email" name="shipping_email" value="{{ old('shipping_email', auth()->check() ? auth()->user()->email : '') }}" required class="w-full bg-white border @error('shipping_email') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Email Address">
-                            @error('shipping_email')
-                                <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
+                    <!-- Left Column: Customer Details, Address & Payment -->
+                    <div class="w-full lg:w-2/3 space-y-6">
+                        <input type="hidden" name="delivery_type" value="online_delivery">
 
-                    <div class="mb-3">
-                        <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone Number <span class="text-red-500">*</span></label>
-                        <input type="text" name="shipping_phone" value="{{ old('shipping_phone', auth()->check() ? auth()->user()->phone : '') }}" required class="w-full bg-white border @error('shipping_phone') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Phone Number">
-                        @error('shipping_phone')
-                            <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Shipping details -->
-                    <div class="space-y-3 mb-4">
-                        @auth
-                            @php
-                                $userAddresses = auth()->user()->addresses;
-                            @endphp
-                            @if($userAddresses->isNotEmpty())
-                                <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-2">
-                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">Choose Saved Address</label>
-                                    <div class="space-y-2 max-h-48 overflow-y-auto">
-                                        @foreach($userAddresses as $addr)
-                                            <label class="flex items-start p-2.5 border {{ $addr->is_default ? 'border-primary bg-primary/2.5' : 'border-slate-200 bg-white' }} rounded-xl cursor-pointer hover:border-primary/45 transition">
-                                                <input type="radio" name="selected_address_id" value="{{ $addr->id }}" {{ $addr->is_default ? 'checked' : '' }}
-                                                       @click="selectedAddressId = '{{ $addr->id }}';"
-                                                       class="mt-0.5 h-3.5 w-3.5 text-primary border-gray-300">
-                                                <div class="ml-2">
-                                                    <p class="text-xs font-bold text-slate-800">{{ $addr->address }}@if($addr->address2), {{ $addr->address2 }}@endif</p>
-                                                    <p class="text-[10px] text-slate-500 font-semibold">{{ $addr->city }}, {{ $addr->state }} - {{ $addr->zip }} | Phone: {{ $addr->phone }}</p>
-                                                </div>
-                                            </label>
-                                        @endforeach
-                                        
-                                        <label class="flex items-start p-2.5 border border-slate-200 bg-white rounded-xl cursor-pointer hover:border-primary/45 transition">
-                                            <input type="radio" name="selected_address_id" value="new" {{ !$defaultAddress ? 'checked' : '' }}
-                                                   @click="selectedAddressId = 'new';"
-                                                   class="mt-0.5 h-3.5 w-3.5 text-primary border-gray-300">
-                                            <div class="ml-2">
-                                                <p class="text-xs font-bold text-slate-800">Add New Address</p>
-                                            </div>
-                                        </label>
-                                    </div>
+                        <!-- Section 1: Customer Contact Info -->
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 md:p-6 shadow-xs hover:shadow-sm transition-shadow">
+                            <div class="flex items-center gap-3 mb-5 pb-3.5 border-b border-slate-100">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                    <i class="fa-solid fa-user"></i>
                                 </div>
-                            @endif
-                        @endauth
+                                <div>
+                                    <h2 class="text-base font-bold text-slate-900 leading-tight" style="font-family: 'Outfit', sans-serif;">Customer & Contact Info</h2>
+                                    <p class="text-[11px] text-slate-400">Order updates will be sent to this email & phone</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Full Name <span class="text-rose-500">*</span></label>
+                                    <input type="text" name="shipping_name" value="{{ old('shipping_name', auth()->check() ? auth()->user()->name : '') }}" required 
+                                           class="w-full bg-white border @error('shipping_name') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="Enter full name">
+                                    @error('shipping_name')
+                                        <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
+                                    @enderror
+                                </div>
 
-                        <div x-show="selectedAddressId === 'new'" class="space-y-3">
+                                <div>
+                                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Email Address <span class="text-rose-500">*</span></label>
+                                    <input type="email" name="shipping_email" value="{{ old('shipping_email', auth()->check() ? auth()->user()->email : '') }}" required 
+                                           class="w-full bg-white border @error('shipping_email') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="name@example.com">
+                                    @error('shipping_email')
+                                        <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div>
-                                <div class="flex justify-between items-center mb-1">
-                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Flat / House No. / Building <span class="text-red-500">*</span></label>
-                                    <button type="button" id="detect-location-btn" class="text-[9px] text-primary bg-primary/5 hover:bg-primary/10 border border-primary/10 rounded-full px-2.5 py-1 font-semibold flex items-center gap-1 cursor-pointer transition">
-                                        <i class="fa-solid fa-location-crosshairs"></i> Auto-Detect
-                                    </button>
-                                </div>
-                                <input type="text" name="shipping_address" value="{{ old('shipping_address', $address1) }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_address') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="e.g. 1234 Main St, Apt 5B">
-                                @error('shipping_address')
-                                    <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
+                                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Phone Number <span class="text-rose-500">*</span></label>
+                                <input type="text" name="shipping_phone" value="{{ old('shipping_phone', auth()->check() ? auth()->user()->phone : '') }}" required 
+                                       class="w-full bg-white border @error('shipping_phone') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="10-digit Mobile Number">
+                                @error('shipping_phone')
+                                    <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
                                 @enderror
                             </div>
+                        </div>
 
-                            <div>
-                                <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Area / Colony / Street / Landmark</label>
-                                <input type="text" name="shipping_address2" value="{{ old('shipping_address2', $address2) }}" class="w-full bg-white border @error('shipping_address2') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="e.g. Sector 12, near Kali Temple, Dwarka">
-                            </div>
+                        <!-- Section 2: Delivery Address -->
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 md:p-6 shadow-xs hover:shadow-sm transition-shadow">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-3.5 border-b border-slate-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <h2 class="text-base font-bold text-slate-900 leading-tight" style="font-family: 'Outfit', sans-serif;">Shipping Address</h2>
+                                        <p class="text-[11px] text-slate-400">Where should we deliver your order?</p>
+                                    </div>
+                                </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                <div>
-                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">City <span class="text-red-500">*</span></label>
-                                    <input type="text" name="shipping_city" value="{{ old('shipping_city', auth()->check() ? auth()->user()->city : '') }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_city') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="City">
-                                    @error('shipping_city')
-                                        <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">State <span class="text-red-500">*</span></label>
-                                    <input type="text" name="shipping_state" value="{{ old('shipping_state', auth()->check() ? auth()->user()->state : '') }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_state') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200 uppercase" placeholder="State">
-                                    @error('shipping_state')
-                                        <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">ZIP / Postal Code <span class="text-red-500">*</span></label>
-                                    <input type="text" name="shipping_zip" value="{{ old('shipping_zip', auth()->check() ? auth()->user()->zip : '') }}" :required="selectedAddressId === 'new'" class="w-full bg-white border @error('shipping_zip') border-red-500 @else border-gray-200 @enderror rounded-lg px-3 py-2 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Pincode / ZIP">
-                                    @error('shipping_zip')
-                                        <span class="text-red-500 text-[10px] mt-0.5 block">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                                <button type="button" id="detect-location-btn" onclick="detectUserLocation(this)" 
+                                        class="self-start sm:self-auto text-xs text-primary bg-primary/10 hover:bg-primary/20 border border-primary/25 rounded-xl px-3.5 py-2 font-bold flex items-center gap-2 cursor-pointer transition shadow-2xs whitespace-nowrap active:scale-95">
+                                    <i class="fa-solid fa-location-crosshairs text-xs"></i> Auto-Detect Location
+                                </button>
                             </div>
 
                             @auth
-                                <!-- Set default checkbox -->
-                                <div class="flex items-center gap-2 pt-1">
-                                    <input type="checkbox" name="is_default" id="is_default" value="1" class="rounded border-gray-300 text-primary focus:ring-primary/25 h-3.5 w-3.5 cursor-pointer">
-                                    <label for="is_default" class="text-xs font-bold text-gray-600 select-none cursor-pointer">Save as default address</label>
-                                </div>
-                            @endauth
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Order Notes (Optional)</label>
-                        <textarea name="notes" rows="1.5" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 shadow-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition duration-200" placeholder="Special delivery instructions.">{{ old('notes') }}</textarea>
-                    </div>
-
-                    <!-- Payment Methods -->
-                    <h2 class="text-base font-bold text-gray-900 mb-3 pb-1.5 border-b border-gray-100 flex items-center gap-2 mt-4" style="font-family: 'Outfit', sans-serif;">
-                        <span class="inline-block w-1 h-4 bg-primary rounded-full"></span>
-                        Payment Method
-                    </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <label class="flex items-center p-2.5 border border-gray-200 bg-white rounded-xl cursor-pointer hover:bg-primary/5 hover:border-primary/30 transition shadow-sm relative">
-                            <input type="radio" name="payment_method" value="cod" checked class="h-4 w-4 text-primary focus:ring-primary border-gray-300 cursor-pointer">
-                            <div class="ml-2.5">
-                                <span class="font-bold text-gray-900 text-xs block">Cash on Delivery</span>
-                                <span class="text-[10px] text-gray-400">Pay with cash upon arrival</span>
-                            </div>
-                            <div class="ms-auto text-primary opacity-60">
-                                <i class="fa-solid fa-wallet text-base"></i>
-                            </div>
-                        </label>
-                        <label class="flex items-center p-2.5 border border-gray-200 bg-white rounded-xl cursor-pointer hover:bg-primary/5 hover:border-primary/30 transition shadow-sm relative">
-                            <input type="radio" name="payment_method" value="stripe" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 cursor-pointer">
-                            <div class="ml-2.5 flex-1">
-                                <span class="font-bold text-gray-900 text-xs block">Credit / Debit Card Payment</span>
-                                <span class="text-[10px] text-gray-400">Visa, Mastercard, Amex &amp; more</span>
-                            </div>
-                            <div class="ms-auto flex items-center gap-1">
-                                <svg viewBox="0 0 38 24" width="28" height="18" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="4" fill="#1a1f71"/><path d="M14.5 7l-2.5 10h-2l2.5-10h2zm7 0l-1 4.5c-.4-1-1.5-4.5-1.5-4.5h-2l2.5 10h1.5l3.5-10h-3zm-11 0H8l-3 10h2l.5-2h3l.5 2h2L10.5 7zm-2.5 6.5l1-4 1 4h-2zM28 9.5c0-.8-.6-2.5-3-2.5-2.5 0-3.5 1.5-3.5 3s1 2.5 3 3 2 1 2 1.5-.5 1-1.5 1c-1.5 0-2.5-1-2.5-1L21 16s1 1.5 3.5 1.5c2.3 0 3.5-1.5 3.5-3 0-1.6-1-2.5-3-3s-2-1-2-1.5.4-1 1.5-1c1 0 2 .5 2 .5L28 9.5z" fill="white"/></svg>
-                                <svg viewBox="0 0 38 24" width="28" height="18" xmlns="http://www.w3.org/2000/svg"><rect width="38" height="24" rx="4" fill="#f0f0f0"/><circle cx="15" cy="12" r="7" fill="#eb001b"/><circle cx="23" cy="12" r="7" fill="#f79e1b"/><path d="M19 7.4a7 7 0 0 1 0 9.2A7 7 0 0 1 19 7.4z" fill="#ff5f00"/></svg>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Order summary -->
-                <div class="w-full lg:w-1/3">
-                    <div class="bg-white border border-gray-100 rounded-xl p-4 sticky top-28 shadow-md">
-                        <h3 class="text-base font-serif font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2" style="font-family: 'Outfit', sans-serif;">Your Order</h3>
-                        
-                        <div class="divide-y divide-gray-100 max-h-80 overflow-y-auto mb-3">
-                            @foreach($cart as $id => $item)
                                 @php
-                                    $liveProduct = \App\Models\Product::find($id);
-                                    $itemName = $liveProduct ? $liveProduct->name : $item['name'];
-                                    $itemPrice = $liveProduct ? ($liveProduct->sale_price ?? $liveProduct->price) : $item['price'];
-                                    $itemImage = $liveProduct ? $liveProduct->primary_image_url : $item['image'];
+                                    $userAddresses = auth()->user()->addresses;
                                 @endphp
-                                <div class="flex justify-between items-center py-2">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-9 h-9 flex-shrink-0 bg-[#f5faf7] border border-gray-100 rounded-lg p-0.5 flex items-center justify-center">
-                                            <img src="{{ $itemImage }}" alt="{{ $itemName }}" class="max-w-full max-h-full object-contain">
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900 text-xs leading-tight max-w-[120px] truncate">{{ $itemName }}</h4>
-                                            <span class="text-[9px] text-gray-400">Qty: {{ $item['quantity'] }}</span>
+                                @if($userAddresses->isNotEmpty())
+                                    <div class="mb-5 space-y-3">
+                                        <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider">Saved Addresses</label>
+                                        <div class="grid grid-cols-1 gap-3 max-h-60 overflow-y-auto pr-1">
+                                            @foreach($userAddresses as $addr)
+                                                <label class="relative flex items-start p-4 border-2 transition-all cursor-pointer rounded-2xl bg-white shadow-2xs hover:border-slate-300"
+                                                       :class="selectedAddressId == '{{ $addr->id }}' ? 'border-primary bg-primary/2 ring-1 ring-primary/20 shadow-xs' : 'border-slate-200/90'">
+                                                    <input type="radio" name="selected_address_id" value="{{ $addr->id }}" {{ $addr->is_default ? 'checked' : '' }}
+                                                           @click="selectedAddressId = '{{ $addr->id }}';"
+                                                           class="mt-1 h-4 w-4 text-primary border-slate-300 focus:ring-primary">
+                                                    <div class="ml-3.5 flex-1">
+                                                        <div class="flex items-center gap-2 mb-1">
+                                                            <p class="text-xs font-bold text-slate-900">{{ $addr->address }}@if($addr->address2), {{ $addr->address2 }}@endif</p>
+                                                            @if($addr->is_default)
+                                                                <span class="text-[9px] font-extrabold bg-emerald-500 text-white px-2 py-0.5 rounded-full uppercase tracking-wider">Default</span>
+                                                            @endif
+                                                        </div>
+                                                        <p class="text-[11px] text-slate-600 font-medium">{{ $addr->city }}, {{ $addr->state }} - {{ $addr->zip }}</p>
+                                                        <p class="text-[10px] text-slate-400 mt-0.5">Phone: {{ $addr->phone }}</p>
+                                                    </div>
+                                                </label>
+                                            @endforeach
+                                            
+                                            <label class="flex items-center p-3.5 border-2 transition-all cursor-pointer rounded-2xl bg-slate-50/70 hover:bg-white hover:border-slate-300"
+                                                   :class="selectedAddressId == 'new' ? 'border-primary bg-primary/2 ring-1 ring-primary/20 shadow-xs' : 'border-slate-200/90'">
+                                                <input type="radio" name="selected_address_id" value="new" {{ !$defaultAddress ? 'checked' : '' }}
+                                                       @click="selectedAddressId = 'new';"
+                                                       class="h-4 w-4 text-primary border-slate-300 focus:ring-primary">
+                                                <div class="ml-3 flex items-center gap-2">
+                                                    <i class="fa-solid fa-plus-circle text-primary text-sm"></i>
+                                                    <p class="text-xs font-bold text-slate-900">Add New Address / Custom Location</p>
+                                                </div>
+                                            </label>
                                         </div>
                                     </div>
-                                    <span class="font-bold text-gray-900 text-xs">&#8377;{{ number_format($itemPrice * $item['quantity'], 2) }}</span>
+                                @endif
+                            @endauth
+
+                            <div x-show="selectedAddressId === 'new'" class="space-y-4 pt-1">
+                                <div>
+                                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Flat / House No. / Building <span class="text-rose-500">*</span></label>
+                                    <input type="text" name="shipping_address" value="{{ old('shipping_address', $address1) }}" :required="selectedAddressId === 'new'" 
+                                           class="w-full bg-white border @error('shipping_address') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="e.g. Flat 302, Green Apartments">
+                                    @error('shipping_address')
+                                        <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                            @endforeach
+
+                                <div>
+                                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Area / Colony / Street / Landmark</label>
+                                    <input type="text" name="shipping_address2" value="{{ old('shipping_address2', $address2) }}" 
+                                           class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="e.g. Near Kalideh Police Chowk, Vrindavan">
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">City <span class="text-rose-500">*</span></label>
+                                        <input type="text" name="shipping_city" value="{{ old('shipping_city', auth()->check() ? auth()->user()->city : '') }}" :required="selectedAddressId === 'new'" 
+                                               class="w-full bg-white border @error('shipping_city') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="City">
+                                        @error('shipping_city')
+                                            <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">State <span class="text-rose-500">*</span></label>
+                                        <input type="text" name="shipping_state" value="{{ old('shipping_state', auth()->check() ? auth()->user()->state : '') }}" :required="selectedAddressId === 'new'" 
+                                               class="w-full bg-white border @error('shipping_state') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 uppercase shadow-2xs" placeholder="State">
+                                        @error('shipping_state')
+                                            <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">ZIP / Pincode <span class="text-rose-500">*</span></label>
+                                        <input type="text" name="shipping_zip" value="{{ old('shipping_zip', auth()->check() ? auth()->user()->zip : '') }}" :required="selectedAddressId === 'new'" 
+                                               class="w-full bg-white border @error('shipping_zip') border-rose-500 @else border-slate-300 @enderror rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="e.g. 281121">
+                                        @error('shipping_zip')
+                                            <span class="text-rose-500 text-[10px] mt-1 block font-medium">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                @auth
+                                    <div class="flex items-center gap-2 pt-1">
+                                        <input type="checkbox" name="is_default" id="is_default" value="1" class="rounded border-slate-300 text-primary focus:ring-primary/25 h-4 w-4 cursor-pointer">
+                                        <label for="is_default" class="text-xs font-bold text-slate-700 select-none cursor-pointer">Save as default address</label>
+                                    </div>
+                                @endauth
+                            </div>
+
+                            <div class="mt-5 pt-3 border-t border-slate-100">
+                                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Delivery Notes (Optional)</label>
+                                <textarea name="notes" rows="2" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition duration-200 shadow-2xs" placeholder="Special delivery instructions or landmark details.">{{ old('notes') }}</textarea>
+                            </div>
                         </div>
 
-                        <div class="space-y-2 mb-3 border-t border-gray-100 pt-2">
-                            <div class="flex justify-between text-gray-500 text-xs">
-                                <span>Subtotal</span>
-                                <span class="font-semibold text-gray-900 font-sans">&#8377;{{ number_format($subtotal, 2) }}</span>
+                        <!-- Section 3: Payment Method -->
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 md:p-6 shadow-xs hover:shadow-sm transition-shadow">
+                            <div class="flex items-center gap-3 mb-5 pb-3.5 border-b border-slate-100">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-base font-bold text-slate-900 leading-tight" style="font-family: 'Outfit', sans-serif;">Payment Method</h2>
+                                    <p class="text-[11px] text-slate-400">Select your preferred payment method</p>
+                                </div>
                             </div>
-                            @if(isset($discountAmount) && $discountAmount > 0)
-                            <div class="flex justify-between text-emerald-600 text-xs font-semibold">
-                                <span>Coupon Discount</span>
-                                <span>-&#8377;{{ number_format($discountAmount, 2) }}</span>
-                            </div>
-                            @endif
-                            <div class="flex justify-between text-gray-500 text-xs">
-                                <span>Shipping</span>
-                                <span class="text-green-600 font-semibold uppercase text-[9px] tracking-wider">Free</span>
-                            </div>
-                            <hr class="border-gray-100">
-                            <div class="flex justify-between text-xs font-bold text-gray-900">
-                                <span>Grand Total</span>
-                                <span>&#8377;{{ number_format(isset($total) ? $total : $subtotal, 2) }}</span>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Cash On Delivery Card -->
+                                <label class="relative flex items-start p-4 border-2 rounded-2xl cursor-pointer transition-all duration-200 bg-white"
+                                       :class="paymentMethod === 'cod' ? 'border-primary bg-primary/2 ring-1 ring-primary/20 shadow-xs' : 'border-slate-200 hover:border-slate-300'">
+                                    <input type="radio" name="payment_method" value="cod" checked @click="paymentMethod = 'cod'" class="mt-1 h-4 w-4 text-primary focus:ring-primary border-slate-300">
+                                    <div class="ml-3.5 flex-1">
+                                        <div class="flex items-center gap-2 mb-0.5">
+                                            <span class="font-extrabold text-slate-900 text-xs">Cash on Delivery</span>
+                                            <span class="text-[9px] bg-emerald-500 text-white font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">Popular</span>
+                                        </div>
+                                        <span class="text-[11px] text-slate-500 font-medium block">Pay with cash upon arrival at your door</span>
+                                    </div>
+                                    <div class="ml-2 w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0 text-sm">
+                                        <i class="fa-solid fa-money-bill-wave"></i>
+                                    </div>
+                                </label>
+
+                                <!-- Razorpay Card -->
+                                <label class="relative flex items-start p-4 border-2 rounded-2xl cursor-pointer transition-all duration-200 bg-white"
+                                       :class="paymentMethod === 'razorpay' ? 'border-primary bg-primary/2 ring-1 ring-primary/20 shadow-xs' : 'border-slate-200 hover:border-slate-300'">
+                                    <input type="radio" name="payment_method" value="razorpay" @click="paymentMethod = 'razorpay'" class="mt-1 h-4 w-4 text-primary focus:ring-primary border-slate-300">
+                                    <div class="ml-3.5 flex-1">
+                                        <div class="flex items-center gap-2 mb-0.5">
+                                            <span class="font-extrabold text-slate-900 text-xs">Razorpay Online</span>
+                                            <span class="text-[9px] bg-blue-600 text-white font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">Instant</span>
+                                        </div>
+                                        <span class="text-[11px] text-slate-500 font-medium block">UPI (GPay, PhonePe), Cards & NetBanking</span>
+                                    </div>
+                                    <div class="ml-2 w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 text-sm">
+                                        <i class="fa-solid fa-bolt"></i>
+                                    </div>
+                                </label>
                             </div>
                         </div>
 
-                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 rounded-lg tracking-wider text-[11px] transition-all duration-300 shadow-md cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5">
-                            PLACE ORDER (&#8377;{{ number_format(isset($total) ? $total : $subtotal, 2) }})
-                        </button>
                     </div>
+
+                    <!-- Right Column: Enhanced "Your Order" Sticky Card -->
+                    <div class="w-full lg:w-1/3">
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 sticky top-28 shadow-lg shadow-slate-200/40 transition-all z-10">
+                            
+                            <!-- Card Header -->
+                            <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                    </div>
+                                    <h3 class="text-base font-extrabold text-slate-900 tracking-tight" style="font-family: 'Outfit', sans-serif;">Your Order</h3>
+                                </div>
+                                <span class="bg-slate-100 text-slate-700 font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">
+                                    {{ count($cart) }} {{ count($cart) === 1 ? 'Item' : 'Items' }}
+                                </span>
+                            </div>
+                            
+                            <!-- Order Items List -->
+                            <div class="divide-y divide-slate-100 max-h-72 overflow-y-auto pr-1 mb-4">
+                                @foreach($cart as $id => $item)
+                                    @php
+                                        $liveProduct = \App\Models\Product::find($id);
+                                        $itemName = $liveProduct ? $liveProduct->name : $item['name'];
+                                        $itemPrice = $liveProduct ? ($liveProduct->sale_price ?? $liveProduct->price) : $item['price'];
+                                        $itemImage = $liveProduct ? $liveProduct->primary_image_url : $item['image'];
+                                    @endphp
+                                    <div class="flex items-center justify-between py-3 group">
+                                        <div class="flex items-center space-x-3 min-w-0">
+                                            <div class="w-12 h-12 flex-shrink-0 bg-slate-50 border border-slate-100 rounded-xl p-1 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                                                <img src="{{ $itemImage }}" alt="{{ $itemName }}" class="max-w-full max-h-full object-contain">
+                                            </div>
+                                            <div class="min-w-0 flex-1">
+                                                <h4 class="font-bold text-slate-800 text-xs leading-snug truncate group-hover:text-primary transition-colors" title="{{ $itemName }}">{{ $itemName }}</h4>
+                                                <div class="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
+                                                    <span>Qty: <strong class="text-slate-800">{{ $item['quantity'] }}</strong></span>
+                                                    <span>•</span>
+                                                    <span>&#8377;{{ number_format($itemPrice, 2) }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="font-extrabold text-slate-900 text-xs pl-2 flex-shrink-0" style="font-family: 'Outfit', sans-serif;">
+                                            &#8377;{{ number_format($itemPrice * $item['quantity'], 2) }}
+                                        </span>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <!-- Cost Breakdown -->
+                            <div class="space-y-2.5 py-4 border-t border-slate-100 bg-slate-50/70 rounded-2xl p-4 mb-5 border border-slate-100">
+                                <div class="flex justify-between text-slate-600 text-xs">
+                                    <span>Subtotal</span>
+                                    <span class="font-bold text-slate-900 font-sans">&#8377;{{ number_format($subtotal, 2) }}</span>
+                                </div>
+
+                                @if(isset($discountAmount) && $discountAmount > 0)
+                                    <div class="flex justify-between text-emerald-600 text-xs font-bold">
+                                        <span class="flex items-center gap-1"><i class="fa-solid fa-ticket text-[10px]"></i> Coupon Discount</span>
+                                        <span>-&#8377;{{ number_format($discountAmount, 2) }}</span>
+                                    </div>
+                                @endif
+
+                                <div class="flex justify-between text-slate-600 text-xs items-center">
+                                    <span>Delivery Charge</span>
+                                    <span class="text-emerald-700 font-extrabold bg-emerald-100 px-2 py-0.5 rounded-md text-[10px] uppercase tracking-wider">FREE</span>
+                                </div>
+
+                                <div class="border-t border-slate-200/80 pt-3 mt-1 flex justify-between items-baseline">
+                                    <div>
+                                        <span class="text-sm font-extrabold text-slate-900 block" style="font-family: 'Outfit', sans-serif;">Total Amount</span>
+                                        <span class="text-[10px] text-slate-400 font-medium">Includes all taxes</span>
+                                    </div>
+                                    <span class="text-xl font-black text-slate-900 tracking-tight" style="font-family: 'Outfit', sans-serif;">
+                                        &#8377;{{ number_format(isset($total) ? $total : $subtotal, 2) }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Place Order Button -->
+                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-extrabold py-3.5 px-4 rounded-xl tracking-wider text-xs transition-all duration-300 shadow-md hover:shadow-xl transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer group">
+                                <i class="fa-solid fa-shield-halved text-sm group-hover:scale-110 transition-transform"></i>
+                                <span>PLACE ORDER NOW</span>
+                                <span class="bg-white/20 px-2.5 py-0.5 rounded-md text-[10px] ml-1">&#8377;{{ number_format(isset($total) ? $total : $subtotal, 2) }}</span>
+                            </button>
+
+                            <!-- Trust Badges -->
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <div class="flex items-center justify-center gap-3 text-[10px] text-slate-400 font-bold">
+                                    <span class="flex items-center gap-1 text-emerald-600">
+                                        <i class="fa-solid fa-lock"></i> SSL Encrypted
+                                    </span>
+                                    <span>•</span>
+                                    <span class="flex items-center gap-1 text-primary">
+                                        <i class="fa-solid fa-truck-fast"></i> Fast Shipping
+                                    </span>
+                                    <span>•</span>
+                                    <span class="flex items-center gap-1 text-blue-600">
+                                        <i class="fa-solid fa-rotate-left"></i> Easy Returns
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 @endsection
 
 @push('scripts')
 <script>
-    document.getElementById('detect-location-btn').addEventListener('click', function() {
-        const btn = this;
+    window.detectUserLocation = function(buttonElem) {
+        const btn = buttonElem || document.getElementById('detect-location-btn');
+        if (!btn) return;
         const originalText = btn.innerHTML;
         
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Detecting...';
 
-        // Function to run IP-based fallback geolocator
-        function runIpFallback() {
-            fetch('https://ipapi.co/json/')
+        // Auto-select "Add New Address" radio if saved addresses exist so input fields are visible
+        const newAddrRadio = document.querySelector('input[name="selected_address_id"][value="new"]');
+        if (newAddrRadio && !newAddrRadio.checked) {
+            newAddrRadio.click();
+        }
+
+        function populate(data) {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+            if (data && data.success) {
+                const addrInput  = document.querySelector('input[name="shipping_address"]');
+                const addr2Input = document.querySelector('input[name="shipping_address2"]');
+                const cityInput  = document.querySelector('input[name="shipping_city"]');
+                const stateInput = document.querySelector('input[name="shipping_state"]');
+                const zipInput   = document.querySelector('input[name="shipping_zip"]');
+
+                if (addrInput)  addrInput.value  = data.address  || '';
+                if (addr2Input) addr2Input.value = data.address2 || '';
+                if (cityInput)  cityInput.value  = data.city     || '';
+                if (stateInput) stateInput.value = data.state    || '';
+                if (zipInput)   zipInput.value   = data.zip      || '';
+
+                alert('Location detected successfully! Please enter your house/flat number if required.');
+            } else {
+                alert('Could not auto-detect location. Please enter your address details manually.');
+            }
+        }
+
+        function fetchLocation(url) {
+            fetch(url)
                 .then(res => res.json())
-                .then(data => {
+                .then(data => populate(data))
+                .catch(() => {
                     btn.disabled = false;
                     btn.innerHTML = originalText;
-                    if (data && data.city) {
-                        document.querySelector('input[name="shipping_city"]').value = data.city || '';
-                        document.querySelector('input[name="shipping_state"]').value = data.region || data.region_code || '';
-                        document.querySelector('input[name="shipping_zip"]').value = data.postal || '';
-                        
-                        alert('Location resolved via IP address successfully. Please enter your street address details manually.');
-                    } else {
-                        alert('Could not resolve your location automatically. Please enter your address details manually.');
-                    }
-                })
-                .catch(err => {
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                    alert('Could not detect location. Please fill your address details manually.');
+                    alert('Could not auto-detect location. Please enter your address details manually.');
                 });
         }
 
-        // Try standard browser Geolocation
         if (!navigator.geolocation) {
-            runIpFallback();
+            fetchLocation('/api/reverse-geocode');
             return;
         }
 
-        navigator.geolocation.getCurrentPosition(function(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`)
-                .then(response => response.json())
-                .then(data => {
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                    
-                    if (data && data.address) {
-                        const addr = data.address;
-                        const line1Parts = [
-                            addr.house_number,
-                            addr.building,
-                            addr.road,
-                        ].filter(Boolean);
-                        const line1 = line1Parts.join(', ') || addr.road || '';
-                        
-                        const line2Parts = [
-                            addr.suburb,
-                            addr.neighbourhood,
-                            addr.village,
-                            addr.city_district,
-                        ].filter(Boolean);
-                        const line2 = line2Parts.join(', ') || addr.county || '';
-                        
-                        document.querySelector('input[name="shipping_address"]').value = line1;
-                        document.querySelector('input[name="shipping_address2"]').value = line2;
-                        document.querySelector('input[name="shipping_city"]').value = addr.city || addr.town || addr.village || addr.county || '';
-                        document.querySelector('input[name="shipping_state"]').value = addr.state || '';
-                        document.querySelector('input[name="shipping_zip"]').value = addr.postcode || '';
-                    } else {
-                        runIpFallback();
-                    }
-                })
-                .catch(error => {
-                    runIpFallback();
-                });
-        }, function(error) {
-            // Geolocation failed or user denied permission â€” run the IP fallback instantly
-            runIpFallback();
-        }, {
-            timeout: 6000 // 6 seconds timeout for browser geolocation
-        });
-    });
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                fetchLocation(`/api/reverse-geocode?lat=${lat}&lon=${lon}`);
+            },
+            function(error) {
+                fetchLocation('/api/reverse-geocode');
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 8000
+            }
+        );
+    };
 </script>
 @endpush

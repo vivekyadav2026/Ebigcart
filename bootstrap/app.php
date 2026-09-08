@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\CheckUserActive::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'checkout/razorpay-callback',
+            'webhook/razorpay',
+            'webhook/stripe',
+        ]);
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);

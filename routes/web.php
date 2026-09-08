@@ -50,8 +50,8 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
-    Route::get('/checkout/stripe-callback', [CheckoutController::class, 'handleStripeCallback'])->name('checkout.stripe.callback');
-    Route::get('/checkout/cancel-payment', [CheckoutController::class, 'cancelStripePayment'])->name('checkout.stripe.cancel');
+    Route::post('/checkout/razorpay-callback', [CheckoutController::class, 'handleRazorpayCallback'])->name('checkout.razorpay.callback');
+    Route::get('/checkout/cancel-payment', [CheckoutController::class, 'cancelRazorpayPayment'])->name('checkout.razorpay.cancel');
     Route::get('/order-success/{order_number}', [CheckoutController::class, 'success'])->name('checkout.success');
     
     // Customer Orders & Returns
@@ -65,6 +65,7 @@ Route::get('/wishlist/count', [WishlistController::class, 'count'])->name('wishl
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
 Route::get('/api/product/{slug}', [FrontendController::class, 'apiProductDetails'])->name('api.product.details');
+Route::get('/api/reverse-geocode', [CheckoutController::class, 'reverseGeocode'])->name('api.reverse_geocode');
 
 Route::get('/dashboard', function () {
     $user = auth()->user();
@@ -137,11 +138,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 require __DIR__.'/auth.php';
 
-// Stripe Webhook â€” excluded from CSRF and auth middleware
-Route::withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class])->post(
-    '/webhook/stripe',
-    [CheckoutController::class, 'stripeWebhook']
-)->name('webhook.stripe');
+// Razorpay Webhook
+Route::post(
+    '/webhook/razorpay',
+    [CheckoutController::class, 'razorpayWebhook']
+)->name('webhook.razorpay');
 
 Route::get('/sitemap.xml', [FrontendController::class, 'sitemap'])->name('sitemap');
 
